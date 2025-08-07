@@ -4,7 +4,9 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { TrendingUp, ArrowRight, PlayCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { motion, useInView, useAnimation, Variant } from "framer-motion";
+import { Helmet } from 'react-helmet-async';
+
+
 const imageList = [
   '/lovable-uploads/entity.png',
   '/lovable-uploads/lender.png',
@@ -133,6 +135,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative font-raleway" lang={currentLanguage}>
+       <Helmet>
+        <meta
+          name="google-site-verification"
+          content="bP75Kb9hNKjb0mV6OcHEPk52j5hNvivyYO1XD5nieQQ"
+        />
+      </Helmet>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
@@ -419,7 +427,6 @@ const Index = () => {
       `}</style>
       
       <Navbar />
-      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden container bg-gradient-to-br from-blue-900 via-slate-800 to-slate-900">
         <div className="max-w-7xl mx-auto relative z-10">

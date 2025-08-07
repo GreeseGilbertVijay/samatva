@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Form from '@/components/Form';
 import { Mail, Phone, Clock, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -15,7 +14,6 @@ const Contact = () => {
         .font-raleway {
           font-family: 'Raleway', sans-serif;
         }
-
         @media (max-width: 1920px) {
           h1 { font-size: 56px; }
           h2 { font-size: 48px; }
@@ -32,7 +30,6 @@ const Contact = () => {
           [lang]:not([lang="en"]) h6 { font-size: 20px; }
           [lang]:not([lang="en"]) p { font-size: 18px; }
         }
-
         @media (max-width: 1440px) {
           h1 { font-size: 48px; line-height: 1em; }
           h2 { font-size: 40px; }
@@ -208,9 +205,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
-      {/* Contact Form Componet File */}
-      <Form/>
 
       {/* Google Maps Section */}
       <section className="w-full h-[300px]">

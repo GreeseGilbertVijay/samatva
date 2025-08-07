@@ -40,15 +40,15 @@ const Navbar = () => {
 
   return (
     <nav className="bg-slate-900/95 backdrop-blur-sm border-b border-slate-700 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-0">
+        <div className="flex justify-between items-center h-24">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center" onClick={scrollToTop}>
               <img 
                 src="/lovable-uploads/samatvalogosvg.png" 
                 alt="Samatva Awareness" 
-                className="h-16 w-auto object-fit"
+                className="h-20 w-auto object-cover"
               />
             </Link>
           </div>
