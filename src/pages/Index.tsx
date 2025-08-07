@@ -4,8 +4,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { TrendingUp, ArrowRight, PlayCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Helmet } from 'react-helmet-async';
-
 
 const imageList = [
   '/lovable-uploads/entity.png',
@@ -135,12 +133,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen relative font-raleway" lang={currentLanguage}>
-       <Helmet>
-        <meta
-          name="google-site-verification"
-          content="bP75Kb9hNKjb0mV6OcHEPk52j5hNvivyYO1XD5nieQQ"
-        />
-      </Helmet>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');

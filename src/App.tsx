@@ -14,11 +14,18 @@ import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { Helmet } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <Helmet>
+        <meta
+          name="google-site-verification"
+          content="bP75Kb9hNKjb0mV6OcHEPk52j5hNvivyYO1XD5nieQQ"
+        />
+      </Helmet>
     <LanguageProvider>
       <FontProvider>
         <TooltipProvider>
