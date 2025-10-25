@@ -46,7 +46,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center" onClick={scrollToTop}>
               <img 
-                src="/lovable-uploads/samatvalogosvg.png" 
+                src="/lovable-uploads/samatvalogo.png" 
                 alt="Samatva Awareness" 
                 className="h-20 w-auto object-cover"
               />
