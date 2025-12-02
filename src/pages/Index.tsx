@@ -486,8 +486,8 @@ const Index = () => {
               ${showRows ? 'opacity-100' : 'opacity-0'}
             `}
                 >
-                  <h3 className="text-base">{t('home.hero.second-heading.title')}</h3>
-                  <h3 className="text-base">{t('home.hero.second-heading.title1')}</h3>
+                  <h3 className="text-base text-orange-500 dark:text-white">{t('home.hero.second-heading.title')}</h3>
+                  <h3 className="text-base text-orange-500 dark:text-white">{t('home.hero.second-heading.title1')}</h3>
                 </div>
 
                 {/* Image Grid */}
@@ -601,7 +601,7 @@ const Index = () => {
       <section
         className="
           pt-16 pb-12 pl-2 pr-2 relative overflow-hidden
-          bg-gray-200 text-black
+          bg-white text-black
           dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white
         "
       >
@@ -821,7 +821,7 @@ const Index = () => {
 
 
       {/* Video Section */}
-      <section className="p-8 bg-gray-200 dark:bg-slate-900 text-center">
+      <section className="p-8 bg-white dark:bg-slate-900 text-center">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-bold text-orange-500 dark:text-white mb-12 animate-fade-in">
             {t('home.videoSection.title')}
@@ -885,7 +885,7 @@ const Index = () => {
           {faqs.map((item, i) => (
             <div
               key={i}
-              className="rounded-lg overflow-hidden bg-gray-200 dark:bg-slate-800 shadow border border-slate-200 dark:border-slate-700"
+              className="rounded-lg overflow-hidden bg-white dark:bg-slate-800 shadow border border-slate-200 dark:border-slate-700"
             >
               <button
                 className="w-full px-6 py-4 flex justify-between items-center text-left 
@@ -927,7 +927,7 @@ const Index = () => {
       {/* CTA Section */}
       <section className="
   pt-16 pb-12 
-  bg-gray-200 
+  bg-white 
   dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500
   transition-colors
 ">
