@@ -889,7 +889,7 @@ const Index = () => {
             >
               <button
                 className="w-full px-6 py-4 flex justify-between items-center text-left 
-                           text-black dark:text-white hover:bg-gray-100 dark:hover:bg-slate-700
+                           text-orange-500 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-700
                            transition-colors"
                 onClick={() => toggleFAQ(i)}
               >
