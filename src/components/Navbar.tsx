@@ -61,7 +61,7 @@ const Navbar = () => {
   return (
     <nav className="
   sticky top-0 z-50 
-  bg-white/80 dark:bg-black/90 
+  bg-gray-200 dark:bg-black/90 
   backdrop-blur-md 
   border-b border-slate-300 dark:border-slate-700
   transition-colors
@@ -71,12 +71,15 @@ const Navbar = () => {
 
       {/* Logo */}
       <Link to="/" onClick={scrollToTop} className="flex items-center flex-shrink-0">
-        <img 
-          src="/lovable-uploads/samatvalogo.png" 
-          alt="Samatva Awareness" 
+        <img
+          src={theme === "light" 
+            ? "/lovable-uploads/samatvalogoblack.png" 
+            : "/lovable-uploads/samatvalogo.png"}
+          alt="Samatva Awareness"
           className="h-20 w-auto object-cover"
         />
       </Link>
+
 
       {/* Desktop Navigation */}
       <div className="hidden lg:flex lg:items-center lg:justify-center lg:flex-1">
