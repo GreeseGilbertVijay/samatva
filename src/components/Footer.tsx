@@ -4,7 +4,19 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const { t } = useLanguage();
-  const [theme, setTheme] = useState("");
+  const [theme, setTheme] = useState("light");
+
+  const [logoSrc, setLogoSrc] = useState("/lovable-uploads/samatvalogoblack.png");
+
+  useEffect(() => {
+    // Update logo whenever theme changes
+    if (theme === 'light') {
+      setLogoSrc("/lovable-uploads/samatvalogoblack.png"); // dark mode
+    } else {
+      setLogoSrc("/lovable-uploads/samatvalogo.png"); // light mode
+    }
+  }, [theme]);
+ 
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -21,9 +33,6 @@ const Footer = () => {
       document.documentElement.classList.toggle("dark", saved === "dark");
     }
   }, []);
-
-
-
   return (
     <footer className="bg-white dark:bg-slate-900 text-black dark:text-white border-t border-gray-200 dark:border-slate-700 transition-colors">
       <style>{`
@@ -39,9 +48,7 @@ const Footer = () => {
             <div className="flex items-center space-x-3 mb-6">
               <Link to="/" onClick={scrollToTop} className="flex items-center flex-shrink-0">
                 <img
-                  src={"light" === theme  
-                    ? "/lovable-uploads/samatvalogo.png" 
-                    : "/lovable-uploads/samatvalogoblack.png"}
+                  src={logoSrc}
                   alt="Samatva Awareness"
                   className="h-20 w-auto object-cover"
                 />
