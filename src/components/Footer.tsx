@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Footer = () => {
   const { t } = useLanguage();
+  const [theme, setTheme] = useState("");
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -10,6 +12,17 @@ const Footer = () => {
       behavior: 'smooth',
     });
   };
+
+  // Load saved theme
+  useEffect(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) {
+      setTheme(saved);
+      document.documentElement.classList.toggle("dark", saved === "dark");
+    }
+  }, []);
+
+
 
   return (
     <footer className="bg-white dark:bg-slate-900 text-black dark:text-white border-t border-gray-200 dark:border-slate-700 transition-colors">
@@ -24,11 +37,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
-              <Link to="/" onClick={scrollToTop}>
+              <Link to="/" onClick={scrollToTop} className="flex items-center flex-shrink-0">
                 <img
-                  src="/lovable-uploads/samatvalogo.png"
+                  src={"light" === theme  
+                    ? "/lovable-uploads/samatvalogo.png" 
+                    : "/lovable-uploads/samatvalogoblack.png"}
                   alt="Samatva Awareness"
-                  className="h-24 w-auto"
+                  className="h-20 w-auto object-cover"
                 />
               </Link>
             </div>
@@ -75,7 +90,7 @@ const Footer = () => {
             <h4 className="text-2xl font-bold mb-4 text-orange-500">{t('footer.contactInfo') || 'Contact Info'}</h4>
             <div className="space-y-3 text-gray-600 dark:text-slate-300">
               <div className="text-sm leading-relaxed">
-                <p className="font-medium text-black dark:text-white mb-2">{t('footer.phone') || 'Phone Numbers'}:</p>
+                <p className="font-medium text-orange-500 dark:text-white mb-2">{t('footer.phone') || 'Phone Numbers'}:</p>
                 <p>
                   <a href="tel:+916382097967" className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">+91 63820 97967</a>
                 </p>
@@ -87,11 +102,11 @@ const Footer = () => {
               </div>
 
               <div className="text-sm">
-                <p className="font-medium text-black dark:text-white mb-2">CIN: U70200TN2024PTC167249</p>
+                <p className="font-medium text-orange-500 dark:text-white mb-2">CIN: U70200TN2024PTC167249</p>
               </div>
 
               <div className="text-sm leading-relaxed">
-                <p className="font-medium text-black dark:text-white mb-2">{t('footer.address') || 'Address'}:</p>
+                <p className="font-medium text-orange-500 dark:text-white mb-2">{t('footer.address') || 'Address'}:</p>
                 <p>No.25, Shanthi Apartments, Flat No 3, 1st Floor, Vyasar Street, T.Nagar, Chennai - 600017</p>
               </div>
             </div>
