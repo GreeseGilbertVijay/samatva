@@ -454,11 +454,11 @@ const Index = () => {
 
             {/* Left Content */}
             <div className="text-left animate-fade-in">
-              <h1 className="font-bold mt-4 mb-2">
+              <h1 className="font-bold text-orange-500 dark:text-white mt-4 mb-2">
                 {t('home.hero.title1')}
               </h1>
 
-              <h1 className="text-orange-500 font-bold mb-8">
+              <h1 className="text-orange-500  font-bold mb-8">
                 {t('home.hero.title2')}
               </h1>
 
@@ -600,10 +600,10 @@ const Index = () => {
       {/* Concept Section with Enhanced Background */}
       <section
         className="
-    pt-16 pb-12 pl-2 pr-2 relative overflow-hidden
-    bg-gray-200 text-black
-    dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white
-  "
+          pt-16 pb-12 pl-2 pr-2 relative overflow-hidden
+          bg-gray-200 text-black
+          dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white
+        "
       >
 
         {/* Dark mode animated background */}
@@ -640,7 +640,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="font-bold animate-fade-in">
               {/* Light → black ; Dark → white */}
-              <span className="block text-black dark:text-white">
+              <span className="block text-orange-500 dark:text-white">
                 {t('home.concept.title1')}
               </span>
             </h2>
@@ -718,7 +718,7 @@ const Index = () => {
       <section
         className="
     pt-16 pb-12 relative overflow-hidden
-    bg-white text-black
+    bg-white
     dark:bg-slate-800 dark:text-white
   "
       >
@@ -744,7 +744,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Title */}
           <div className="text-center mb-16">
-            <h2 className="font-bold text-black dark:text-white mb-6 animate-fade-in">
+            <h2 className="font-bold text-orange-500 dark:text-white mb-6 animate-fade-in">
               {t("home.trustBuilders.title")}
             </h2>
           </div>
@@ -765,7 +765,7 @@ const Index = () => {
               <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2 md:mb-4 font-roboto">
                 {t("home.trustBuilders.timeline").split(" ")[0]}
               </div>
-              <div className="md:text-2xl font-bold text-black dark:text-white mb-2 md:mb-4 font-roboto">
+              <div className="md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4 font-roboto">
                 {t("home.trustBuilders.timeline").split(" ")[1]}
               </div>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
@@ -786,7 +786,7 @@ const Index = () => {
               <div className="text-4xl md:text-4xl font-bold text-green-600 dark:text-green-500 mb-2 md:mb-4">
                 {t("home.trustBuilders.freeService").split(" ")[0]}
               </div>
-              <div className="text-xl md:text-2xl font-bold text-black dark:text-white mb-2 md:mb-4">
+              <div className="text-xl md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4">
                 {t("home.trustBuilders.freeService").split(" ").slice(1).join(" ")}
               </div>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
@@ -807,7 +807,7 @@ const Index = () => {
               <div className="md:text-5xl font-bold text-orange-500 mb-2 md:mb-4">
                 <h4>{t("home.trustBuilders.rbiNBFC")}</h4>
               </div>
-              <div className="md:text-2xl font-bold text-black dark:text-white mb-2 md:mb-4">
+              <div className="md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4">
                 <h5>{t("home.trustBuilders.rbiRegistered")}</h5>
               </div>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
@@ -934,7 +934,7 @@ const Index = () => {
   <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
     
     <h2 className="font-bold mb-6 
-      text-black dark:text-white 
+      text-orange-500 dark:text-white 
       animate-fade-in
     ">
       {t('home.cta.title')}
