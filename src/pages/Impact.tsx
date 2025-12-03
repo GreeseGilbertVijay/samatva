@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LoanCalc from '@/components/LoanCalc';
+import Sample from '@/components/sample';
 import { TrendingUp, Clock, Target, CheckCircle} from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';

@@ -295,7 +295,7 @@ const CreditHealth = () => {
                   <div className="mb-4">
                     <div className="flex justify-between items-center mb-2">
                       <span className=" font-medium text-gray-700">Impact</span>
-                      <span className="text-2xl font-bold text-gray-900">{factor.percentage}%</span>
+                      <span className="font-bold text-gray-900">{factor.percentage}%</span>
                     </div>
                     <Progress value={factor.percentage} className="h-3" />
                   </div>

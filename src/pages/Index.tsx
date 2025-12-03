@@ -318,7 +318,7 @@ const Index = () => {
             font-size: 24px;
           }
           [lang]:not([lang="en"]) h2 {
-            font-size: 24px;
+            font-size: 20px;
           }
           [lang]:not([lang="en"]) h3 {
             font-size: 18px;
@@ -361,7 +361,7 @@ const Index = () => {
          
           /* Non-English font sizes */
           [lang]:not([lang="en"]) h1 {
-            font-size: 36px;
+            font-size: 28px;
           }
           [lang]:not([lang="en"]) h2 {
             font-size: 20px;
@@ -487,7 +487,7 @@ const Index = () => {
             `}
                 >
                   <h3 className="text-base text-orange-500 dark:text-white">{t('home.hero.second-heading.title')}</h3>
-                  <h3 className="text-base text-orange-500 dark:text-white">{t('home.hero.second-heading.title1')}</h3>
+                  <h3 className="text-base text-orange-500 mb-4 dark:text-white">{t('home.hero.second-heading.title1')}</h3>
                 </div>
 
                 {/* Image Grid */}
@@ -502,20 +502,11 @@ const Index = () => {
                         <img
                           src={img}
                           alt={imageTexts[idx]}
-                          className={`
-                      rounded-xl p-2 w-16 h-16 object-contain
-                      bg-black/10 dark:bg-white/10
-                      transition-all duration-500
-                      ${visibleCells > idx ? 'opacity-100 animate-fade-in' : 'opacity-0'}
-                    `}
-                        />
+                          className={` rounded-xl p-2 w-16 h-16 object-contain bg-black/10 dark:bg-white/10 transition-all duration-500           
+                                       ${visibleCells > idx ? 'opacity-100 animate-fade-in' : 'opacity-0'} `} />
                         <span
-                          className={`
-                      mt-2 text-center text-xs font-medium w-full h-10 overflow-hidden 
-                      transition-all duration-500 
-                      text-black dark:text-white
-                      ${visibleCells > idx ? 'opacity-100' : 'opacity-0'}
-                    `}
+                          className={` mt-2 text-center text-xs font-medium w-full h-10 overflow-hidden transition-all duration-500 text-black dark:text-white
+                             ${visibleCells > idx ? 'opacity-100' : 'opacity-0'}`}
                         >
                           {visibleCells > idx ? imageTexts[idx] : ''}
                         </span>
