@@ -716,22 +716,13 @@ const Index = () => {
 
       {/* Trust Builders with subtle animations */}
       <section
-        className="
-    pt-16 pb-12 relative overflow-hidden
-    bg-white
-    dark:bg-slate-800 dark:text-white
-  "
-      >
+        className="pt-16 pb-12 relative overflow-hidden bg-white dark:bg-slate-800 dark:text-white" >
         {/* Floating particles */}
         <div className="absolute inset-0">
           {Array.from({ length: 8 }).map((_, i) => (
             <div
               key={i}
-              className="
-          absolute w-1 h-1 rounded-full 
-          bg-black/10 dark:bg-white/10
-          animate-float-particle-1
-        "
+              className=" absolute w-1 h-1 rounded-full bg-black/10 dark:bg-white/10 animate-float-particle-1 "
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -754,14 +745,8 @@ const Index = () => {
 
             {/* Card 1 */}
             <div
-              className="
-          flex flex-col pt-10 pb-10 justify-center items-center h-full text-center
-          rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-1
-          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600
-          border border-orange-300 dark:border-slate-500
-          shadow-md dark:shadow-none
-        "
-            >
+              className=" flex flex-col pt-10 pb-10 justify-center items-center h-full text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-1 bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600
+                          border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
               <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2 md:mb-4 font-roboto">
                 {t("home.trustBuilders.timeline").split(" ")[0]}
               </div>
@@ -775,14 +760,8 @@ const Index = () => {
 
             {/* Card 2 */}
             <div
-              className="
-          flex flex-col pt-10 pb-10 justify-center items-center text-center
-          rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-2
-          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600
-          border border-orange-300 dark:border-slate-500
-          shadow-md dark:shadow-none
-        "
-            >
+              className=" flex flex-col pt-10 pb-10 justify-center items-center text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-2 
+                          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600 border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
               <div className="text-4xl md:text-4xl font-bold text-green-600 dark:text-green-500 mb-2 md:mb-4">
                 {t("home.trustBuilders.freeService").split(" ")[0]}
               </div>
@@ -796,14 +775,8 @@ const Index = () => {
 
             {/* Card 3 */}
             <div
-              className="
-          flex flex-col pt-10 pb-10 justify-center items-center h-full text-center
-          rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-3
-          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600
-          border border-orange-300 dark:border-slate-500
-          shadow-md dark:shadow-none
-        "
-            >
+              className=" flex flex-col pt-10 pb-10 justify-center items-center h-full text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-3
+                          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600 border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
               <div className="md:text-5xl font-bold text-orange-500 mb-2 md:mb-4">
                 <h4>{t("home.trustBuilders.rbiNBFC")}</h4>
               </div>
@@ -863,7 +836,7 @@ const Index = () => {
       </section>
 
       {/* ChatBot Section */}
-      <section className="pt-4 pb-16 pt-lg-5 bg-gradient-to-br from-blue-400 via-blue-800 to-blue-500">
+      <section className="pt-4 pb-16 pt-lg-5 bg-gray-400 dark:bg-gradient-to-br dark:from-blue-400 dark:via-blue-800 dark:to-blue-500">
         <iframe
           id="chatbotIframe"
           src="https://shabd.tech/widget/chatpage?name=samatva&authKey=afd9a6b4-03fd-11f0-aabd-047c1692d8ad"
@@ -925,57 +898,25 @@ const Index = () => {
     </section>
 
       {/* CTA Section */}
-      <section className="
-  pt-16 pb-12 
-  bg-white 
-  dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500
-  transition-colors
-">
-  <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-    
-    <h2 className="font-bold mb-6 
-      text-orange-500 dark:text-white 
-      animate-fade-in
-    ">
-      {t('home.cta.title')}
-    </h2>
+      <section className=" pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 transition-colors" >
+      <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 className="font-bold mb-6 text-orange-500 dark:text-white animate-fade-in ">
+          {t('home.cta.title')}
+        </h2>
+        <p className="mb-10 text-gray-700 dark:text-orange-100 max-w-3xl mx-auto animate-fade-in " style={{ animationDelay: "0.2s" }} >
+          {t("home.cta.subtitle")}
+        </p>
 
-    <p
-      className="mb-10 
-        text-gray-700 dark:text-orange-100 
-        max-w-3xl mx-auto 
-        animate-fade-in
-      "
-      style={{ animationDelay: "0.2s" }}
-    >
-      {t("home.cta.subtitle")}
-    </p>
-
-    <Link
-      to="/Contact"
-      onClick={scrollToTop}
-      className="
-        w-full sm:w-auto 
-        bg-orange-500 dark:bg-white
-        text-white dark:text-orange-600
-        hover:bg-orange-600 dark:hover:bg-orange-50
-        px-6 sm:px-10 py-3 sm:py-5 
-        rounded-full font-bold 
-        transition-all transform hover:scale-105 
-        inline-flex items-center justify-center gap-3 
-        shadow-xl 
-        animate-scale-in
-        text-xs sm:text-lg
-      "
-      style={{ animationDelay: "0.4s" }}
-    >
-      {t("home.cta.button")}
-      <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
-    </Link>
-  </div>
-</section>
-
-
+        <Link
+          to="/Contact"
+          onClick={scrollToTop}
+          className=" w-full sm:w-auto bg-orange-500 dark:bg-white text-white dark:text-orange-600 hover:bg-orange-600 dark:hover:bg-orange-50 px-6 sm:px-10 py-3 sm:py-5
+            rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 shadow-xl animate-scale-intext-xs sm:text-lg " style={{ animationDelay: "0.4s" }} >
+          {t("home.cta.button")}
+          <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </Link>
+        </div>
+       </section>
       <Footer />
     </div>
   );
