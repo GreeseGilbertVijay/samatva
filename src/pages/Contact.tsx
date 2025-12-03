@@ -83,12 +83,12 @@ const Contact = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 text-white py-20 overflow-hidden">
+      <section className="relative bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 text-white py-20 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="font-bold mb-8 leading-tight animate-slide-in-right">
+          <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
             {t('contact.title')}
           </h1>
-          <p className="text-blue-100">
+          <p className="font-bold text-black dark:text-white">
             {t('contact.subtitle')}
           </p>
         </div>
@@ -221,19 +221,19 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-800 to-blue-900 text-white">
+      <section className="pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="font-bold mb-4">
+          <h2 className="font-bold text-orange-500 dark:text-white mb-4">
             {t('contact.takeFirstStep')}
           </h2>
-          <p className="mb-8 text-blue-100">
+          <p className="text-black dark:text-white mb-8">
           {t('contact.takeFirstStepDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="mailto:support@samatvaawareness.in" className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold  transition-colors transform hover:scale-105">
+            <a href="mailto:support@samatvaawareness.in" className="border-2 border-orange-600 text-white bg-orange-500 hover:text-orange-500 hover:bg-white px-8 py-4 rounded-lg font-semibold  transition-colors">
               {t('contact.startConsultation')}
             </a>
-            <a href="tel:+916382097967" className="border-2 border-orange-600 text-orange-600 hover:bg-blue-800 hover:text-orange-500 px-8 py-4 rounded-lg font-semibold  transition-colors">
+            <a href="tel:+916382097967" className="border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-lg font-semibold  transition-colors">
               {t('contact.callNow')}
             </a>
           </div>

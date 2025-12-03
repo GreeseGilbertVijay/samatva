@@ -14,14 +14,14 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800">
+    <div className="min-h-screen bg-white dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-800">
       <Navbar />
       <div className="container mx-auto px-4 py-16">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-9xl font-bold text-orange-500 mb-4 animate-pulse">404</h1>
           <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-slate-700">
             <h2 className="text-3xl font-semibold text-white mb-4">Page Not Found</h2>
-            <p className="text-slate-300 mb-8">
+            <p className="text-white dark:text-slate-300 mb-8">
               Oops! The page you're looking for doesn't exist or has been moved.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

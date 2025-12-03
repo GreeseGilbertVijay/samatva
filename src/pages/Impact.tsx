@@ -217,7 +217,7 @@ const Impact = () => {
           <LoanSlider1 imageList={imageList} imageTexts={imageTexts} className="flex-shrink-0 flex items-center justify-center w-full md:w-auto md:justify-start" />
           {/* Centered Heading and description */}
           <div className="flex-1 flex flex-col items-center justify-center text-center">
-            <h2 className="font-bold">
+            <h2 className="font-bold text-orange-500 dark:text-black">
               Interactive Loan Calculator / Comparison
             </h2>
             <p className="text-black">
@@ -230,14 +230,14 @@ const Impact = () => {
       </section>
       <LoanCalc />
      {/* The Good News About Credit Scores */}
-      <section className="py-4 bg-slate-900">
+      <section className="py-4 bg-white dark:bg-slate-900">
         <div className='max-w-6xl mx-auto p-4'>
         <div className="max-w-6xl mx-auto p-4 container">
           <div className="text-center mb-16">
-            <h2 className="font-bold text-orange-600 mb-6">
+            <h2 className="font-bold text-orange-600 dark:text-white mb-6">
               The Good News About Credit Scores
             </h2>
-            <p className=" text-white max-w-3xl mx-auto">
+            <p className="text-black dark:text-white max-w-3xl mx-auto">
               Your credit journey is full of opportunities for improvement and financial growth
             </p>
           </div>
@@ -247,7 +247,7 @@ const Impact = () => {
               <div className="bg-gradient-to-r from-green-500 to-green-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <CheckCircle className="text-white" size={40} />
               </div>
-              <h3 className=" font-bold mb-4 text-gray-900">Not Permanent</h3>
+              <h4 className=" font-bold mb-4 text-orange-500 dark:text-gray-900">Not Permanent</h4>
               <p className="text-gray-700 text-lg leading-relaxed">
                 The good news is that a poor credit score is not permanent. With the right strategies and consistent effort, you can transform your financial profile.
               </p>
@@ -257,7 +257,7 @@ const Impact = () => {
               <div className="bg-gradient-to-r from-blue-500 to-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <TrendingUp className="text-white" size={40} />
               </div>
-              <h3 className=" font-bold mb-4 text-gray-900">Always Improvable</h3>
+              <h4 className=" font-bold mb-4 text-orange-500 dark:text-gray-900">Always Improvable</h4>
               <p className="text-gray-700 text-lg leading-relaxed">
                 You can always improve your credit score by taking appropriate steps. Every positive financial decision moves you closer to better opportunities.
               </p>
@@ -267,7 +267,7 @@ const Impact = () => {
               <div className="bg-gradient-to-r from-purple-500 to-purple-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Target className="text-white" size={40} />
               </div>
-              <h3 className=" font-bold mb-4 text-gray-900">Worth the Investment</h3>
+              <h4 className=" font-bold mb-4 text-orange-500 dark:text-gray-900">Worth the Investment</h4>
               <p className="text-gray-700 text-lg leading-relaxed">
                 Although it may take some time, improving your score before applying for a new loan can save you lakhs of rupees in interest payments.
               </p>
@@ -298,22 +298,22 @@ const Impact = () => {
                   <Clock className="text-white" size={48} />
                 </div>
                 <div>
-                  <h3 className=" font-bold text-gray-900 mb-2">6 to 12 Months</h3>
+                  <h3 className=" font-bold text-orange-500 dark:text-gray-900 mb-2">6 to 12 Months</h3>
                   <p className=" text-gray-600">Duration to improve your credit score significantly</p>
                 </div>
               </div>
               
               <div className="space-y-8">
-                <Card className="border-l-4 border-l-blue-600 bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 p-6">
-                  <h4 className="font-bold text-orange-600 mb-3">Method</h4>
-                  <p className="text-white leading-relaxed">
+                <Card className="border-l-4 border-l-blue-600 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 p-6">
+                  <h4 className="font-bold text-orange-600 dark:text-white mb-3">Method</h4>
+                  <p className="text-black dark:text-white leading-relaxed">
                     Based on the timely repayment of new loans that you avail. Consistent payment history is the most important factor in credit score improvement.
                   </p>
                 </Card>
                 
-                <Card className="border-l-4 border-l-blue-600 bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 p-6">
-                  <h4 className="font-bold text-orange-600 mb-3">Strategy</h4>
-                  <p className="text-white leading-relaxed">
+                <Card className="border-l-4 border-l-blue-600 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 p-6">
+                  <h4 className="font-bold text-orange-600 dark:text-white mb-3">Strategy</h4>
+                  <p className="text-black dark:text-white leading-relaxed">
                     Getting a loan with a poor credit score is difficult, so it's always a good idea to improve your credit score before applying. This strategic approach can save you significant money in the long run.
                   </p>
                 </Card>

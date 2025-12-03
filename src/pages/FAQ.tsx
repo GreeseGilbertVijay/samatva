@@ -76,25 +76,25 @@ const FAQ = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 text-white py-20 overflow-hidden">
+      <section className="relative bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 text-white py-20 overflow-hidden">
         <div className="w-[95%] mx-auto text-center">
-          <h1 className="font-bold mb-8 leading-tight animate-slide-in-right">
+          <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
             {t('faqPage.title')}
           </h1>
-          <p className="text-blue-100">
+          <p className="font-bold text-black dark:text-orange-400">
             {t('faqPage.subtitle')}
           </p>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="pt-16 pb-12 pl-2 pr-2 bg-slate-900">
+      <section className="pt-16 pb-12 pl-2 pr-2 bg-white dark:bg-slate-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-4">
             {Array.isArray(questions) && questions.map((faq: any, index: number) => (
-              <div key={index} className="bg-slate-800 rounded-lg overflow-hidden">
+              <div key={index} className="bg-gray-300 dark:bg-slate-800 rounded-lg overflow-hidden">
                 <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center text-white hover:bg-slate-700 transition-colors"
+                  className="w-full px-6 py-4 text-left flex justify-between items-center text-black dark:text-white hover:bg-slate-400 transition-colors"
                   onClick={() => {
                     const content = document.getElementById(`faq-${index}-content`);
                     const arrow = document.getElementById(`faq-${index}-arrow`);
@@ -105,7 +105,7 @@ const FAQ = () => {
                   }}
                 >
                   <span className="font-semibold">
-                    <span className="text-blue-400 mr-2">Q{index + 1}.</span>
+                    <span className="text-blue-800 dark:text-blue-400 mr-2">Q{index + 1}.</span>
                     {faq.question}
                   </span>
                   <svg
@@ -118,8 +118,8 @@ const FAQ = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
-                <div id={`faq-${index}-content`} className="hidden px-6 py-4 text-slate-300">
-                  <span className="text-blue-400 mr-2">A{index + 1}.</span>
+                <div id={`faq-${index}-content`} className="hidden px-6 py-4 text-black dark:text-slate-300">
+                  <span className="text-blue-800 dark:text-blue-400 mr-2">A{index + 1}.</span>
                   {faq.answer}
                 </div>
               </div>
@@ -129,19 +129,19 @@ const FAQ = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="pt-16 pb-12 bg-gradient-to-br from-blue-400 via-slate-900 to-blue-500">
+      <section className="pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="font-bold text-white mb-4">
+          <h2 className="font-bold text-orange-500 dark:text-white mb-4">
             {t('faqPage.stillHaveQuestions')}
           </h2>
-          <p className="text-white mb-8">
+          <p className="text-black dark:text-white mb-8">
             {t('faqPage.getInTouch')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/Contact" onClick={scrollToTop} className="border-2 border-orange-600 text-white bg-orange-500 hover:text-white px-8 py-4 rounded-lg font-semibold  transition-colors">
+            <Link to="/Contact" onClick={scrollToTop} className="border-2 border-orange-600 text-white bg-orange-500 hover:text-orange-500 hover:bg-white px-8 py-4 rounded-lg font-semibold  transition-colors">
               {t('faqPage.contactUs')}
             </Link>
-            <Link to="/Services" onClick={scrollToTop} className="border-2 border-orange-600 text-orange-600 hover:bg-blue-800 hover:text-orange-500 px-8 py-4 rounded-lg font-semibold  transition-colors">
+            <Link to="/Services" onClick={scrollToTop} className="border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-lg font-semibold  transition-colors">
               {t('faqPage.learnServices')}
             </Link>
           </div>

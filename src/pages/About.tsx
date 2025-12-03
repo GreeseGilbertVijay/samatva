@@ -1,12 +1,13 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Target, Users, Shield, TrendingUp, Linkedin, Check } from 'lucide-react';
+import { Users, Shield, TrendingUp, Linkedin, Check } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const About = () => {
   const { t,currentLanguage } = useLanguage();
+
 
   // Get advantages with fallback to empty array
   const advantages = Array.isArray(t('about.whyChoose.advantages')) ? t('about.whyChoose.advantages') : [];
@@ -82,20 +83,20 @@ const About = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 text-white py-20 overflow-hidden">
+      <section className="relative bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 text-white py-20 overflow-hidden">
         <div className="absolute inset-0 bg-black bg-opacity-10"></div>
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <h1 className="font-bold mb-8 leading-tight animate-slide-in-right">
+              <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
                 {t('about.hero.title')}
               </h1>
               <div className="space-y-4">
-                <h5 className="font-bold text-orange-400">
+                <h5 className="font-bold text-black dark:text-orange-400">
                 {t('about.hero.subtitle1')} 
                 </h5>
               </div>
-              <p className="text-orange-100 mt-8 leading-relaxed animate-fade-in stagger-5">
+              <p className="text-black dark:text-orange-100 mt-8 leading-relaxed animate-fade-in stagger-5">
                 {t('about.hero.description')}
               </p>
             </div>
@@ -110,7 +111,7 @@ const About = () => {
       <section className="py-4 bg-white">
         <div className="max-w-6xl mx-auto p-4">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className=" font-bold text-gray-900 mb-6">
+            <h2 className=" font-bold text-orange-500 dark:text-gray-900 mb-6">
               {t('about.leadership.title')}
             </h2>
             <p className="text-gray-700 max-w-5xl mx-auto leading-relaxed">
@@ -136,7 +137,7 @@ const About = () => {
                 <img alt="Credit Counselling Session" className="w-full max-w-lg rounded-2xl shadow-xl" src="/lovable-uploads/your-credit-profile-samatva-about-us.png" />
               </div>
               <div className="animate-fade-in text-center lg:text-left">
-                <h3 className="font-bold text-gray-900 mb-6">
+                <h3 className="font-bold text-orange-500 dark:text-gray-900 mb-6">
                   {t('about.process.title')}
                 </h3>
                 <div className="space-y-6 text-gray-700 leading-relaxed">
@@ -150,22 +151,21 @@ const About = () => {
             </div>
         </div>
       
-   
       {/* Why Choose Samatva Section */}
-      <section className="pt-16 pb-12 bg-slate-900 w-full">
+      <section className="pt-16 pb-12 bg-white dark:bg-slate-900 w-full">
         <div className="max-w-7xl p-4 mx-auto ">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="font-bold text-white mb-6">
+            <h2 className="font-bold text-orange-500 dark:text-white mb-6">
               {t('about.whyChoose.title')} 
             </h2>
-            <p className="text-gray-300 mx-auto">
+            <p className="text-black dark:text-gray-300 mx-auto">
               {t('about.whyChoose.subtitle')}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {advantages.map((advantage: any, index: number) => (
-              <div key={index} className="bg-gray-800 rounded-xl p-8 text-center hover:bg-gray-700 transition-all duration-300 animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
+              <div key={index} className="bg-gray-100 dark:bg-gray-700 rounded-xl p-8 text-center hover:bg-gray-300 dark:hover:bg-gray-800 transition-all duration-300 animate-scale-in" style={{animationDelay: `${index * 0.1}s`}}>
                 <div className="mb-6">
                   {index === 0 && (
                     <div className="w-16 h-16 mx-auto bg-green-500 rounded-lg flex items-center justify-center">
@@ -188,10 +188,10 @@ const About = () => {
                     </div>
                   )}
                 </div>
-                <h5 className="font-bold text-white mb-4">
+                <h5 className="font-bold text-orange-500 dark:text-white mb-4">
                   {advantage.title}
                 </h5>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-black dark:text-gray-300 leading-relaxed">
                   {advantage.description}
                 </p>
               </div>
@@ -204,7 +204,7 @@ const About = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
-            <h2 className="font-bold text-gray-900 mb-4">
+            <h2 className="font-boldb text-orange-500 dark:text-gray-900 font-bold mb-4">
               {t('about.management.title')}
             </h2>
             <p className="text-2xl text-gray-600">{t('about.management.subtitle')}</p>
@@ -267,17 +267,17 @@ const About = () => {
       </section>
 
       {/* Enhanced Mission Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white">
+      <section className="py-20 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="animate-fade-in">
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-lg text-gray-800 dark:text-white leading-relaxed">
                 {t('about.missionDesc')}
               </p>
             </div>
             
             <div className="bg-white text-gray-900 rounded-2xl p-8 shadow-2xl animate-scale-in">
-              <h4 className="text-2xl font-bold text-orange-500 mb-6">{t('about.contact.title')}</h4>
+              <h4 className="text-2xl font-bold text-orange-500 dark:text-black mb-6">{t('about.contact.title')}</h4>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-orange-500 rounded-full"></div>

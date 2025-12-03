@@ -277,9 +277,11 @@
     "settlementSupport": {
       "title": "Settlement Account Support",
       "eligibility": "Eligibility",
-      "eligibilityDesc": "Available for customers with no more than two settled accounts",
+      "eligibilityDesc": "Available for customers with no more than",
+      "eligibilityDesc1": "two settled accounts and total outstanding upto Rs. 2 Lakhs",
       "funding": "Funding Assistance",
       "fundingDesc": "Help securing funding from RBI-registered financial institutions",
+      "fundingDesc1": "Outstanding amount will be paid directly to the respective bank",
       "improvement": "Profile Improvement",
       "improvementDesc": "Clear overdue amounts on settled accounts to improve credit profile"
     },

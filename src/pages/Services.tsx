@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const About = () => {
   const { t, currentLanguage } = useLanguage();
+  
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -13,6 +14,7 @@ const About = () => {
       behavior: 'smooth'
     });
   };
+
 
   // Get advantages with fallback to empty array
   const advantages = Array.isArray(t('about.whyChoose.advantages')) ? t('about.whyChoose.advantages') : [];
@@ -88,12 +90,12 @@ const About = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pl-2 pr-2 relative bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 text-white py-20 overflow-hidden">
+      <section className="pl-2 pr-2 relative bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 py-20 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h1 className="font-bold mb-8 leading-tight animate-slide-in-right">
+          <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
             {t('services.title')}
           </h1>
-          <p className="text-blue-100">
+          <p className="text-black dark:text-white">
             {t('services.subtitle')}
           </p>
         </div>
@@ -150,7 +152,8 @@ const About = () => {
                   <CheckCircle className="text-blue-600 mt-1" size={20} />
                   <div>
                     <h6 className="font-semibold text-gray-900">{t('services.settlementSupport.eligibility')}</h6>
-                    <p className="text-gray-600 ">{t('services.settlementSupport.eligibilityDesc')}</p>
+                    <p className="text-gray-600 ">{t('services.settlementSupport.eligibilityDesc')} <span className='text-orange-500'>
+                      {t('services.settlementSupport.eligibilityDesc1')}</span></p>
                   </div>
                 </div>
                 
@@ -158,7 +161,9 @@ const About = () => {
                   <CheckCircle className="text-blue-600 mt-1" size={20} />
                   <div>
                     <h6 className="font-semibold text-gray-900">{t('services.settlementSupport.funding')}</h6>
-                    <p className="text-gray-600 ">{t('services.settlementSupport.fundingDesc')}</p>
+                    <p className="text-gray-600 ">{t('services.settlementSupport.fundingDesc')} <span className='text-orange-500'> 
+                      {t('services.settlementSupport.fundingDesc1')}</span>
+                    </p>
                   </div>
                 </div>
                 
@@ -210,12 +215,12 @@ const About = () => {
       </section>
 
       {/* Process Steps */}
-      <section className="pt-16 pb-12 pl-2 pr-2 bg-slate-900">
+      <section className="pt-16 pb-12 pl-2 pr-2 bg-white dark:bg-slate-900">
       <div className="text-center mb-16 animate-fade-in">
-        <h2 className="font-bold text-white mb-6">
+        <h2 className="font-bold text-orange-500 dark:text-white mb-6">
               {t('services.process')} 
         </h2>
-        <p className="text-gray-300 mx-auto">
+        <p className="text-black dark:text-white mx-auto">
               {t('services.processDesc')}
         </p>
       </div>      
@@ -241,12 +246,12 @@ const About = () => {
     </section>
 
    {/* CTA Section */}
-   <section className="pt-16 pb-12 bg-gradient-to-br from-blue-400 via-slate-900 to-blue-500">
+   <section className="pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500">
       <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 className="font-bold mb-6 text-white animate-fade-in">
+        <h2 className="font-bold mb-6 text-orange-500 dark:text-white animate-fade-in">
         {t('services.readyToStart')}
         </h2>
-        <p className="mb-10 text-orange-100 max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <p className="mb-10 text-black dark:text-white max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
         {t('services.readyDesc')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

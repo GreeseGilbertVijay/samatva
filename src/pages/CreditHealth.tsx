@@ -72,19 +72,19 @@ const CreditHealth = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-slate-800 via-slate-800 to-blue-500 text-white py-20 overflow-hidden">
+      <section className="relative bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 text-white py-20 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
         </div>
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
-            <Shield className="w-5 h-5 mr-2 text-orange-400" />
-            <span className="text-orange-300 font-medium">Credit Worthiness Indicator</span>
+            <Shield className="w-5 h-5 mr-2 text-black dark:text-orange-400" />
+            <span className="text-black dark:text-orange-300 font-medium">Credit Worthiness Indicator</span>
           </div>
-          <h1 className="font-bold mb-8 leading-tight animate-slide-in-right">
+          <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
           Master Your Credit Score
           </h1>
-          <p className=" text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-black dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
           Understanding your credit score is the first step towards financial freedom. Learn how to build, maintain, and leverage a powerful credit profile
           </p>
         </div>
@@ -202,11 +202,11 @@ const CreditHealth = () => {
       </section>
 
       {/* CIBIL Ratings Table */}
-      <section className="pt-12 pb-12 bg-slate-900 text-center">
+      <section className="pt-12 pb-12 bg-white dark:bg-slate-900 text-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-orange-700 mb-4">{t('creditHealth.ratings.title')}</h2>
-            <p className="text-xl text-white">{t('creditHealth.ratings.subtitle')}</p>
+            <h2 className="text-4xl font-bold text-orange-700 dark:text-white mb-4">{t('creditHealth.ratings.title')}</h2>
+            <p className="text-xl text-black dark:text-white">{t('creditHealth.ratings.subtitle')}</p>
           </div>
           
           <Card className="overflow-hidden shadow-2xl border-0">
