@@ -627,7 +627,7 @@ const Index = () => {
             </h2>
 
             <p className=" font-medium mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }} >
-              <span className='text-blue-900 dark:text-white'>{t('home.concept.subtitle')} </span> <span className='text-orange-600'>{t('home.concept.subtitle1')}</span>
+              <span className='text-blue-900 dark:text-white'>{t('home.concept.subtitle')} </span> <span className='text-blue-900 dark:text-white'>{t('home.concept.subtitle1')}</span>
             </p>
           </div>
 
