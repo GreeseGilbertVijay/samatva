@@ -589,24 +589,7 @@ const Index = () => {
 
 
       {/* Concept Section with Enhanced Background */}
-      <section
-        className="
-          pt-16 pb-12 pl-2 pr-2 relative overflow-hidden
-          bg-white text-black
-          dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white
-        "
-      >
-
-        {/* Dark mode animated background */}
-        <div
-          className="
-      absolute inset-0 
-      hidden dark:block 
-      animate-gradient
-      bg-gradient-to-br from-blue-400 via-slate-900 to-blue-500
-    "
-        ></div>
-
+      <section className=" pt-16 pb-12 pl-2 pr-2 relative overflow-hidden bg-white text-black dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white ">
         {/* Floating elements only in dark mode */}
         <div className="absolute inset-0 opacity-5 hidden dark:block">
           <div className="absolute top-32 right-32 w-80 h-80 rounded-full border border-white/20 animate-float-medium"></div>
@@ -643,14 +626,8 @@ const Index = () => {
               </span>
             </h2>
 
-            <p
-              className="
-          font-medium mb-12 animate-fade-in
-          text-orange-600 dark:text-orange-400
-        "
-              style={{ animationDelay: '0.3s' }}
-            >
-              {t('home.concept.subtitle')}
+            <p className=" font-medium mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }} >
+              <span className='text-blue-900 dark:text-white'>{t('home.concept.subtitle')} </span> <span className='text-orange-600'>{t('home.concept.subtitle1')}</span>
             </p>
           </div>
 
@@ -753,7 +730,7 @@ const Index = () => {
             <div
               className=" flex flex-col pt-10 pb-10 justify-center items-center text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-2 
                           bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600 border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
-              <div className="text-4xl md:text-4xl font-bold text-green-600 dark:text-green-500 mb-2 md:mb-4">
+              <div className="text-4xl md:text-4xl font-bold text-blue-900 dark:text-green-500 mb-2 md:mb-4">
                 {t("home.trustBuilders.freeService").split(" ")[0]}
               </div>
               <div className="text-xl md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4">
@@ -841,7 +818,7 @@ const Index = () => {
        <section className="pt-16 pb-12 bg-white dark:bg-slate-900 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <h2 className="font-bold text-orange-500 dark:text-white mb-12 text-center">
+        <h2 className="font-bold text-blue-900 dark:text-white mb-12 text-center">
           {t("faq.title")}
         </h2>
 

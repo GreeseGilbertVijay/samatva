@@ -4,6 +4,7 @@ import { Users, Shield, TrendingUp, Linkedin, Check } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Link } from 'react-router-dom';
 
 const About = () => {
   const { t,currentLanguage } = useLanguage();
@@ -145,7 +146,7 @@ const About = () => {
                   <p className="animate-fade-in stagger-2">{t('about.process.step2')}</p>
                   <p className="animate-fade-in stagger-3">{t('about.process.step3')}</p>
                   <p className="animate-fade-in stagger-4">{t('about.process.step4')}</p>
-                  <p className="text-blue-600 font-semibold animate-fade-in stagger-5">{t('about.process.step5')}</p>
+                  <Link to="/impact"><p className="text-blue-600 mt-2 font-semibold animate-fade-in stagger-5">{t('about.process.step5')}</p></Link>
                 </div>
               </div>
             </div>

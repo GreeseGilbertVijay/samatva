@@ -14,7 +14,7 @@ const Impact = () => {
   useEffect(() => {
     if (activeLoanType === 'home') {
       setLoanAmount(5000000);
-      setLoanTenure(20);
+      setLoanTenure(25);
     } else if (activeLoanType === 'auto' || activeLoanType === 'personal') {
       setLoanAmount(1500000);
       setLoanTenure(60);
@@ -30,15 +30,28 @@ const Impact = () => {
     return Math.round(emi);
   };
 
-  const loanData = {
-    low: { rate: 16, eligible: 'Housing Finance Companies (HFC)' },
-    moderate: { rate: 14, eligible: 'Small Private / Finance Banks' },
-    high: { rate: 9, eligible: 'Top Private Sector Banks' }
-  };
+    const loanData = {
+      home: {
+        low: { rate: 16 },
+        moderate: { rate: 14 },
+        high: { rate: 8.5 }
+      },
+      auto: {
+        low: { rate: 18 },
+        moderate: { rate: 14 },
+        high: { rate: 9 }
+      },
+      personal: {
+        low: { rate: 24 },
+        moderate: { rate: 18 },
+        high: { rate: 11 }
+      }
+    };
 
-  const lowEMI = calculateEMI(loanAmount, loanData.low.rate, loanTenure);
-  const moderateEMI = calculateEMI(loanAmount, loanData.moderate.rate, loanTenure);
-  const highEMI = calculateEMI(loanAmount, loanData.high.rate, loanTenure);
+
+  const lowEMI = calculateEMI(loanAmount, loanData[activeLoanType as keyof typeof loanData].low.rate, loanTenure);
+  const moderateEMI = calculateEMI(loanAmount, loanData[activeLoanType as keyof typeof loanData].moderate.rate, loanTenure);
+  const highEMI = calculateEMI(loanAmount, loanData[activeLoanType as keyof typeof loanData].high.rate, loanTenure);
 
   // Calculate total months for interest calculation
   const totalMonths = activeLoanType === 'home' ? loanTenure * 12 : loanTenure;
@@ -324,10 +337,10 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center mb-2">
                             <span className="text-sm font-medium text-gray-600">Interest Rate</span>
-                            <span className="text-lg font-bold text-red-600 number-field">{loanData.low.rate}%</span>
+                            <span className="text-lg font-bold text-red-600 number-field">{loanData[activeLoanType as keyof typeof loanData].low.rate}%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-red-500 h-2 rounded-full transition-all duration-300" style={{width: `${(loanData.low.rate/20)*100}%`}}></div>
+                            <div className="bg-red-500 h-2 rounded-full transition-all duration-300" style={{width: `${(loanData[activeLoanType as keyof typeof loanData].low.rate/100)*100}%`}}></div>
                           </div>
                         </div>
 
@@ -392,10 +405,10 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center mb-2">
                             <span className="text-sm font-medium text-gray-600">Interest Rate</span>
-                            <span className="text-lg font-bold text-orange-600 number-field">{loanData.moderate.rate}%</span>
+                            <span className="text-lg font-bold text-orange-600 number-field">{loanData[activeLoanType as keyof typeof loanData].moderate.rate}%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-orange-500 h-2 rounded-full transition-all duration-300" style={{width: `${(loanData.moderate.rate/20)*100}%`}}></div>
+                            <div className="bg-orange-500 h-2 rounded-full transition-all duration-300" style={{width: `${(loanData[activeLoanType as keyof typeof loanData].moderate.rate/100)*100}%`}}></div>
                           </div>
                         </div>
 
@@ -460,10 +473,10 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center mb-2">
                             <span className="text-sm font-medium text-gray-600">Interest Rate</span>
-                            <span className="text-lg font-bold text-green-600 number-field">{loanData.high.rate}%</span>
+                            <span className="text-lg font-bold text-green-600 number-field">{loanData[activeLoanType as keyof typeof loanData].high.rate}%</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2">
-                            <div className="bg-green-500 h-2 rounded-full transition-all duration-300" style={{width: `${(loanData.high.rate/20)*100}%`}}></div>
+                            <div className="bg-green-500 h-2 rounded-full transition-all duration-300" style={{width: `${(loanData[activeLoanType as keyof typeof loanData].high.rate/100)*100}%`}}></div>
                           </div>
                         </div>
 

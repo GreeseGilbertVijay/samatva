@@ -191,12 +191,12 @@ const Contact = () => {
 
               {/* Trust Indicators */}
               <div className="mt-12 bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">{t('contact.whyQuest')}</h3>
+                <h3 className="text-xl text-gray-900 font-bold mb-4">{t('contact.whyQuest')}</h3>
                 <div className="space-y-3">
                   {[t('contact.whyAns1'), t('contact.whyAns2'), t('contact.whyAns3'), t('contact.whyAns4')].map((item, index) => (
                     <div key={index} className="flex items-center space-x-3">
                       <CheckCircle className="text-green-600" size={20} />
-                      <span className="text-gray-700">{item}</span>
+                      <span className="text-gray-700 font-semibold">{item}</span>
                     </div>
                   ))}
                 </div>
