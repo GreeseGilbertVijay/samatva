@@ -15,8 +15,12 @@ const Impact = () => {
     if (activeLoanType === 'home') {
       setLoanAmount(5000000);
       setLoanTenure(25);
-    } else if (activeLoanType === 'auto' || activeLoanType === 'personal') {
+    } else if (activeLoanType === 'auto') {
       setLoanAmount(1500000);
+      setLoanTenure(60);
+    }
+    else if ( activeLoanType === 'personal') {
+      setLoanAmount(1000000);
       setLoanTenure(60);
     }
   }, [activeLoanType]);
