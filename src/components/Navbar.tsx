@@ -87,7 +87,9 @@ const Navbar = () => {
                       ? "bg-orange-500 text-white shadow-lg scale-105"
                       : "text-slate-700 dark:text-slate-300 hover:text-orange-500 hover:bg-slate-100 dark:hover:bg-slate-800"
                   }
-                  ${isImpact ? "impact-animated-border" : ""} `}>
+                  ${isImpact ? "impact-animated-border" : ""} `}
+                style={currentLanguage === "ta" ? { fontSize: "14px" } : {}}
+              >
                 <span className={isImpact ? "impact-animated-border-inner" : ""}>
                   {item.label}
                   {/* Impact Star Animation */}
@@ -163,6 +165,7 @@ const Navbar = () => {
                   }
                   ${isImpact ? "impact-animated-border" : ""}
                 `}
+                style={currentLanguage === "ta" ? { fontSize: "14px" } : {}}
               >
                 <span className={isImpact ? "impact-animated-border-inner" : ""}>
                   {item.label}
