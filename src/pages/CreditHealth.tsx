@@ -85,7 +85,7 @@ const CreditHealth = () => {
           Master Your Credit Score
           </h1>
           <p className="text-black dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-          Understanding your credit score is the first step towards financial freedom. Learn how to build, maintain, and leverage a powerful credit profile
+          Understanding your credit score is the first step towards financial freedom. We in samatva help you at zero fees how to build, maintain, and leverage a powerful credit profile.
           </p>
         </div>
       </section>

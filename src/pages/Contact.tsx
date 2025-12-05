@@ -189,16 +189,24 @@ const Contact = () => {
                 ))}
               </div>
 
-              {/* Trust Indicators */}
-              <div className="mt-12 bg-gray-50 p-6 rounded-lg">
-                <h3 className="text-xl text-gray-900 font-bold mb-4">{t('contact.whyQuest')}</h3>
-                <div className="space-y-3">
-                  {[t('contact.whyAns1'), t('contact.whyAns2'), t('contact.whyAns3'), t('contact.whyAns4')].map((item, index) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="text-green-600" size={20} />
-                      <span className="text-gray-700 font-semibold">{item}</span>
-                    </div>
-                  ))}
+            {/* Trust Indicators */}
+            <div className="mt-12 bg-gray-50 p-6 rounded-lg">
+              <h3 className="text-xl text-gray-900 font-bold mb-4">{t('contact.whyQuest')}</h3>
+               <div className="space-y-3">
+                 <div className="flex flex-col items-left font-base gap-2">
+                  <div className='flex gap-4'>
+                   <CheckCircle className="text-green-600" size={20} /><span className='text-black'>{t('contact.whyAns1')}</span>
+                  </div>
+                  <div className='flex gap-4'>
+                   <CheckCircle className="text-green-600" size={20} /><span className='text-black font-bold'>{t('contact.whyAns2')}</span>
+                  </div >
+                  <div className='flex gap-4'>
+                   <CheckCircle className="text-green-600" size={20} /><span className='text-black'>{t('contact.whyAns3')}</span>
+                  </div>
+                  <div className='flex gap-4'>
+                   <CheckCircle className="text-green-600" size={20} /><span className='text-black'>{t('contact.whyAns4')}</span>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>

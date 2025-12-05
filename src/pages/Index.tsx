@@ -626,8 +626,8 @@ const Index = () => {
               </span>
             </h2>
 
-            <p className=" font-medium mb-12 animate-fade-in" style={{ animationDelay: '0.3s' }} >
-              <span className='text-blue-900 dark:text-white'>{t('home.concept.subtitle')} </span> <span className='text-blue-900 dark:text-white'>{t('home.concept.subtitle1')}</span>
+            <p className="mb-12 animate-fade-in text-blue-900 font-bold dark:text-white" style={{ animationDelay: '0.3s' }} >
+              {t('home.concept.subtitle')}
             </p>
           </div>
 
@@ -872,7 +872,7 @@ const Index = () => {
           {t('home.cta.title')}
         </h2>
         <p className="mb-10 text-gray-700 dark:text-orange-100 max-w-3xl mx-auto animate-fade-in " style={{ animationDelay: "0.2s" }} >
-          {t("home.cta.subtitle")}
+          <span>{t("home.cta.subtitle")}</span><span className='font-bold'> {t("home.cta.subtitle1")}</span>
         </p>
 
         <Link

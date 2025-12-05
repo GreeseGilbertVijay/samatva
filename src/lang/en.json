@@ -40,8 +40,7 @@
     "concept": {
       "title1": "Resolve Debt",
       "title2": "Rebuild Credibility",
-      "subtitle": "Concept Incubated by IITM",
-      "subtitle1": "Research Park"
+      "subtitle": "Concept Incubated by IITM Research Park"
     },
     "trustBuilders": {
       "title": "Proven Results You Can Trust",
@@ -57,8 +56,9 @@
       "title": "Learn About Our Mission"
     },
     "cta": {
-      "title": "Ready to Transform Your Financial Future?",
-      "subtitle": "Start your journey to better credit health today with our free consultation",
+      "title": "Ready to Transform Your Financial Future At Zero Cost?",
+      "subtitle": "Start your journey to better credit health today with our",
+      "subtitle1": "zero free consultation",
       "button": "Get Professional Help Now"
     },
     "faq": {
@@ -230,7 +230,7 @@
   },
   "contact": {
     "title": "Get Started Today",
-    "subtitle": "Ready to transform your financial future? We're here to help you every step of the way.",
+    "subtitle": "Ready to transform your financial future at zero fees? We're here to help you every step of the way.",
     "contactInfo": "Contact Information",
     "email": "Email Us",
     "emailDesc": "We'll respond within 24 hours",
@@ -244,7 +244,7 @@
     "box4":"Loan Application Guidance",
     "nextSteps": "Next Steps",
     "step1":"Free Consultation",
-    "step1Desc":"Schedule your no-cost credit counselling session",
+    "step1Desc":"Schedule your zero cost credit counselling session",
     "step2":"Assessment",
     "step2Desc":"We'll evaluate your current financial situation",
     "step3":"Custom Plan",
@@ -300,7 +300,7 @@
     "processSteps": [
       {
         "title": "Free Consultation",
-        "description": "Schedule your no-cost credit counselling session"
+        "description": "Schedule your zero cost credit counselling session"
       },
       {
         "title": "Assessment",
@@ -340,7 +340,7 @@
       "description4": "We are also privileged to have a retired senior employee who served with the regulator for 25+years, on our advisory board."
     },
     "process": {
-      "title": "Our Process to Help You Rebuild Your Credit Profile",
+      "title": "Our Process to Help You Rebuild Your Credit Profile @ Zero Cost",
       "step1": "Our telecaller will reach out to you and explain the benefits of maintaining a good CIBIL score. We will analyse your credit report after receiving your approval.",
       "step2": "Based on the analysis, we will identify unsettled dues. If you have previously marked any loans as \"SETTLED\" due to unforeseen circumstances, we will assist you in addressing those unsettled amounts.",
       "step3": "We do this by referring you to an RBI-regulated financial institution that may provide you with a loan. This loan will be directly remitted to the respective lender to clear your outstanding dues.",
@@ -396,7 +396,7 @@
   },
   "creditHealth": {
     "title": "Master Your Credit Score",
-    "subtitle": "Understanding your credit score is the first step towards financial freedom. Learn how to build, maintain, and leverage a powerful credit profile.",
+    "subtitle": "Understanding your credit score is the first step towards financial freedom. We in samatva help you at zero fees how to build, maintain, and leverage a powerful credit profile.",
     "whatIs": {
       "title": "What Is a Credit Score?",
       "description": "Your credit score is a three-digit number that represents your creditworthiness - essentially how well you manage credit cards, loans, and other financial obligations."
