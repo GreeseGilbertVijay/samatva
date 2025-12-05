@@ -198,7 +198,7 @@ const Contact = () => {
                    <CheckCircle className="text-green-600" size={20} /><span className='text-black'>{t('contact.whyAns1')}</span>
                   </div>
                   <div className='flex gap-4'>
-                   <CheckCircle className="text-green-600" size={20} /><span className='text-black font-bold'>{t('contact.whyAns2')}</span>
+                   <CheckCircle className="text-green-600" size={20} /><span className='text-black text-blue-900 dark:text-orange-500 font-bold'>{t('contact.whyAns2')}</span>
                   </div >
                   <div className='flex gap-4'>
                    <CheckCircle className="text-green-600" size={20} /><span className='text-black'>{t('contact.whyAns3')}</span>

@@ -16,7 +16,10 @@
     "hero": {
       "title1": "Rebuild Credit",
       "title2": "Regain Credibility",
-      "subtitle": "Restoring Dignity, Rebuilding Trust, Reimagining Life",
+      "subtitle1": "Restoring Dignity,",
+      "subtitle2": "Rebuilding Trust,",
+      "subtitle3": "Reimagining Life,",
+      "subtitle4": "@ Zero Cost",
       "cta": "Start Your Free Consultation",
       "learnMore": "Learn More About Our Services",
       "second-heading":{
@@ -46,8 +49,8 @@
       "title": "Proven Results You Can Trust",
       "timeline": "6-12 Months",
       "timelineDesc": "Average time to improve your credit score",
-      "freeService": "No Cost Service",
-      "freeServiceDesc": "No hidden fees or charges",
+      "freeService": "Zero Fees",
+      "freeServiceDesc": "Zero hidden charges, Zero worries",
       "rbiNBFC": "NBFC",  
       "rbiRegistered": "RBI Registered",
       "rbiRegisteredDesc": "All our financial institution partners"
@@ -58,7 +61,7 @@
     "cta": {
       "title": "Ready to Transform Your Financial Future At Zero Cost?",
       "subtitle": "Start your journey to better credit health today with our",
-      "subtitle1": "zero free consultation",
+      "subtitle1": "zero fee consultation",
       "button": "Get Professional Help Now"
     },
     "faq": {
@@ -328,7 +331,7 @@
     "subtitle": "Empowering financial futures through expert credit counselling",
     "hero": {
       "title": "ABOUT US",
-      "subtitle1": "Providing trusted, No-Cost Financial Counselling to Resolve Debt/Rebuild Credit, & enhance Financial Awareness within Regulatory Compliance.",
+      "subtitle1": "Providing trusted, Zero Fees Financial Counselling to Resolve Debt/Rebuild Credit, & enhance Financial Awareness within Regulatory Compliance.",
 
       "description": "Our counsellors are professionally trained and certified by the Indian Institute of Banking and Finance (IIBF)"
     },
