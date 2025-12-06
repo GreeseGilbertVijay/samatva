@@ -92,7 +92,7 @@ const Contact = () => {
           <p className="font-bold text-black dark:text-white">
             {t('contact.subtitle')}
           </p>
-        </div>
+        </div>Kuttram purindhavan
       </section>
     
       {/* Contact Information */}

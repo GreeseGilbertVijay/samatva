@@ -467,7 +467,7 @@ const Index = () => {
                 <span> {t('home.hero.subtitle2')}</span>
                 <span> {t('home.hero.subtitle3')}</span>
               </p>
-              <p className='font-bold text-center text-blue-900 dark:text-orange-500'>{t('home.hero.subtitle4')}</p>
+              <p className='font-bold text-center text-blue-900 dark:text-orange-500'  style={{ animationDelay: '0.6s' }}>{t('home.hero.subtitle4')}</p>
             </div>
 
             {/* Right Content */}
