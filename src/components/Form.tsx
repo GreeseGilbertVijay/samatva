@@ -5,7 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import Lottie from "lottie-react";
 import mail from "../lottie/mail.json";
 
-const Sample = () => {
+const Form = () => {
   const [loading, setLoading] = useState(false);
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
@@ -186,4 +186,4 @@ const Sample = () => {
   );
 };
 
-export default Sample;
+export default Form;

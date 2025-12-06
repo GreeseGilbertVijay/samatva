@@ -1,6 +1,5 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import Sample from '@/components/sample';
 import { Mail, Phone, Clock, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -92,7 +91,8 @@ const Contact = () => {
           <p className="font-bold text-black dark:text-white">
             {t('contact.subtitle')}
           </p>
-        </div>Kuttram purindhavan
+        </div>
+
       </section>
     
       {/* Contact Information */}
