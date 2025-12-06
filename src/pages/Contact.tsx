@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Sample from '@/components/sample';
 import { Mail, Phone, Clock, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -214,6 +215,8 @@ const Contact = () => {
         </div>
       </section>
 
+      
+
       {/* Google Maps Section */}
       <section className="w-full h-[300px]">
         <iframe
@@ -247,7 +250,6 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
       <Footer />
     </div>
   );
