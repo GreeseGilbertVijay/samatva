@@ -445,12 +445,10 @@ const Index = () => {
 
       <Navbar />
       {/* Hero Section */}
-      <section className="
-         relative min-h-screen flex items-center justify-center overflow-hidden container
-         bg-white text-black
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden container bg-white text-black
          dark:bg-gradient-to-br dark:from-blue-900 dark:via-slate-800 dark:to-slate-900 dark:text-white">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-36 items-center">
 
             {/* Left Content */}
             <div className="text-left animate-fade-in">
@@ -579,6 +577,10 @@ const Index = () => {
                 </Link>
               </div>
 
+            </div>
+
+            <div className='absolute top-0 left-0 w-[50%] text-left '>
+          
             </div>
           </div>
         </div>

@@ -95,7 +95,7 @@ const Contact = () => {
         </div>
 
       </section>
-      <Form />
+     
     
       {/* Contact Information */}
       <section className="py-16 bg-white">
@@ -216,6 +216,8 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      <Form />
 
       
 

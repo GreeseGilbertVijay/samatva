@@ -10,13 +10,9 @@ const Form = () => {
   const [popup, setPopup] = useState(false); 
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fname: "",
     phone: "",
-    email: "",
-    dob: "",
-    employmentType: "",
-    address: "",
+    state: "",
     pincode: "",
   });
 
@@ -28,28 +24,23 @@ const Form = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      await axios.post("https://form-be-qswg.vercel.app/send-mail", formData);
-      alert("Form submitted successfully!");
+      await axios.post("https://form-be.vercel.app/send-mail", formData);
+      setPopup(true);
       setFormData({
-        firstName: "",
-        lastName: "",
+        fname: "",
         phone: "",
-        email: "",
-        dob: "",
-        employmentType: "",
-        address: "",
+        state: "",
         pincode: "",
       });
     } catch (error) {
       console.error(error);
-      setPopup(true);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="w-full flex justify-center dark:bg-gradient-to-br dark:from-blue-900 dark:via-slate-800 dark:to-slate-900 dark:text-white" >
+    <div className="w-full flex justify-center bg-gradient-to-br from-blue-900 via-slate-800 to-slate-900 text-white" >
       <div className="max-w-7xl p-12 flex flex-row gap-24 items-center">
         <div className="w-[30%] flex items-center justify-center mx-auto">
         <Lottie animationData={mail} loop={true} />
@@ -58,38 +49,21 @@ const Form = () => {
        <form onSubmit={handleSubmit} className="bg-white/10 flex flex-col gap-6 backdrop-blur-xl border border-white/20 shadow-xl rounded-2xl px-8 py-10" >
 
        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* First Name */}
+        {/* Name */}
         <div className="relative">
             <input
               type="text"
-              placeholder="First Name"
-              name="firstName"
-              value={formData.firstName}
+              placeholder="Name"
+              name="fname"
+              value={formData.fname}
               onChange={handleChange}
               required
-              className="w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-12 text-black dark:text-white dark:placeholder-white/80 outline-none"
+              className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white dark:placeholder-white/80 outline-none"
             />
-            <User className="absolute right-4 top-3 text-orange-500 dark:text-white" size={24} />
+            <User className="absolute right-4 top-3 text-white" size={24} />
           </div>
-
-          {/* Last Name */}
+          {/* Phone Number */}
         <div className="relative">
-            <input
-              type="text"
-              placeholder="Last Name"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-              className="w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-12 text-black dark:text-white dark:placeholder-white/80 outline-none"
-            />
-            <User className="absolute right-4 top-3 text-orange-500 dark:text-white" size={24} />
-        </div>
-       </div>
-
-       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-         {/* Phone Number */}
-         <div className="relative">
             <input
               type="number"
               placeholder="Phone Number"
@@ -97,71 +71,28 @@ const Form = () => {
               value={formData.phone}
               onChange={handleChange}
               required
-              className="w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-12 text-black dark:text-white dark:placeholder-white/80 outline-none"
+              className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white dark:placeholder-white/80 outline-none"
             />
-            <Phone className="absolute right-4 top-3 text-orange-500 dark:text-white" size={24} />
-         </div>
-
-          {/* Email */}
-         <div className="relative">
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-12 text-black dark:text-white dark:placeholder-white/80 outline-none"
-            />
-            <Mail className="absolute right-4 top-3 text-orange-500 dark:text-white" size={24} />
-          </div>
+            <Phone className="absolute right-4 top-3 text-white" size={24} />
+         </div>     
        </div>
 
        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Date Of Birth */}
+        {/* State */}
           <div className="relative">
-          <input
-            type="date"
-            className="date-input w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-3 text-black dark:text-white outline-none"
-            name="dob"
-            value={formData.dob}
-            onChange={handleChange}
-            required
-          />
-
+               <input
+                 type="text"
+                 placeholder="State"
+                 name="state"
+                 value={formData.state}
+                 onChange={handleChange}
+                 required
+                 className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white text-gray-800 dark:placeholder-white/80 outline-none"
+               />
+               <MapPinHouse className="absolute right-4 top-3 text-white" size={24} />
           </div>
-
-        {/* Employment Type */}
-          <div className="relative">
-          <select
-            className="select-input w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-10 text-black dark:text-white outline-none"
-            required
-            name="employmentType"
-            value={formData.employmentType}
-            onChange={handleChange}
-          >
-            <option className="text-black" value="">Employment Type</option>
-            <option className="text-black" value="Salaried">Salaried</option>
-            <option className="text-black" value="Self Employed">Self Employed</option>
-          </select>
-            {/* If you prefer icons based on selection, these are placeholders */}
-          </div>
-       </div>
-
-       <div className="relative">
-            <input
-              type="text"
-              placeholder="Address"
-              name="address"
-              value={formData.address}
-              onChange={handleChange}
-              required
-              className="w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-12 text-black dark:text-white text-gray-800 dark:placeholder-white/80 outline-none"
-            />
-            <MapPinHouse className="absolute right-4 top-3 text-orange-500 dark:text-white" size={24} />
-       </div>
-
-       <div className="relative">
+        {/* Pincode  */}
+         <div className="relative">
             <input
               type="number"
               placeholder="Pincode"
@@ -169,10 +100,16 @@ const Form = () => {
               value={formData.pincode}
               onChange={handleChange}
               required
-              className="w-full h-12 bg-transparent border border-orange-500 dark:border-white/30 rounded-full px-4 pr-12 text-black dark:text-white dark:placeholder-white/80 outline-none"
+              className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white dark:placeholder-white/80 outline-none"
             />
-            <MapPin className="absolute right-4 top-3 text-orange-500 dark:text-white" size={24} />
+            <MapPin className="absolute right-4 top-3 text-white" size={24} />
+        </div>
+         
        </div>
+
+      
+
+   
 
         <button
           type="submit"
