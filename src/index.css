@@ -44,6 +44,22 @@
     @apply bg-background text-foreground font-sans;
   }
 }
+/* Date Field */
+
+@layer utilities {
+  .date-input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+/* Select Field */
+.select-input {
+  background-image: url("data:image/svg+xml,%3Csvg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center; /* 👈 moves arrow (change 1rem to pl-4 look) */
+  appearance: none;
+}
+
 
 /* Enhanced Animation Classes */
 @layer utilities {

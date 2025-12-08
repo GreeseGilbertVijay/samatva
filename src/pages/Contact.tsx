@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Form from '@/components/Form';
 import { Mail, Phone, Clock, CheckCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -94,6 +95,7 @@ const Contact = () => {
         </div>
 
       </section>
+      <Form />
     
       {/* Contact Information */}
       <section className="py-16 bg-white">
