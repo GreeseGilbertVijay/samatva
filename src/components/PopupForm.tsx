@@ -62,7 +62,7 @@ const PopupForm = () => {
             ? { fontSize: "12px" }
             : {}
         }>{t('home.hero.popup2')}</h3>
-        <button className="animate-pulse sm:w-auto bg-orange-500 dark:bg-white text-white dark:text-orange-600 hover:bg-orange-600 dark:hover:bg-orange-50 
+        <button className="animate-pulse sm:w-auto bg-blue-900 dark:bg-white text-white dark:text-orange-600 hover:bg-orange-600 dark:hover:bg-orange-50 
         px-6 sm:px-10 py-0 sm:py-1 mt-2 rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 shadow-xl animate-scale-intext-xs sm:text-lg" style={
           ["ta", "hi", "te", "kn"].includes(currentLanguage)
             ? { fontSize: "12px" }
