@@ -1,13 +1,13 @@
 import { useState } from "react";
 import axios from "axios";
-import { User,Phone , Mail, MapPin, MapPinHouse } from "lucide-react";
+import { User,Phone , MapPin, MapPinHouse } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 import Lottie from "lottie-react";
 import mail from "../lottie/mail.json";
 
 const Form = () => {
   const [loading, setLoading] = useState(false);
-  const [popup, setPopup] = useState(false); 
+  const [popup, setPopup] = useState(false);
   const { t } = useLanguage();
   const [formData, setFormData] = useState({
     fname: "",

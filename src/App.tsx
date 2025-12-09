@@ -8,6 +8,8 @@ import FontProvider from "@/components/FontProvider";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import Index from "./pages/Index";
 import CreditHealth from "./pages/CreditHealth";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Sample from "./pages/Sample";
 import Impact from "./pages/Impact";
 import Services from "./pages/Services";
 import About from "./pages/About";
@@ -35,13 +37,15 @@ const App = () => (
           <BrowserRouter basename="/">
             <Routes>
               <Route path="/" element={<Index />} />
-      <Route path="/credit-health" element={<CreditHealth />} />
-           <Route path="/impact" element={<Impact />} />
-            <Route path="/services" element={<Services />} />
-             <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<FAQ />} />
-           <Route path="/contact" element={<Contact />} />
+              <Route path="/impact" element={<Impact />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/credit-health" element={<CreditHealth />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/sample" element={<Sample />} />
               <Route path="/404" element={<NotFound />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="*" element={<Navigate to="/404" replace />} />
             </Routes>
           </BrowserRouter>

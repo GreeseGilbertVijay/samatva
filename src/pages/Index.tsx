@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { TrendingUp, ArrowRight, PlayCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import PopupForm from '@/components/PopupForm';
 
 const imageList = [
   '/lovable-uploads/entity.png',
@@ -22,7 +23,6 @@ const imageList2 = [
 const Index = () => {
   const { t, currentLanguage } = useLanguage();
   const [theme, setTheme] = useState("light");
-
   // Add state for tada animation
   const [tada, setTada] = useState(false);
   // Add state for wave animation
@@ -30,7 +30,6 @@ const Index = () => {
   const waveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const tadaTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-
   // Animation states for image fade-in
   const [showRows, setShowRows] = useState(false);
   const totalCells = imageList.length + imageList2.length;
@@ -445,28 +444,32 @@ const Index = () => {
 
       <Navbar />
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden container bg-white text-black
+      <section className="z-0 relative min-h-screen flex items-center justify-center overflow-hidden container bg-white text-black
          dark:bg-gradient-to-br dark:from-blue-900 dark:via-slate-800 dark:to-slate-900 dark:text-white">
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-36 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-36 gap-8 items-center">
 
             {/* Left Content */}
-            <div className="text-left animate-fade-in">
+            <div className="text-left animate-fade-in pt-16 md:pt-12 lg:pt-2">
               <h1 className="font-bold text-orange-500 dark:text-white mt-4 mb-2">
                 {t('home.hero.title1')}
               </h1>
-
-              <h1 className="text-orange-500  font-bold mb-8">
+            
+              <h1 className="text-orange-500 font-bold mb-8">
                 {t('home.hero.title2')}
               </h1>
-
-              <p className="max-w-xl text-center leading-relaxed animate-fade-in text-slate-600 dark:text-slate-300 " style={{ animationDelay: '0.6s' }}>
+            
+              <p className="max-w-xl text-center leading-relaxed animate-fade-in text-slate-600 dark:text-slate-300" style={{ animationDelay: '0.6s' }}>
                 <span>{t('home.hero.subtitle1')}</span>
                 <span> {t('home.hero.subtitle2')}</span>
                 <span> {t('home.hero.subtitle3')}</span>
               </p>
-              <p className='font-bold text-center text-blue-900 dark:text-orange-500'  style={{ animationDelay: '0.6s' }}>{t('home.hero.subtitle4')}</p>
+            
+              <p className="font-bold text-center text-blue-900 dark:text-orange-500" style={{ animationDelay: '0.6s' }}>
+                {t('home.hero.subtitle4')}
+              </p>
             </div>
+
 
             {/* Right Content */}
             <div className="flex flex-col mb-6 gap-8 items-center">
@@ -575,12 +578,7 @@ const Index = () => {
                     {t('home.hero.impact.description')}
                   </p>
                 </Link>
-              </div>
-
-            </div>
-
-            <div className='absolute top-0 left-0 w-[50%] text-left '>
-          
+              </div>          
             </div>
           </div>
         </div>
@@ -588,102 +586,76 @@ const Index = () => {
 
 
       {/* Concept Section with Enhanced Background */}
-      <section className=" pt-16 pb-12 pl-2 pr-2 relative overflow-hidden bg-white text-black dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white ">
-        {/* Floating elements only in dark mode */}
-        <div className="absolute inset-0 opacity-5 hidden dark:block">
-          <div className="absolute top-32 right-32 w-80 h-80 rounded-full border border-white/20 animate-float-medium"></div>
-          <div className="absolute bottom-32 left-32 w-96 h-96 rounded-full border border-orange-500/30 animate-float-slow"></div>
+      <section className="pt-16 pb-12 pl-2 pr-2 relative overflow-hidden bg-white text-black dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white z-auto">
+  {/* Floating elements only in dark mode */}
+  <div className="absolute inset-0 opacity-5 hidden dark:block pointer-events-none">
+    <div className="top-32 right-32 w-80 h-80 rounded-full border border-white/20 animate-float-medium"></div>
+    <div className="bottom-32 left-32 w-96 h-96 rounded-full border border-orange-500/30 animate-float-slow"></div>
 
-          {Array.from({ length: 15 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-2 h-2 bg-orange-500/20 rounded-full animate-float-particle-0"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 8}s`,
-              }}
-            />
-          ))}
-        </div>
+    {Array.from({ length: 15 }).map((_, i) => (
+      <div
+        key={i}
+        className="absolute w-2 h-2 bg-orange-500/20 rounded-full animate-float-particle-0"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 8}s`,
+        }}
+      />
+    ))}
+  </div>
 
-        {/* Content */}
-        <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 relative z-10">
+  {/* Content */}
+  <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 relative z-10">
+    <div className="text-center mb-16">
+      <h2 className="font-bold animate-fade-in">
+        <span className="block text-orange-500 dark:text-white">
+          {t('home.concept.title1')}
+        </span>
+      </h2>
 
-          <div className="text-center mb-16">
-            <h2 className="font-bold animate-fade-in">
-              {/* Light → black ; Dark → white */}
-              <span className="block text-orange-500 dark:text-white">
-                {t('home.concept.title1')}
-              </span>
-            </h2>
+      <h2 className="font-bold mb-6 animate-fade-in">
+        <span className="text-orange-500 block mb-8">
+          {t('home.concept.title2')}
+        </span>
+      </h2>
 
-            <h2 className="font-bold mb-6 animate-fade-in">
-              {/* Always Orange */}
-              <span className="text-orange-500 block mb-8">
-                {t('home.concept.title2')}
-              </span>
-            </h2>
+      <p className="mb-12 animate-fade-in text-blue-900 font-bold dark:text-white" style={{ animationDelay: '0.3s' }}>
+        {t('home.concept.subtitle')}
+      </p>
+    </div>
 
-            <p className="mb-12 animate-fade-in text-blue-900 font-bold dark:text-white" style={{ animationDelay: '0.3s' }} >
-              {t('home.concept.subtitle')}
-            </p>
-          </div>
+    {/* CTA Buttons */}
+    <div
+      className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-8xl mx-auto animate-fade-in"
+      style={{ animationDelay: '0.6s' }}
+    >
+      <Link
+        to="/Contact"
+        onClick={scrollToTop}
+        className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 min-w-[200px] sm:min-w-[280px]"
+      >
+        {t('home.hero.cta')}
+        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+      </Link>
 
-          {/* CTA Buttons */}
-          <div
-            className="
-        flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center 
-        max-w-8xl mx-auto animate-fade-in
-      "
-            style={{ animationDelay: '0.6s' }}
-          >
-            {/* Primary Orange Button */}
-            <Link
-              to="/Contact"
-              onClick={scrollToTop}
-              className="
-          w-full sm:w-auto 
-          bg-orange-500 hover:bg-orange-600 text-white 
-          rounded-full font-semibold transition-all duration-300 
-          transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 
-          flex items-center justify-center gap-2 
-          text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 
-          min-w-[200px] sm:min-w-[280px]
-        "
-            >
-              {t('home.hero.cta')}
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Link>
-
-            {/* Outline Button */}
-            <Link
-              to="/Services"
-              onClick={scrollToTop}
-              className="
-          w-full sm:w-auto 
-          border-2 border-orange-500 
-          text-orange-600 dark:text-orange-500 
-          hover:bg-orange-500 hover:text-white 
-          rounded-full font-semibold transition-all duration-300 
-          hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 
-          flex items-center justify-center 
-          text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 
-          min-w-[200px] sm:min-w-[280px]
-        "
-            >
-              {t('home.hero.learnMore')}
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Link>
-          </div>
-
-        </div>
+      <Link
+        to="/Services"
+        onClick={scrollToTop}
+        className="w-full sm:w-auto border-2 border-orange-500 text-orange-600 dark:text-orange-500 hover:bg-orange-500 hover:text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 min-w-[200px] sm:min-w-[280px]"
+      >
+        {t('home.hero.learnMore')}
+        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
+      </Link>
+    </div>
+  </div>
       </section>
+
 
 
       {/* Trust Builders with subtle animations */}
       <section
-        className="pt-16 pb-12 relative overflow-hidden bg-white dark:bg-slate-800 dark:text-white" >
+        className="z-0 pt-16 pb-12 relative overflow-hidden bg-white dark:bg-slate-800 dark:text-white" >
         {/* Floating particles */}
         <div className="absolute inset-0">
           {Array.from({ length: 8 }).map((_, i) => (
@@ -699,7 +671,7 @@ const Index = () => {
           ))}
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
           {/* Title */}
           <div className="text-center mb-16">
             <h2 className="font-bold text-orange-500 dark:text-white mb-6 animate-fade-in">
@@ -761,12 +733,12 @@ const Index = () => {
 
 
       {/* Video Section */}
-      <section className="p-8 bg-white dark:bg-slate-900 text-center">
+      <section className="p-8 bg-white dark:bg-slate-900 text-center z-0">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-bold text-orange-500 dark:text-white mb-12 animate-fade-in">
+          <h2 className=" font-bold text-orange-500 dark:text-white mb-12 animate-fade-in z-0">
             {t('home.videoSection.title')}
           </h2>
-          <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-black animate-scale-in" style={{ minHeight: 300 }}>
+          <div className="z-0 relative rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-black animate-scale-in" style={{ minHeight: 300 }}>
             {!videoPlaying ? (
               <button
                 className="group w-full h-full block focus:outline-none"
@@ -803,7 +775,7 @@ const Index = () => {
       </section>
 
       {/* ChatBot Section */}
-      <section className="pt-4 pb-16 pt-lg-5 bg-gray-400 dark:bg-gradient-to-br dark:from-blue-400 dark:via-blue-800 dark:to-blue-500">
+      <section className="z-0 pt-4 pb-16 pt-lg-5 bg-gray-400 dark:bg-gradient-to-br dark:from-blue-400 dark:via-blue-800 dark:to-blue-500">
         <iframe
           id="chatbotIframe"
           src="https://shabd.tech/widget/chatpage?name=samatva&authKey=afd9a6b4-03fd-11f0-aabd-047c1692d8ad"
@@ -814,7 +786,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-       <section className="pt-16 pb-12 bg-white dark:bg-slate-900 transition-colors">
+       <section className="z-0 pt-16 pb-12 bg-white dark:bg-slate-900 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <h2 className="font-bold text-blue-900 dark:text-white mb-12 text-center">
@@ -865,7 +837,7 @@ const Index = () => {
     </section>
 
       {/* CTA Section */}
-      <section className=" pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 transition-colors" >
+      <section className="z-0 pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 transition-colors" >
       <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <h2 className="font-bold mb-6 text-orange-500 dark:text-white animate-fade-in ">
           {t('home.cta.title')}
@@ -885,6 +857,30 @@ const Index = () => {
         </div>
        </section>
       <Footer />
+
+      <div
+  className="
+    absolute z-[100]
+
+    /* Mobile */
+    top-28 left-6 w-[40%]
+
+    /* Tablet (≥768px) */
+    md:top-28 md:left-4 md:w-[40%]
+
+    /* Laptop (≥1024px) */
+    lg:top-24 lg:left-[12%] lg:w-[40%]
+
+    /* Large screens (≥1280px / 1440px) */
+    xl:top-28 xl:left-[5%] xl:w-[30%]
+
+    /* 1920px and above */
+    2xl:top-36 2xl:left-[20%] 2xl:w-[20%]
+  "
+>
+  <PopupForm />
+</div>
+
     </div>
   );
 };
