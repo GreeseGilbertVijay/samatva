@@ -450,7 +450,7 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-36 gap-8 items-center">
 
             {/* Left Content */}
-            <div className="text-left animate-fade-in pt-16 md:pt-12 lg:pt-2">
+            <div className="text-left animate-fade-in pt-36 md:pt-12 lg:pt-2">
               <h1 className="font-bold text-orange-500 dark:text-white mt-4 mb-2">
                 {t('home.hero.title1')}
               </h1>
@@ -859,26 +859,26 @@ const Index = () => {
       <Footer />
 
       <div
-  className="
-    absolute
-    /* Mobile */
-    top-28 left-8 w-[50%]
-
-    /* Tablet (≥768px) */
-    md:top-28 md:left-4 md:w-[40%]
-
-    /* Laptop (≥1024px) */
-    lg:top-24 lg:left-[12%] lg:w-[40%]
-
-    /* Large screens (≥1280px / 1440px) */
-    xl:top-28 xl:left-[5%] xl:w-[30%]
-
-    /* 1920px and above */
-    2xl:top-36 2xl:left-[20%] 2xl:w-[20%]
-  "
->
-  <PopupForm />
-</div>
+         className="
+           absolute
+           /* Mobile */
+           top-28 left-8 w-[90%]
+       
+           /* Tablet (≥768px) */
+           md:top-28 md:left-8 md:w-[80%]
+       
+           /* Laptop (≥1024px) */
+           lg:top-24 lg:left-[12%] lg:w-[80%]
+       
+           /* Large screens (≥1280px / 1440px) */
+           xl:top-28 xl:left-[2%] xl:w-[80%]
+       
+           /* 1920px and above */
+           2xl:top-36 2xl:left-[17%] 2xl:w-[90%]
+         "
+      >
+        <PopupForm />
+      </div>
 
     </div>
   );
