@@ -5,10 +5,22 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import Lottie from "lottie-react";
 import mail from "../lottie/mail.json";
 
+const indianStates = [
+  "Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa",
+  "Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala",
+  "Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland",
+  "Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura",
+  "Uttar Pradesh","Uttarakhand","West Bengal",
+  "Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman & Diu",
+  "Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"
+];
+
 const Form = () => {
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(false);
   const { t } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
   const [formData, setFormData] = useState({
     fname: "",
     phone: "",
@@ -18,6 +30,17 @@ const Form = () => {
 
   const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // Select Field
+  const filtered = indianStates.filter((s) =>
+    s.toLowerCase().includes(search.toLowerCase())
+  );
+
+  const chooseState = (state) => {
+    setFormData({ ...formData, state });
+    setSearch(state);
+    setOpen(false);
   };
 
   const handleSubmit = async (e: any) => {
@@ -72,11 +95,14 @@ const Form = () => {
             {/* Phone */}
             <div className="relative">
               <input
-                type="number"
+                type="tel"
                 placeholder="Phone Number"
                 name="phone"
                 value={formData.phone}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const numeric = e.target.value.replace(/\D/g, "").slice(0, 10); // digits only, max 6
+                  handleChange({ target: { name: "phone", value: numeric } });
+                }}
                 required
                 className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white placeholder-white outline-none"
               />
@@ -86,27 +112,54 @@ const Form = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* State */}
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="State"
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
-                required
-                className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white placeholder-white outline-none"
-              />
-              <MapPinHouse className="absolute right-4 top-3 text-white" size={24} />
-            </div>
+            <div className="relative w-full">
+               {/* searchable select box */}
+               <input
+                 type="text"
+                 placeholder="Select state"
+                 value={search}
+                 onChange={(e) => {
+                   setSearch(e.target.value);
+                   setOpen(true);
+                 }}
+                 onClick={() => setOpen(true)}
+                 required
+                 className="w-full h-12 bg-transparent border border-white placeholder-white rounded-full px-4 text-white outline-none"
+               />
+                  {/* Dropdown options */}
+                  {open && (
+                    <ul
+                      className="absolute top-full mt-1 w-full max-h-48 overflow-y-auto bg-black/85 border border-white rounded-xl text-white z-20"
+                      
+                    >
+                      {filtered.length > 0 ? (
+                        filtered.map((state) => (
+                          <li
+                            key={state}
+                            className="px-4 py-2 hover:bg-white hover:text-black cursor-pointer"
+                            onClick={() => chooseState(state)}
+                          >
+                            {state}
+                          </li>
+                        ))
+                      ) : (
+                        <li className="px-4 py-2 text-gray-400">No state found</li>
+                      )}
+                    </ul>
+                  )}
+              </div>
 
             {/* Pincode */}
             <div className="relative">
               <input
-                type="number"
+                type="tel"
                 placeholder="Pincode"
                 name="pincode"
                 value={formData.pincode}
-                onChange={handleChange}
+                onChange={(e) => {
+                  const numeric = e.target.value.replace(/\D/g, "").slice(0, 6); // digits only, max 6
+                  handleChange({ target: { name: "pincode", value: numeric } });
+                }}
                 required
                 className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white placeholder-white outline-none"
               />
