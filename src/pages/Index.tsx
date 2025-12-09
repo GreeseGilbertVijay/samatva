@@ -862,7 +862,7 @@ const Index = () => {
   className="
     absolute
     /* Mobile */
-    top-28 left-6 w-[40%]
+    top-28 left-8 w-[50%]
 
     /* Tablet (≥768px) */
     md:top-28 md:left-4 md:w-[40%]
