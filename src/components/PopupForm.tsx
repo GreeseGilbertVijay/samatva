@@ -54,7 +54,7 @@ const PopupForm = () => {
       setLoading(true);
       await axios.post("https://form-be.vercel.app/send-mail", formData);
 
-      setMessage("✔ Form Submitted Successfully!");
+      setMessage("✔ Thanks Our Employee Will Call You Shortly!");
       setMessageType("success");
       setFormData({ fname: "", phone: "", state: "", pincode: "" });
     } catch (error) {

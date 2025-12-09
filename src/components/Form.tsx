@@ -182,7 +182,7 @@ const Form = () => {
         <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50 px-4">
           <div className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white p-6 sm:p-8 rounded-2xl shadow-2xl w-full max-w-xs sm:max-w-md flex flex-col items-center gap-4">
             <h2 className="text-xl sm:text-2xl text-center font-bold">Form Submitted</h2>
-            <p className="text-center text-sm sm:text-base">Your details have been received successfully.</p>
+            <p className="text-center text-sm sm:text-base">Thanks Our Employee Will Call You Shortly!</p>
             <button
               className="mt-2 px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition"
               onClick={() => setPopup(false)}
