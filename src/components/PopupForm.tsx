@@ -60,7 +60,9 @@ const PopupForm = () => {
           onClick={() => setPopup(false)} // click outside to close
         >
           <div
-            className="relative max-w-5xl w-full bg-orange-600 dark:bg-white/30 flex flex-col md:flex-row gap-10 items-center border border-white/20 shadow-xl rounded-2xl p-10"
+            className="relative max-w-5xl w-full bg-orange-600 dark:bg-white/30 flex flex-col md:flex-row md:gap-10 items-center border border-white/20 shadow-xl rounded-2xl 
+  p-6 sm:p-8 md:p-10 
+  mx-auto max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside card
           >
             {/* Close button */}
@@ -77,7 +79,7 @@ const PopupForm = () => {
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full md:w-[60%]">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full sm:w-[85%] md:w-[60%]">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <input
