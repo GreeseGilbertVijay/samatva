@@ -860,8 +860,7 @@ const Index = () => {
 
       <div
   className="
-    absolute z-[100]
-
+    absolute
     /* Mobile */
     top-28 left-6 w-[40%]
 

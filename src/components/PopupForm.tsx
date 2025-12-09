@@ -47,7 +47,7 @@ const PopupForm = () => {
     <>
       {/* Popup Trigger Image */}
       <img
-        className="cursor-pointer"
+        className="absolute top-0 left-0 w-[100%] cursor-pointer z-49"
         onClick={() => setPopup(true)}
         src="/lovable-uploads/sample.png"
         alt="popup-trigger"
@@ -56,17 +56,16 @@ const PopupForm = () => {
       {/* Popup */}
       {popup && (
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-start md:items-center z-[9999] p-2 md:p-6"
-          onClick={() => setPopup(false)}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50 px-4"
+          onClick={() => setPopup(false)} // click outside to close
         >
           <div
-            className="relative bg-orange-900 w-full max-w-5xl md:rounded-2xl rounded-xl border border-white/20 shadow-xl 
-            p-6 sm:p-8 md:p-10 flex flex-col md:flex-row gap-6 md:gap-10"
-            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-5xl w-full bg-orange-600 dark:bg-white/30 flex flex-col md:flex-row gap-10 items-center border border-white/20 shadow-xl rounded-2xl p-10"
+            onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside card
           >
             {/* Close button */}
             <button
-              className="absolute top-3 right-3 text-white hover:text-red-400 transition"
+              className="absolute top-4 right-4 text-white dark:text-red-500 hover:text-red-400 transition"
               onClick={() => setPopup(false)}
             >
               <X size={28} />
@@ -74,12 +73,12 @@ const PopupForm = () => {
 
             {/* Animation */}
             <div className="w-full md:w-[40%] flex justify-center">
-              <Lottie animationData={mail} loop={true} className="w-52 sm:w-64 md:w-full" />
+              <Lottie animationData={mail} loop={true} />
             </div>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5 w-full md:w-[60%]">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6 w-full md:w-[60%]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <input
                     type="text"
@@ -88,7 +87,7 @@ const PopupForm = () => {
                     value={formData.fname}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white outline-none"
+                    className="w-full h-12 bg-transparent border border-white placeholder-white  rounded-full px-4 pr-12  text-white outline-none"
                   />
                   <User className="absolute right-4 top-3 text-white" size={22} />
                 </div>
@@ -102,13 +101,13 @@ const PopupForm = () => {
                     onChange={handleChange}
                     required
                     maxLength={10}
-                    className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white outline-none"
+                    className="w-full h-12 bg-transparent border border-white placeholder-white rounded-full px-4 pr-12 text-white outline-none"
                   />
                   <Phone className="absolute right-4 top-3 text-white" size={22} />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="relative">
                   <input
                     type="text"
@@ -117,7 +116,7 @@ const PopupForm = () => {
                     value={formData.state}
                     onChange={handleChange}
                     required
-                    className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white outline-none"
+                    className="w-full h-12 bg-transparent border border-white placeholder-white rounded-full px-4 pr-12 text-white outline-none"
                   />
                   <MapPinHouse className="absolute right-4 top-3 text-white" size={22} />
                 </div>
@@ -131,7 +130,7 @@ const PopupForm = () => {
                     onChange={handleChange}
                     required
                     maxLength={6}
-                    className="w-full h-12 bg-transparent border border-white/30 rounded-full px-4 pr-12 text-white outline-none"
+                    className="w-full h-12 bg-transparent border border-white placeholder-white rounded-full px-4 pr-12 text-white outline-none"
                   />
                   <MapPin className="absolute right-4 top-3 text-white" size={22} />
                 </div>
@@ -147,7 +146,7 @@ const PopupForm = () => {
 
               {message && (
                 <p
-                  className={`text-center font-medium ${
+                  className={`text-center font-medium mt-2 ${
                     messageType === "success" ? "text-green-400" : "text-red-400"
                   }`}
                 >
