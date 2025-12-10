@@ -6,7 +6,9 @@
     "creditHealth": "Credit Health Education",
     "impact": "Impact",
     "faq": "FAQs",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "privacy":"Privacy Policy",
+    "terms": "Terms & Conditions"
   },
   "faq": {
     "title": "Top 7 FAQs",

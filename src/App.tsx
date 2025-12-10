@@ -15,6 +15,7 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import TermsandConditions from "./pages/TermsandConditions";
 import NotFound from "./pages/NotFound";
 import { Helmet } from 'react-helmet-async';
 
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/sample" element={<Sample />} />
               <Route path="/404" element={<NotFound />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/terms-and-conditions" element={<TermsandConditions />} />
               <Route path="*" element={<Navigate to="/404" replace />} />
             </Routes>
           </BrowserRouter>

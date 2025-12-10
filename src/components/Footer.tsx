@@ -89,6 +89,17 @@ const Footer = () => {
                   {t('nav.faq') || 'FAQ'}
                 </Link>
               </li>
+              <li>
+                <Link to="/privacy-policy" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+                  {t('nav.privacy') || 'Privacy Policy'}
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms-and-conditions" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
+                  {t('nav.terms') || 'Terms & Conditions'}
+                </Link>
+              </li>
+              
             </ul>
           </div>
 
