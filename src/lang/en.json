@@ -17,7 +17,7 @@
   "home": {
     "hero": {
       "popup1": "Do U have, Settled Credit Cards / Loans?",
-      "popup2": "Avail Zero Fees End-to-End Consultation",
+      "popup2": "Avail Zero Fees End-to-End Credit Consultation",
       "popupbutton": "Click Here",
       "title1": "Rebuild Credit",
       "title2": "Regain Credibility",
@@ -25,7 +25,7 @@
       "subtitle2": "Rebuilding Trust,",
       "subtitle3": "Reimagining Life",
       "subtitle4": "@ Zero Cost",
-      "cta": "Start Your Free Consultation",
+      "cta": "Start Your Free Credit Consultation",
       "learnMore": "Learn More About Our Services",
       "second-heading":{
           "title":"Don't Miss These 8 Crucial Checks",
@@ -66,7 +66,7 @@
     "cta": {
       "title": "Ready to Transform Your Financial Future At Zero Cost?",
       "subtitle": "Start your journey to better credit health today with our",
-      "subtitle1": "zero fee consultation",
+      "subtitle1": "free credit consultation",
       "button": "Get Professional Help Now"
     },
     "faq": {
@@ -251,7 +251,7 @@
     "box3":"Financial Counselling",
     "box4":"Loan Application Guidance",
     "nextSteps": "Next Steps",
-    "step1":"Free Consultation",
+    "step1":"Free Credit Consultation",
     "step1Desc":"Schedule your zero cost credit counselling session",
     "step2":"Assessment",
     "step2Desc":"We'll evaluate your current financial situation",
@@ -268,7 +268,7 @@
     "step5Desc":"Continuous guidance until you achieve your goals",
     "takeFirstStep": "Take the First Step Today",
     "takeFirstStepDesc":"Your journey to better financial health starts with a simple conversation",
-    "startConsultation": "Start Your Free Consultation",
+    "startConsultation": "Start Your Free Credit Consultation",
     "callNow": "Call Now"
   },
   "services": {
@@ -336,7 +336,7 @@
     "subtitle": "Empowering financial futures through expert credit counselling",
     "hero": {
       "title": "ABOUT US",
-      "subtitle1": "Providing trusted, Zero Fees Financial Counselling to Resolve Debt/Rebuild Credit, & enhance Financial Awareness within Regulatory Compliance.",
+      "subtitle1": "Providing trusted, Zero Fees Credit Financial Counselling to Resolve Debt/Rebuild Credit, & enhance Financial Awareness within Regulatory Compliance.",
 
       "description": "Our counsellors are professionally trained and certified by the Indian Institute of Banking and Finance (IIBF)"
     },
@@ -467,7 +467,7 @@
     "address": "Address",
     "phone": "Phone Numbers",
     "mission": "Our mission is to empower individuals with expert financial guidance and essential resources to build, strengthen, and sustain a resilient credit profile—laying the foundation for lasting financial well-being and opportunity.",
-    "copyright": "© 2025 Samatva Awareness Solution Foundation. All rights reserved.",
+    "copyright": "© 2025 Samatva Awarness Solutions Private Limited. All rights reserved.",
     "rbiNote": "RBI-Registered Financial Institution Partners | Completely Free Service"
   }
 }

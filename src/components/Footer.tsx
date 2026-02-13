@@ -135,7 +135,7 @@ const Footer = () => {
         <div className="mt-8 pt-8 border-t border-gray-200 dark:border-slate-700">
           <div className="flex flex-col items-center space-y-2">
             <p className="text-sm text-gray-500 dark:text-slate-400 text-center">
-              {t('footer.copyright') || '© 2025 Samatva Awareness Solution Foundation. All rights reserved.'}
+              {t('footer.copyright') || '© 2026 Samatva Awarness Solutions Private Limited. All rights reserved.'}
             </p>
             <span className="text-xs text-gray-500 dark:text-slate-400 text-center">
               {t('footer.rbiNote') || 'RBI-Registered Financial Institution Partners | Completely Free Service'}
