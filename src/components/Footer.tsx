@@ -99,6 +99,27 @@ const Footer = () => {
                   {t('nav.terms') || 'Terms & Conditions'}
                 </Link>
               </li>
+              <li>
+              <a
+                href="/lovable-uploads/Lodge-a-Complaint.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+              >
+                Lodge a Complaint
+              </a>
+            </li>
+            
+            <li>
+              <a
+                href="/lovable-uploads/Data-Deletion-Policy.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
+              >
+                Data Deletion Policy
+              </a>
+            </li>
               
             </ul>
           </div>

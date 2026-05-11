@@ -156,7 +156,7 @@ const Index = () => {
   }, [showRows, visibleCells, totalCells]);
 
   return (
-    <div className="min-h-screen relative font-raleway" lang={currentLanguage}>
+    <div className="min-h-screen relative font-raleway overflow-x-hidden" lang={currentLanguage}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
@@ -357,7 +357,8 @@ const Index = () => {
           }
           p {
             font-size: 12px;
-         
+          }
+
           /* Non-English font sizes */
           [lang]:not([lang="en"]) h1 {
             font-size: 28px;
@@ -861,20 +862,11 @@ const Index = () => {
       <div
          className="
            absolute
-           /* Mobile */
-           top-28 left-8 w-[90%]
-       
-           /* Tablet (≥768px) */
-           md:top-28 md:left-8 md:w-[80%]
-       
-           /* Laptop (≥1024px) */
-           lg:top-24 lg:left-[12%] lg:w-[80%]
-       
-           /* Large screens (≥1280px / 1440px) */
-           xl:top-28 xl:left-[2%] xl:w-[80%]
-       
-           /* 1920px and above */
-           2xl:top-36 2xl:left-[17%] 2xl:w-[90%]
+           top-28 left-1/2 transform -translate-x-1/2 w-[90%]
+           md:top-28 md:w-[80%]
+           lg:top-24 lg:w-[80%]
+           xl:top-28 xl:w-[75%]
+           2xl:top-36 2xl:w-[70%]
          "
       >
         <PopupForm />
