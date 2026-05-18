@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useLanguage();
   const [theme, setTheme] = useState("light");
 
-  const [logoSrc, setLogoSrc] = useState("/lovable-uploads/samatvalogoblack.png");
+  const [logoSrc, setLogoSrc] = useState("/lovable-uploads/samatvalogo.png");
 
   useEffect(() => {
     // Update logo whenever theme changes
@@ -34,7 +34,7 @@ const Footer = () => {
     }
   }, []);
   return (
-    <footer className="bg-white dark:bg-slate-900 text-black dark:text-white border-t border-gray-200 dark:border-slate-700 transition-colors">
+    <footer className="bg-gray-700 dark:bg-slate-800 text-black dark:text-white border-t border-gray-200 dark:border-slate-700 transition-colors">
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
         .font-roboto { font-family: 'Roboto', sans-serif; }
@@ -54,102 +54,162 @@ const Footer = () => {
                 />
               </Link>
             </div>
-            <p className="text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">
+            <p className="text-orange-500  font-bold mb-6 leading-relaxed ">
               {t('footer.mission') ||
-                'Our mission is to empower individuals with expert financial guidance and essential resources to build, strengthen, and sustain a resilient credit profile—laying the foundation for lasting financial well-being and opportunity.'}
+                'Samatva helps unintentional delinquent customers earn their way back into the formal financial system through a clear, disciplined, and humane process.'}
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="col-span-1 md:col-span-1">
-            <h4 className="text-2xl font-bold mb-4 text-orange-500">{t('footer.quickLinks') || 'Quick Links'}</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/credit-health" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.creditHealth') || 'Credit Health'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/impact" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.impact') || 'Impact'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.services') || 'Services'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.about') || 'About'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/faq" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.faq') || 'FAQ'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/privacy-policy" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.privacy') || 'Privacy Policy'}
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms-and-conditions" onClick={scrollToTop} className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                  {t('nav.terms') || 'Terms & Conditions'}
-                </Link>
-              </li>
-              <li>
-              <a
-                href="/lovable-uploads/Lodge-a-Complaint.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-              >
-                Lodge a Complaint
-              </a>
-            </li>
-            
-            <li>
-              <a
-                href="/lovable-uploads/Data-Deletion-Policy.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors"
-              >
-                Data Deletion Policy
-              </a>
-            </li>
-              
-            </ul>
+          <h4 className="text-2xl font-bold mb-4 text-orange-500">
+           {t('footer.quickLinks') || 'Quick Links'}
+          </h4>
+
+          <ul className="space-y-2 text-white">
+       <li>
+      <Link
+        to="/credit-health"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.creditHealth') || 'Credit Health'}
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/impact"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.impact') || 'Impact'}
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/services"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.services') || 'Services'}
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/about"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.about') || 'About'}
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/faq"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.faq') || 'FAQ'}
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/privacy-policy"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.privacy') || 'Privacy Policy'}
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/terms-and-conditions"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        {t('nav.terms') || 'Terms & Conditions'}
+      </Link>
+    </li>
+
+    <li>
+      <a
+        href="/lovable-uploads/Lodge-a-Complaint.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        Lodge a Complaint
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="/lovable-uploads/Data-Deletion-Policy.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        Data Deletion Policy
+      </a>
+    </li>
+          </ul>
           </div>
 
           {/* Contact Info */}
-          <div className="col-span-1 md:col-span-1 font-roboto">
-            <h4 className="text-2xl font-bold mb-4 text-orange-500">{t('footer.contactInfo') || 'Contact Info'}</h4>
-            <div className="space-y-3 text-gray-600 dark:text-slate-300">
-              <div className="text-sm leading-relaxed">
-                <p className="font-medium text-orange-500 dark:text-white mb-2">{t('footer.phone') || 'Phone Numbers'}:</p>
-                <p>
-                  <a href="tel:+916382097967" className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">+91 63820 97967</a>
-                </p>
-                <p>
-                  <a href="mailto:support@samatvaawareness.in" className="hover:text-orange-500 dark:hover:text-orange-400 transition-colors">
-                    support@samatvaawareness.in
-                  </a>
-                </p>
-              </div>
+         <div className="col-span-1 md:col-span-1 font-roboto">
+  <h4 className="text-2xl font-bold mb-4 text-orange-500">
+    {t('footer.contactInfo') || 'Contact Info'}
+  </h4>
 
-              <div className="text-sm">
-                <p className="font-medium text-orange-500 dark:text-white mb-2">CIN: U70200TN2024PTC167249</p>
-              </div>
+  <div className="space-y-3 text-white">
+    <div className="text-sm leading-relaxed">
+      <p className="font-medium text-orange-500 mb-2">
+        {t('footer.phone') || 'Phone Numbers'}:
+      </p>
 
-              <div className="text-sm leading-relaxed">
-                <p className="font-medium text-orange-500 dark:text-white mb-2">{t('footer.address') || 'Address'}:</p>
-                <p>No.25, Shanthi Apartments, Flat No 3, 1st Floor, Vyasar Street, T.Nagar, Chennai - 600017</p>
-              </div>
-            </div>
-          </div>
+      <p>
+        <a
+          href="tel:+916382097967"
+          className="text-white hover:text-orange-500 transition-colors"
+        >
+          +91 63820 97967
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="mailto:support@samatvaawareness.in"
+          className="text-white hover:text-orange-500 transition-colors"
+        >
+          support@samatvaawareness.in
+        </a>
+      </p>
+    </div>
+
+    <div className="text-sm">
+      <p className="font-medium text-orange-500 mb-2">
+        CIN: U70200TN2024PTC167249
+      </p>
+    </div>
+
+    <div className="text-sm leading-relaxed">
+      <p className="font-medium text-orange-500 mb-2">
+        {t('footer.address') || 'Address'}:
+      </p>
+
+      <p className="text-white">
+        No.25, Shanthi Apartments, Flat No 3, 1st Floor, Vyasar Street,
+        T.Nagar, Chennai - 600017
+      </p>
+    </div>
+  </div>
+</div>
         </div>
 
         {/* Bottom Section */}

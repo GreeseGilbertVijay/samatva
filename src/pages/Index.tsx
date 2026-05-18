@@ -451,24 +451,10 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-36 gap-8 items-center">
 
             {/* Left Content */}
-            <div className="text-left animate-fade-in pt-36 md:pt-12 lg:pt-2">
-              <h1 className="font-bold text-orange-500 dark:text-white mt-4 mb-2">
-                {t('home.hero.title1')}
-              </h1>
-            
-              <h1 className="text-orange-500 font-bold mb-8">
-                {t('home.hero.title2')}
-              </h1>
-            
-              <p className="max-w-xl text-center leading-relaxed animate-fade-in text-slate-600 dark:text-slate-300" style={{ animationDelay: '0.6s' }}>
+            <div className="text-left animate-fade-in pt-36 md:pt-12 lg:pt-2">            
+              <h5 className="max-w-xl leading-relaxed animate-fade-in text-slate-600 dark:text-slate-300" style={{ animationDelay: '0.6s' }}>
                 <span>{t('home.hero.subtitle1')}</span>
-                <span> {t('home.hero.subtitle2')}</span>
-                <span> {t('home.hero.subtitle3')}</span>
-              </p>
-            
-              <p className="font-bold text-center text-blue-900 dark:text-orange-500" style={{ animationDelay: '0.6s' }}>
-                {t('home.hero.subtitle4')}
-              </p>
+              </h5>
             </div>
 
 
@@ -735,10 +721,21 @@ const Index = () => {
 
       {/* Video Section */}
       <section className="p-8 bg-white dark:bg-slate-900 text-center z-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className=" font-bold text-orange-500 dark:text-white mb-12 animate-fade-in z-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className=" font-bold text-orange-500 dark:text-white animate-fade-in z-0">
             {t('home.videoSection.title')}
           </h2>
+          <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
+                {t('home.videoSection.subtitle1')}
+              </p>
+              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
+                {t("home.videoSection.subtitle2")}
+              </p>
+        </div>
+      </section>
+      {/* Video Section */}
+      <section className="p-8 bg-white dark:bg-slate-900 text-center z-0">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="z-0 relative rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-black animate-scale-in" style={{ minHeight: 300 }}>
             {!videoPlaying ? (
               <button
@@ -774,6 +771,7 @@ const Index = () => {
           </div>
         </div>
       </section>
+      
 
       {/* ChatBot Section */}
       <section className="z-0 pt-4 pb-16 pt-lg-5 bg-gray-400 dark:bg-gradient-to-br dark:from-blue-400 dark:via-blue-800 dark:to-blue-500">

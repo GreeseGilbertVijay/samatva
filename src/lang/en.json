@@ -19,12 +19,7 @@
       "popup1": "Do U have, Settled Credit Cards / Loans?",
       "popup2": "Avail Zero Fees End-to-End Credit Consultation",
       "popupbutton": "Click Here",
-      "title1": "Rebuild Credit",
-      "title2": "Regain Credibility",
-      "subtitle1": "Restoring Dignity,",
-      "subtitle2": "Rebuilding Trust,",
-      "subtitle3": "Reimagining Life",
-      "subtitle4": "@ Zero Cost",
+      "subtitle1": "Vision : To create a world where unintentional delinquent customers can recover from financial setbacks with dignity, support, and a clear way to earn their way back into mainstream credit.",
       "cta": "Start Your Free Credit Consultation",
       "learnMore": "Learn More About Our Services",
       "second-heading":{
@@ -61,7 +56,9 @@
       "rbiRegisteredDesc": "All our financial institution partners"
     },
     "videoSection": {
-      "title": "Learn About Our Mission"
+      "title": "Learn About Our Mission",
+      "subtitle1":"Samatva helps unintentional delinquent customers earn their way back into the formal financial system through a clear, disciplined, and humane process.",
+      "subtitle2":"We guide customers responsibly, partner with banks to recover value, and operate strictly within regulatory frameworks that safeguard the financial ecosystem."
     },
     "cta": {
       "title": "Ready to Transform Your Financial Future At Zero Cost?",
@@ -466,8 +463,8 @@
     "contactInfo": "Contact Info",
     "address": "Address",
     "phone": "Phone Numbers",
-    "mission": "Our mission is to empower individuals with expert financial guidance and essential resources to build, strengthen, and sustain a resilient credit profile—laying the foundation for lasting financial well-being and opportunity.",
-    "copyright": "© 2025 Samatva Awarness Solutions Private Limited. All rights reserved.",
+    "mission": "Samatva helps unintentional delinquent customers earn their way back into the formal financial system through a clear, disciplined, and humane process.",
+    "copyright": "© 2026 Samatva Awarness Solutions Private Limited. All rights reserved.",
     "rbiNote": "RBI-Registered Financial Institution Partners | Completely Free Service"
   }
 }
