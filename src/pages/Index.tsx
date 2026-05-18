@@ -452,7 +452,7 @@ const Index = () => {
 
             {/* Left Content */}
             <div className="text-left animate-fade-in pt-36 md:pt-12 lg:pt-2">            
-              <h5 className="max-w-xl leading-relaxed animate-fade-in text-slate-600 dark:text-slate-300" style={{ animationDelay: '0.6s' }}>
+              <h5 className="max-w-xl leading-relaxed animate-fade-in text-orange-500 font-semibold" style={{ animationDelay: '0.6s' }}>
                 <span>{t('home.hero.subtitle1')}</span>
               </h5>
             </div>
