@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useEmblaCarousel from 'embla-carousel-react';
 import { motion } from 'framer-motion';
@@ -18,6 +18,24 @@ const instagramReels = [
   'DaFusoEy4Ay',
   'DaQBj_GSs54',
   'Da78FekyE-4',
+  'DbN277hSM4v',
+  'Dbas3XbSCTw',
+  'Dbhlmx9xT1c',
+  'DbqJ8KdB1hh',
+  'Db-y2p9BePS',
+  'DcQ0I-7KVUX',
+  'DcXxpnsRT1S',
+  'DcgSlGhhw9r',
+  'DctFvd5BDvM',
+  'Dc5_dpiyFfT',
+  'DdB02h3SYMi',
+  'DdRF3chhvMa',
+  'Ddbad6RKES4',
+  'DdocHkuyJHa',
+  'DdtrMaHBJ9q',
+  'DdwR4GgyIub',
+  'DdyoA1XSXdC',
+  'Dd30St-yjE-',
 ];
 
 const reelUrl = (id: string) => `https://www.instagram.com/reel/${id}/`;
@@ -38,25 +56,51 @@ type InstagramCardProps = {
   isActive: boolean;
 };
 
-const InstagramCard = ({ id, isActive }: InstagramCardProps) => (
-  <div
-    className={`relative h-full overflow-hidden rounded-3xl bg-white transition-all duration-700 ease-out ${
-      isActive
-        ? '-translate-y-2 scale-100 opacity-100 shadow-2xl shadow-orange-500/25 ring-4 ring-orange-500'
-        : 'scale-[0.9] opacity-50 shadow-lg ring-1 ring-gray-200'
-    }`}
-  >
-    <iframe
-      src={`${reelUrl(id)}embed/`}
-      title={`Samatva Instagram reel ${id}`}
-      loading="lazy"
-      scrolling="no"
-      allowFullScreen
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-      className="block h-full w-full overflow-hidden border-0"
-    />
-  </div>
-);
+// Height of the "Add a comment..." bar at the bottom of Instagram's embed, which we crop off
+const COMMENT_BAR_HEIGHT = 56;
+
+const InstagramCard = ({ id, isActive }: InstagramCardProps) => {
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [contentHeight, setContentHeight] = useState<number | null>(null);
+
+  // The embed reports its content height via postMessage; use it to crop the comment bar
+  useEffect(() => {
+    const onMessage = (e: MessageEvent) => {
+      if (e.origin !== 'https://www.instagram.com' || e.source !== iframeRef.current?.contentWindow) return;
+      try {
+        const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+        if (data?.type === 'MEASURE' && data.details?.height) setContentHeight(data.details.height);
+      } catch {
+        // ignore non-JSON messages
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
+  }, []);
+
+  return (
+    <div
+      className={`relative h-full overflow-hidden rounded-3xl bg-white transition-all duration-700 ease-out ${
+        isActive
+          ? '-translate-y-2 scale-100 opacity-100 shadow-2xl shadow-orange-500/25 ring-4 ring-orange-500'
+          : 'scale-[0.9] opacity-50 shadow-lg ring-1 ring-gray-200'
+      }`}
+      style={contentHeight ? { maxHeight: contentHeight - COMMENT_BAR_HEIGHT } : undefined}
+    >
+      <iframe
+        ref={iframeRef}
+        src={`${reelUrl(id)}embed/`}
+        title={`Samatva Instagram reel ${id}`}
+        loading="lazy"
+        scrolling="no"
+        allowFullScreen
+        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
+        className="block h-full w-full overflow-hidden border-0"
+        style={contentHeight ? { height: contentHeight } : undefined}
+      />
+    </div>
+  );
+};
 
 const Gallery = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', skipSnaps: false, duration: 30 });
@@ -274,33 +318,21 @@ const Gallery = () => {
           <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent md:w-24" />
         </motion.div>
 
-        {/* Progress, dots and Instagram link */}
-        <div className="mx-auto mt-8 flex max-w-7xl flex-col items-center gap-6 px-4 sm:px-6 md:flex-row md:justify-between lg:px-8">
-          <div className="flex w-full max-w-sm flex-col gap-4">
-            <div className="h-1 w-full overflow-hidden rounded-full bg-gray-100">
-              {!hovering && (
-                <div
-                  key={selected}
-                  className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
-                  style={{ animation: `gallery-progress ${AUTOPLAY_DELAY}ms linear forwards` }}
-                />
-              )}
-            </div>
-            <div className="flex flex-wrap justify-center gap-2 md:justify-start">
-              {instagramReels.map((id, i) => (
-                <button
-                  key={id}
-                  type="button"
-                  onClick={() => emblaApi?.scrollTo(i)}
-                  aria-label={`Go to video ${i + 1}`}
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    i === selected ? 'w-8 bg-orange-500' : 'w-2 bg-gray-200 hover:bg-orange-300'
-                  }`}
-                />
-              ))}
-            </div>
+        {/* Progress line right below the videos */}
+        <div className="mx-auto mt-2 w-full max-w-sm px-4">
+          <div className="h-1 w-full overflow-hidden rounded-full bg-gray-100">
+            {!hovering && (
+              <div
+                key={selected}
+                className="h-full rounded-full bg-gradient-to-r from-orange-500 to-amber-400"
+                style={{ animation: `gallery-progress ${AUTOPLAY_DELAY}ms linear forwards` }}
+              />
+            )}
           </div>
+        </div>
 
+        {/* Instagram link */}
+        <div className="mx-auto mt-8 flex max-w-7xl justify-center px-4 sm:px-6 lg:px-8">
           <a
             href={reelUrl(instagramReels[selected])}
             target="_blank"
