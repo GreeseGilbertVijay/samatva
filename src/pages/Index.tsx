@@ -27,8 +27,8 @@ const Index = () => {
   const [tada, setTada] = useState(false);
   // Add state for wave animation
   const [wave, setWave] = useState(false);
-  const waveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const tadaTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const waveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const tadaTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [openFAQ, setOpenFAQ] = useState<number | null>(null);
   // Animation states for image fade-in
   const [showRows, setShowRows] = useState(false);
@@ -133,8 +133,8 @@ const Index = () => {
   const [videoPlaying, setVideoPlaying] = useState(false);
 
   useEffect(() => {
-    let hideTimeout: NodeJS.Timeout;
-    let showTimeout: NodeJS.Timeout;
+    let hideTimeout: ReturnType<typeof setTimeout>;
+    let showTimeout: ReturnType<typeof setTimeout>;
 
     if (!showRows) {
       // Show rows after 2 seconds
@@ -629,7 +629,7 @@ const Index = () => {
       <Link
         to="/Services"
         onClick={scrollToTop}
-        className="w-full sm:w-auto border-2 border-orange-500 text-orange-600 dark:text-orange-500 hover:bg-orange-500 hover:text-white rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 min-w-[200px] sm:min-w-[280px]"
+        className="w-full sm:w-auto border-2 border-orange-500 text-orange-600 dark:text-orange-500 hover:bg-orange-500 hover:text-white dark:hover:text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 min-w-[200px] sm:min-w-[280px]"
       >
         {t('home.hero.learnMore')}
         <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />

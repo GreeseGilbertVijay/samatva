@@ -119,6 +119,16 @@ const Footer = () => {
 
     <li>
       <Link
+        to="/gallery"
+        onClick={scrollToTop}
+        className="text-white hover:text-orange-500 transition-colors"
+      >
+        Gallery
+      </Link>
+    </li>
+
+    <li>
+      <Link
         to="/privacy-policy"
         onClick={scrollToTop}
         className="text-white hover:text-orange-500 transition-colors"
@@ -135,28 +145,6 @@ const Footer = () => {
       >
         {t('nav.terms') || 'Terms & Conditions'}
       </Link>
-    </li>
-
-    <li>
-      <a
-        href="/lovable-uploads/Lodge-a-Complaint.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white hover:text-orange-500 transition-colors"
-      >
-        Lodge a Complaint
-      </a>
-    </li>
-
-    <li>
-      <a
-        href="/lovable-uploads/Data-Deletion-Policy.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white hover:text-orange-500 transition-colors"
-      >
-        Data Deletion Policy
-      </a>
     </li>
           </ul>
           </div>

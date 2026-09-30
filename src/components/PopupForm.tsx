@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import axios from "axios";
 import { User, Phone, MapPin, MapPinHouse, X } from "lucide-react";
 import Lottie from "lottie-react";
@@ -42,7 +43,15 @@ const PopupForm = () => {
     setOpen(false);
   };
 
- 
+  // Lock page scroll while popup is open
+  useEffect(() => {
+    if (!popup) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [popup]);
 
   const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -74,20 +83,20 @@ const PopupForm = () => {
     <>
       {/* Popup Text and Button */}
      <div className="absolute top-0 left-0 cursor-pointer z-49">
-        <h3 className="text-base font-bold text-orange-500 dark:text-white" 
+        <h3 className="text-base font-bold text-orange-500 dark:text-white"
         style={
           ["ta", "hi", "te", "kn"].includes(currentLanguage)
             ? { fontSize: "12px" }
             : {}
         }>{t('home.hero.popup1')}</h3>
-        <h3 className="text-base mt-1 font-bold text-orange-500 dark:text-white" 
+        <h3 className="text-base mt-1 font-bold text-orange-500 dark:text-white"
         style={
           ["ta", "hi", "te", "kn"].includes(currentLanguage)
             ? { fontSize: "12px" }
             : {}
         }>{t('home.hero.popup2')}</h3>
-        <button className="blink-element sm:w-auto bg-blue-900 dark:bg-white text-white dark:text-orange-600 hover:bg-orange-600 dark:hover:bg-orange-50 
-        px-6 sm:px-10 py-0 sm:py-1 mt-2 rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 shadow-xl animate-scale-intext-xs sm:text-lg" style={
+        <button className="blink-element sm:w-auto bg-blue-900 dark:bg-white text-white dark:text-orange-600 hover:bg-orange-600 dark:hover:bg-orange-50
+        px-6 sm:px-10 py-0 sm:py-1 mt-2 rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 shadow-xl animate-scale-in text-xs sm:text-lg" style={
           ["ta", "hi", "te", "kn"].includes(currentLanguage)
             ? { fontSize: "12px" }
             : {}
@@ -95,27 +104,29 @@ const PopupForm = () => {
      </div>
      
       {/* Popup */}
-      {popup && (
+      {popup && createPortal(
         <div
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-50 px-4"
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex justify-center items-center z-[1000] px-4"
           onClick={() => setPopup(false)} // click outside to close
         >
           <div
-            className="relative max-w-5xl w-full bg-orange-600 dark:bg-white/30 flex flex-col md:flex-row md:gap-10 items-center border border-white/20 shadow-xl rounded-2xl 
-                 p-6 sm:p-8 md:p-10 
+            className="relative max-w-5xl w-full bg-orange-600 dark:bg-slate-900 flex flex-col md:flex-row md:gap-10 items-center border border-white/20 shadow-xl rounded-2xl
+                 p-6 pt-12 sm:p-8 sm:pt-12 md:p-10
                  mx-auto max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside card
           >
             {/* Close button */}
             <button
-              className="absolute top-4 right-4 text-white dark:text-red-500 hover:text-red-400 transition"
+              type="button"
+              aria-label="Close"
+              className="absolute top-3 right-3 text-white hover:text-red-300 transition"
               onClick={() => setPopup(false)}
             >
               <X size={28} />
             </button>
 
             {/* Animation */}
-            <div className="w-full md:w-[40%] flex justify-center">
+            <div className="hidden sm:flex w-full md:w-[40%] justify-center max-w-[260px] md:max-w-none">
               <Lottie animationData={mail} loop={true} />
             </div>
 
@@ -229,7 +240,8 @@ const PopupForm = () => {
               )}
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
