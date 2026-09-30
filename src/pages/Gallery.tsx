@@ -54,14 +54,23 @@ const fadeUp = {
 type InstagramCardProps = {
   id: string;
   isActive: boolean;
+  onActivate: () => void;
 };
 
 // Height of the "Add a comment..." bar at the bottom of Instagram's embed, which we crop off
 const COMMENT_BAR_HEIGHT = 56;
 
-const InstagramCard = ({ id, isActive }: InstagramCardProps) => {
+const InstagramCard = ({ id, isActive, onActivate }: InstagramCardProps) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [contentHeight, setContentHeight] = useState<number | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
+  const wasActive = useRef(isActive);
+
+  // Reload the embed when it leaves the centre, so a reel that was playing stops
+  useEffect(() => {
+    if (wasActive.current && !isActive) setReloadKey((k) => k + 1);
+    wasActive.current = isActive;
+  }, [isActive]);
 
   // The embed reports its content height via postMessage; use it to crop the comment bar
   useEffect(() => {
@@ -88,6 +97,7 @@ const InstagramCard = ({ id, isActive }: InstagramCardProps) => {
       style={contentHeight ? { maxHeight: contentHeight - COMMENT_BAR_HEIGHT } : undefined}
     >
       <iframe
+        key={reloadKey}
         ref={iframeRef}
         src={`${reelUrl(id)}embed/`}
         title={`Samatva Instagram reel ${id}`}
@@ -95,9 +105,20 @@ const InstagramCard = ({ id, isActive }: InstagramCardProps) => {
         scrolling="no"
         allowFullScreen
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-        className="block h-full w-full overflow-hidden border-0"
+        // No allow-popups / allow-top-navigation: keeps clicks inside the embed from opening Instagram
+        sandbox="allow-scripts allow-same-origin allow-presentation"
+        className={`block h-full w-full overflow-hidden border-0 ${isActive ? '' : 'pointer-events-none'}`}
         style={contentHeight ? { height: contentHeight } : undefined}
       />
+      {/* Only the centre reel can be played; clicking a side reel brings it to the centre */}
+      {!isActive && (
+        <button
+          type="button"
+          onClick={onActivate}
+          aria-label={`Show video ${id}`}
+          className="absolute inset-0 cursor-pointer"
+        />
+      )}
     </div>
   );
 };
@@ -106,6 +127,7 @@ const Gallery = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', skipSnaps: false, duration: 30 });
   const [selected, setSelected] = useState(0);
   const [hovering, setHovering] = useState(false);
+  const [watching, setWatching] = useState(false);
 
   const onSelect = useCallback(() => {
     if (emblaApi) setSelected(emblaApi.selectedScrollSnap());
@@ -120,12 +142,38 @@ const Gallery = () => {
     };
   }, [emblaApi, onSelect]);
 
-  // Auto-slide while nobody is hovering
+  // Clicking into a reel moves focus into its iframe, which blurs the window: stop auto-sliding then
   useEffect(() => {
-    if (!emblaApi || hovering) return;
+    const onBlur = () => {
+      if (document.activeElement?.tagName === 'IFRAME' && document.activeElement.closest('#videos')) {
+        setWatching(true);
+      }
+    };
+    window.addEventListener('blur', onBlur);
+    return () => window.removeEventListener('blur', onBlur);
+  }, []);
+
+  // Auto-slide while nobody is hovering or watching a reel
+  useEffect(() => {
+    if (!emblaApi || hovering || watching) return;
     const id = setInterval(() => emblaApi.scrollNext(), AUTOPLAY_DELAY);
     return () => clearInterval(id);
-  }, [emblaApi, hovering, selected]);
+  }, [emblaApi, hovering, watching, selected]);
+
+  const goTo = (index: number) => {
+    setWatching(false);
+    emblaApi?.scrollTo(index);
+  };
+
+  const goPrev = () => {
+    setWatching(false);
+    emblaApi?.scrollPrev();
+  };
+
+  const goNext = () => {
+    setWatching(false);
+    emblaApi?.scrollNext();
+  };
 
   const scrollToVideos = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -269,7 +317,7 @@ const Gallery = () => {
             <div className="flex gap-3">
               <button
                 type="button"
-                onClick={() => emblaApi?.scrollPrev()}
+                onClick={goPrev}
                 aria-label="Previous video"
                 className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-gray-200 text-gray-700 transition hover:border-orange-500 hover:bg-orange-500 hover:text-white"
               >
@@ -306,7 +354,7 @@ const Gallery = () => {
                   className="min-w-0 flex-[0_0_78%] px-3 sm:flex-[0_0_45%] md:flex-[0_0_33.333%] lg:flex-[0_0_25%]"
                 >
                   <div className="aspect-[9/16]">
-                    <InstagramCard id={id} isActive={i === selected} />
+                    <InstagramCard id={id} isActive={i === selected} onActivate={() => goTo(i)} />
                   </div>
                 </div>
               ))}
