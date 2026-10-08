@@ -26,7 +26,7 @@ const WhatsAppButton = () => {
   }, []);
 
   const handleClick = () => {
-    window.open('https://wa.me/+916382097967', '_blank');
+    window.open('https://wa.me/+916382097973', '_blank');
   };
 
   const scrollToTop = () => {
