@@ -1,27 +1,117 @@
-import React from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import { ArrowRight, ChevronDown, HelpCircle, MessageCircle, Plus } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Link } from 'react-router-dom';
+
+type FaqItem = { question: string; answer: string };
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.15, ease: 'easeOut' as const } }),
+};
+
+const pad = (n: number) => String(n).padStart(2, '0');
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+type FaqCardProps = {
+  faq: FaqItem;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+};
+
+const FaqCard = ({ faq, index, isOpen, onToggle }: FaqCardProps) => (
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.3 }}
+    custom={Math.min(index, 3) * 0.5}
+    className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+      isOpen
+        ? 'border-orange-500 bg-white shadow-xl shadow-orange-500/15 dark:border-orange-500/70 dark:bg-slate-800'
+        : 'border-gray-200 bg-white shadow-sm hover:border-orange-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-800/60 dark:hover:border-orange-500/50'
+    }`}
+  >
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={isOpen}
+      aria-controls={`faq-${index}-content`}
+      className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
+    >
+      <span
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-mono text-sm font-bold transition-colors duration-300 ${
+          isOpen
+            ? 'bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/30'
+            : 'bg-orange-50 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400'
+        }`}
+      >
+        {pad(index + 1)}
+      </span>
+      <span
+        className={`flex-1 text-base font-semibold md:text-lg ${
+          isOpen ? 'text-orange-600 dark:text-orange-400' : 'text-gray-900 dark:text-white'
+        }`}
+      >
+        {faq.question}
+      </span>
+      <span
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300 ${
+          isOpen
+            ? 'rotate-45 border-orange-500 bg-orange-500 text-white'
+            : 'border-gray-200 text-gray-500 dark:border-slate-600 dark:text-slate-300'
+        }`}
+      >
+        <Plus className="h-4 w-4" />
+      </span>
+    </button>
+
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.div
+          id={`faq-${index}-content`}
+          key="content"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="overflow-hidden"
+        >
+          <div className="px-5 pb-6 md:pl-[5.5rem] md:pr-8">
+            <div className="mb-4 h-px w-full bg-gradient-to-r from-orange-500/40 to-transparent md:hidden" />
+            <p className="text-base leading-relaxed text-gray-600 dark:text-slate-300">{faq.answer}</p>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </motion.div>
+);
 
 const FAQ = () => {
-  const { t, translations } = useLanguage();
-  const questions = t('faqPage.questions');
+  const { t, translations, currentLanguage } = useLanguage();
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+  const questions = t('faqPage.questions') as unknown;
+  const faqs: FaqItem[] = Array.isArray(questions) ? questions : [];
+  const isEnglish = currentLanguage === 'en';
+
+  const scrollToQuestions = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('questions')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // Don't render content until translations are loaded
   if (!translations || Object.keys(translations).length === 0) {
     return (
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-white dark:bg-slate-950">
         <Navbar />
-        <div className="flex items-center justify-center min-h-[60vh]">
-          <div className="text-lg text-gray-600">Loading...</div>
+        <div className="flex min-h-[60vh] items-center justify-center">
+          <div className="h-10 w-10 animate-spin rounded-full border-4 border-orange-200 border-t-orange-500" />
         </div>
         <Footer />
       </div>
@@ -29,123 +119,124 @@ const FAQ = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 font-raleway">
-       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
-
-        .font-raleway {
-          font-family: 'Raleway', sans-serif;
-        }
-
-        @media (max-width: 1920px) {
-          h1 { font-size: 56px; }
-          h2 { font-size: 48px; }
-          p { font-size: 18px; }
-          [lang]:not([lang="en"]) h1 { font-size: 44px; }
-          [lang]:not([lang="en"]) h2 { font-size: 36px; }
-          [lang]:not([lang="en"]) p { font-size: 18px; }
-        }
-
-        @media (max-width: 1440px) {
-          h1 { font-size: 48px; line-height: 1em; }
-          h2 { font-size: 40px; }
-          p { font-size: 18px; }
-          [lang]:not([lang="en"]) h1 { font-size: 36px; }
-          [lang]:not([lang="en"]) h2 { font-size: 28px; }
-          [lang]:not([lang="en"]) p { font-size: 16px; }
-        }
-
-        @media (max-width: 780px) {
-          h1 { font-size: 36px; }
-          h2 { font-size: 28px; }
-          p { font-size: 16px; }
-          [lang]:not([lang="en"]) h1 { font-size: 36px; }
-          [lang]:not([lang="en"]) h2 { font-size: 24px; }
-          [lang]:not([lang="en"]) p { font-size: 16px; }
-        }
-
-        @media (max-width: 480px) {
-          h1 { font-size: 24px; }
-          h2 { font-size: 22px; }
-          p { font-size: 16px; }
-          [lang]:not([lang="en"]) h1 { font-size: 24px; }
-          [lang]:not([lang="en"]) h2 { font-size: 20px; }
-          [lang]:not([lang="en"]) p { font-size: 14px; }
-        }
+    <div className="min-h-screen bg-white transition-colors dark:bg-slate-950" lang={currentLanguage}>
+      <style>{`
+        @keyframes faq-float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-20px) } }
+        .faq-float { animation: faq-float 8s ease-in-out infinite; }
+        .faq-float-slow { animation: faq-float 11s ease-in-out infinite; }
       `}</style>
+
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="relative bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 text-white py-20 overflow-hidden">
-        <div className="w-[95%] mx-auto text-center">
-          <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
-            {t('faqPage.title')}
-          </h1>
-          <p className="font-bold text-black dark:text-orange-400">
+
+      {/* Banner */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
+        <div className="faq-float pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-orange-400/20 blur-3xl dark:bg-orange-500/30" />
+        <div className="faq-float-slow pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-amber-300/30 blur-3xl dark:bg-orange-400/20" />
+        <div
+          className="pointer-events-none absolute inset-0 text-gray-900 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+
+        <div className="relative mx-auto flex min-h-[55vh] max-w-7xl flex-col items-center justify-center px-4 py-20 text-center sm:px-6 lg:px-8">
+          <motion.span
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/70 px-4 py-1.5 text-sm font-semibold uppercase tracking-widest text-orange-600 backdrop-blur dark:border-white/20 dark:bg-white/10 dark:text-orange-300"
+          >
+            <HelpCircle className="h-4 w-4" />
+            FAQ
+          </motion.span>
+
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={1}
+            className={`max-w-4xl font-extrabold leading-tight ${
+              isEnglish ? 'text-4xl sm:text-5xl md:text-6xl' : 'text-3xl sm:text-4xl md:text-5xl'
+            }`}
+          >
+            <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-300">
+              {t('faqPage.title')}
+            </span>
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={2}
+            className="mt-6 max-w-2xl text-lg text-gray-600 md:text-xl dark:text-gray-300"
+          >
             {t('faqPage.subtitle')}
-          </p>
+          </motion.p>
         </div>
+
+        <button
+          type="button"
+          onClick={scrollToQuestions}
+          aria-label="Scroll to questions"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-gray-400 transition hover:text-orange-500 dark:text-white/70 dark:hover:text-white"
+        >
+          <ChevronDown className="h-8 w-8" />
+        </button>
       </section>
 
-      {/* FAQ Section */}
-      <section className="pt-16 pb-12 pl-2 pr-2 bg-white dark:bg-slate-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Questions */}
+      <section id="questions" className="scroll-mt-24 bg-white py-16 transition-colors md:py-24 dark:bg-slate-950">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="space-y-4">
-            {Array.isArray(questions) && questions.map((faq: any, index: number) => (
-              <div key={index} className="bg-gray-300 dark:bg-slate-800 rounded-lg overflow-hidden">
-                <button
-                  className="w-full px-6 py-4 text-left flex justify-between items-center text-black dark:text-white hover:bg-slate-400 transition-colors"
-                  onClick={() => {
-                    const content = document.getElementById(`faq-${index}-content`);
-                    const arrow = document.getElementById(`faq-${index}-arrow`);
-                    if (content && arrow) {
-                      content.classList.toggle('hidden');
-                      arrow.classList.toggle('rotate-180');
-                    }
-                  }}
-                >
-                  <span className="font-semibold">
-                    <span className="text-blue-800 dark:text-blue-400 mr-2">Q{index + 1}.</span>
-                    {faq.question}
-                  </span>
-                  <svg
-                    id={`faq-${index}-arrow`}
-                    className="w-5 h-5 transform transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                <div id={`faq-${index}-content`} className="hidden px-6 py-4 text-black dark:text-slate-300">
-                  <span className="text-blue-800 dark:text-blue-400 mr-2">A{index + 1}.</span>
-                  {faq.answer}
-                </div>
-              </div>
+            {faqs.map((faq, index) => (
+              <FaqCard
+                key={index}
+                faq={faq}
+                index={index}
+                isOpen={openIndex === index}
+                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact CTA */}
-      <section className="pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="font-bold text-orange-500 dark:text-white mb-4">
-            {t('faqPage.stillHaveQuestions')}
-          </h2>
-          <p className="text-black dark:text-white mb-8">
-            {t('faqPage.getInTouch')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/Contact" onClick={scrollToTop} className="border-2 border-orange-600 text-white bg-orange-500 hover:text-orange-500 hover:bg-white px-8 py-4 rounded-lg font-semibold  transition-colors">
+      {/* Call to action */}
+      <section className="bg-white px-4 pb-20 transition-colors sm:px-6 lg:px-8 dark:bg-slate-950">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-12 text-center text-white shadow-2xl shadow-orange-500/30 md:px-12 dark:from-orange-600 dark:to-amber-600 dark:shadow-orange-900/40"
+        >
+          <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-white/10" />
+          <span className="relative mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+            <MessageCircle className="h-7 w-7" />
+          </span>
+          <h2 className="relative text-2xl font-bold text-white md:text-4xl">{t('faqPage.stillHaveQuestions')}</h2>
+          <p className="relative mx-auto mt-3 max-w-xl text-white/90">{t('faqPage.getInTouch')}</p>
+          <div className="relative mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              to="/contact"
+              onClick={scrollToTop}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3 font-semibold text-orange-600 shadow-lg transition hover:-translate-y-0.5"
+            >
               {t('faqPage.contactUs')}
+              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
-            <Link to="/Services" onClick={scrollToTop} className="border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-lg font-semibold  transition-colors">
+            <Link
+              to="/services"
+              onClick={scrollToTop}
+              className="inline-flex items-center justify-center rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+            >
               {t('faqPage.learnServices')}
             </Link>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <Footer />

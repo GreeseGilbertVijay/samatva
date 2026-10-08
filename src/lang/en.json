@@ -7,12 +7,12 @@
     "impact": "Impact",
     "faq": "FAQs",
     "contact": "Contact Us",
-    "privacy":"Privacy Policy",
+    "privacy": "Privacy Policy",
     "terms": "Terms & Conditions"
   },
   "faq": {
     "title": "Top 7 FAQs",
-    "description":"Find answers to common questions about our services"
+    "description": "Find answers to common questions about our services"
   },
   "home": {
     "hero": {
@@ -22,18 +22,17 @@
       "subtitle1": "To create a world where unintentional delinquent customers can recover from financial setbacks with dignity, support, and a clear way to earn their way back into mainstream credit.",
       "cta": "Start Your Free Credit Consultation",
       "learnMore": "Learn More About Our Services",
-      "second-heading":{
-          "title":"Don't Miss These 8 Crucial Checks",
-          "title1":"Before taking a Loan",
-           "checks1":"Regulated Entity",
-           "checks2":"Credibility of Lender",
-           "checks3":"Credit Score",
-           "checks4":"Purpose of loan",
-
-           "checks5":"Interest Rate",
-           "checks6":"Loan Tenure",
-           "checks7":"Processing Fees",
-           "checks8":"Repayment Flexibility"
+      "second-heading": {
+        "title": "Don't Miss These 8 Crucial Checks",
+        "title1": "Before taking a Loan",
+        "checks1": "Regulated Entity",
+        "checks2": "Credibility of Lender",
+        "checks3": "Credit Score",
+        "checks4": "Purpose of loan",
+        "checks5": "Interest Rate",
+        "checks6": "Loan Tenure",
+        "checks7": "Processing Fees",
+        "checks8": "Repayment Flexibility"
       },
       "impact": {
         "title": "Impact",
@@ -51,14 +50,14 @@
       "timelineDesc": "Average time to improve your credit score",
       "freeService": "Zero Fees",
       "freeServiceDesc": "Zero hidden charges, Zero worries",
-      "rbiNBFC": "NBFC",  
+      "rbiNBFC": "NBFC",
       "rbiRegistered": "RBI Registered",
       "rbiRegisteredDesc": "All our financial institution partners"
     },
     "videoSection": {
       "title": "Learn About Our Mission",
-      "subtitle1":"Samatva helps unintentional delinquent customers earn their way back into the formal financial system through a clear, disciplined, and humane process.",
-      "subtitle2":"We guide customers responsibly, partner with banks to recover value, and operate strictly within regulatory frameworks that safeguard the financial ecosystem."
+      "subtitle1": "Samatva helps unintentional delinquent customers earn their way back into the formal financial system through a clear, disciplined, and humane process.",
+      "subtitle2": "We guide customers responsibly, partner with banks to recover value, and operate strictly within regulatory frameworks that safeguard the financial ecosystem."
     },
     "cta": {
       "title": "Ready to Transform Your Financial Future At Zero Cost?",
@@ -133,7 +132,7 @@
       },
       {
         "question": "How can I get my free credit report?",
-        "answer": "You can also pay the fee to receive detailed and accurate credit reports delivered directly to your inbox, 12 times a year by all the 4 credit bureaus."
+        "answer": "If you follow Samatva Awareness in Instagram you will received free credit report delivered directly to your whatsapp."
       },
       {
         "question": "How can I check my CIBIL™ score online?",
@@ -141,23 +140,31 @@
       },
       {
         "question": "Can I improve a poor credit score?",
-        "answer": "The good news is that a poor credit score is not permanent; you can always improve it by taking appropriate steps. Although it may take some time, it is worth improving your score before applying for a new loan."
+        "answer": "The good news is that a poor credit score is not permanent; you can always improve it by taking appropriate steps. Although it will take 6-9 months, it is crutial to improve your score before applying for a new loan."
       },
       {
         "question": "Can I get a loan or credit card with a poor credit score?",
-        "answer": "Getting a loan with a poor credit score is difficult. So, it's always a good idea to improve your credit score before applying for a new loan or credit card."
+        "answer": "Getting a loan with a poor credit score can be difficult. Samatva helps improve your credit profile by providing loans to close previously settled loans. Improving your credit score before applying for a new loan or credit card can increase your chances of approval and better financial opportunities."
       },
       {
         "question": "How long does it take to improve my credit score?",
-        "answer": "It takes 6 to 12 months to improve your credit score based on the timely repayment of the new loan that you avail."
+        "answer": "It takes 6 to 9 months to improve your credit score based on the timely repayment of the new loan that you avail."
       },
       {
         "question": "I have already settled my personal loan and credit card. Why is my CIBIL score still low?",
         "answer": "Even if you have settled your loan or credit card, any unpaid or unsettled portion may still be reflected in your CIBIL report as an overdue amount."
       },
       {
+        "question": "When my score improves above 700 can I close the loan availed from NBFC?",
+        "answer": "Yes, you can close the loan immediately after your score crosses 700."
+      },
+      {
+        "question": "Is there any foreclosure charges for closing my loan?",
+        "answer": "Banks and NBFCs may charge foreclosure fees of up to 5%. At Samatva, we charge 0% foreclosure fees, making it easier and more affordable to close your loan. "
+      },
+      {
         "question": "What is Samatva?",
-        "answer": "Samatva is a credit counselling services company registered in Chennai. We specialize in helping individuals improve their CIBIL scores by providing solutions to resolve the unsettled amounts reflected in their credit reports."
+        "answer": "Samatva is a credit counselling services company based in Chennai. We help individuals improve their CIBIL scores by partnering with NBFCs to facilitate loans that can be used to resolve unsettled amounts reflected in their credit reports."
       },
       {
         "question": "How does Samatva help improve my CIBIL score?",
@@ -165,19 +172,19 @@
       },
       {
         "question": "Will Samatva help me if my CIBIL score is below 700?",
-        "answer": "Yes, Samatva will help, provided you have no more than two settled accounts."
+        "answer": "Yes, Samatva will help, provided you have no more than four settled accounts (Personal loans/credit cards)."
       },
       {
         "question": "What is the maximum amount of financial support available to improve a credit score?",
-        "answer": "Samatva will help by facilitating through an RBI registered financial institution. The amount provided by them is up to 2 Lakhs maximum, we will connect them with you."
+        "answer": "Samatva will help by facilitating through an RBI registered financial institution. The amount provided by them is up to 3 Lakhs maximum."
       },
       {
         "question": "What is the Rate of Interest for the loan provided?",
-        "answer": "The Loan is provided by an RBI-registered financial institution; we will connect them with you."
+        "answer": "The loan is provided by an RBI-registered financial institution. The applicable interest rate ranges from 9.65% to a maximum of 13.50% per annum, along with a 1% processing fee."
       },
       {
         "question": "What is the tenure of the loan that I will get?",
-        "answer": "The Loan is provided by an RBI-registered financial institution. The tenure provided by them is minimum 6 months and a maximum of 24 months. We will connect them with you."
+        "answer": "The Loan is provided by an RBI-registered financial institution. The tenure provided by them is minimum 6 months and a maximum of 24 months."
       },
       {
         "question": "Can Samatva help me secure funding to clear my settled overdue accounts?",
@@ -185,19 +192,19 @@
       },
       {
         "question": "Will I get a loan to pay the outstanding unsettled amount?",
-        "answer": "It is for salaried customers who are currently employed."
+        "answer": "It is for salaried who are currently employed. We also provide for self employed who file their IT/GST returns."
       },
       {
         "question": "I am self-employed, will I get a loan to pay the outstanding unsettled amount?",
-        "answer": "It is only for salaried customers currently employed."
+        "answer": "Yes, provided you have filed your GST and/or ITR returns. The outstanding unsettled amount should be related to a personal loan or credit card."
       },
       {
         "question": "Does Samatva charge any fees for its services?",
-        "answer": "Samatva does not charge any fees from customers for its credit counselling service, unlike other counselling companies."
+        "answer": "Samatva does not charge any fees (ZERO FEES) from customers for its credit counselling service, unlike other counselling companies."
       },
       {
         "question": "Who can benefit from Samatva's services?",
-        "answer": "Any salaried customer currently employed who has settled personal loan or credit cards with not more than two accounts, but still has outstanding dues can benefit from our services."
+        "answer": "Any salaried customer currently employed who has settled personal loan or credit cards with not more than four accounts, but still has outstanding dues can benefit from our services. We also provide for self employed who file their IT/GST returns."
       },
       {
         "question": "How can I get started with Samatva's services?",
@@ -243,28 +250,28 @@
     "callDesc": "Monday - Friday, 9 AM - 6 PM",
     "hours": "Business Hours",
     "serviceAreas": "Service Areas",
-    "box1":"Credit Score Improvement",
-    "box2":"Debt Settlement Support",
-    "box3":"Financial Counselling",
-    "box4":"Loan Application Guidance",
+    "box1": "Credit Score Improvement",
+    "box2": "Debt Settlement Support",
+    "box3": "Financial Counselling",
+    "box4": "Loan Application Guidance",
     "nextSteps": "Next Steps",
-    "step1":"Free Credit Consultation",
-    "step1Desc":"Schedule your zero cost credit counselling session",
-    "step2":"Assessment",
-    "step2Desc":"We'll evaluate your current financial situation",
-    "step3":"Custom Plan",
-    "step3Desc":"Receive a personalized improvement strategy",
-    "step4":"Implementation",
-    "step4Desc":"Begin your 6-12 month improvement journey",
-    "step5":"Ongoing Support",
-    "whyQuest":"Why Choose Us?",
-    "whyAns1":"RBI-Registered Institution Partners",
-    "whyAns2":"Completely Free Service",
-    "whyAns3":"6-12 Month Proven Results",
-    "whyAns4":"Professional Credit Counselors",
-    "step5Desc":"Continuous guidance until you achieve your goals",
+    "step1": "Free Credit Consultation",
+    "step1Desc": "Schedule your zero cost credit counselling session",
+    "step2": "Assessment",
+    "step2Desc": "We'll evaluate your current financial situation",
+    "step3": "Custom Plan",
+    "step3Desc": "Receive a personalized improvement strategy",
+    "step4": "Implementation",
+    "step4Desc": "Begin your 6-12 month improvement journey",
+    "step5": "Ongoing Support",
+    "whyQuest": "Why Choose Us?",
+    "whyAns1": "RBI-Registered Institution Partners",
+    "whyAns2": "Completely Free Service",
+    "whyAns3": "6-12 Month Proven Results",
+    "whyAns4": "Professional Credit Counselors",
+    "step5Desc": "Continuous guidance until you achieve your goals",
     "takeFirstStep": "Take the First Step Today",
-    "takeFirstStepDesc":"Your journey to better financial health starts with a simple conversation",
+    "takeFirstStepDesc": "Your journey to better financial health starts with a simple conversation",
     "startConsultation": "Start Your Free Credit Consultation",
     "callNow": "Call Now"
   },
@@ -334,7 +341,6 @@
     "hero": {
       "title": "ABOUT US",
       "subtitle1": "Providing trusted, Zero Fees Credit Financial Counselling to Resolve Debt/Rebuild Credit, & enhance Financial Awareness within Regulatory Compliance.",
-
       "description": "Our counsellors are professionally trained and certified by the Indian Institute of Banking and Finance (IIBF)"
     },
     "leadership": {
@@ -352,9 +358,9 @@
       "step4": "If this new loan is repaid on time within the agreed tenure, your credit history will begin to reflect positive repayment behaviour—leading to an improvement in your CIBIL score. A better score can make you eligible for future loans from top banks at more favourable interest rates.",
       "step5": "Please refer to the comparison \"IMPACT\" Page Link."
     },
-    "life":{
-      "title":"Life can get tough, and sometimes, paying back loans on time can be hard.",
-      "step1":"People sometimes lose their jobs or have some personal emergencies and unable to pay the loan EMI's on time. This will impact the credit score. A lower credit score makes it difficult to take a loan again in the future"
+    "life": {
+      "title": "Life can get tough, and sometimes, paying back loans on time can be hard.",
+      "step1": "People sometimes lose their jobs or have some personal emergencies and unable to pay the loan EMI's on time. This will impact the credit score. A lower credit score makes it difficult to take a loan again in the future"
     },
     "mission": "Our Mission",
     "missionDesc": "To empower individuals with expert financial guidance and essential resources to build, strengthen, and sustain a resilient credit profile—laying the foundation for lasting financial well-being and opportunity.",
@@ -410,13 +416,13 @@
       "title": "CIBIL Score Impact",
       "subtitle": "How your score affects loan approval and interest rates",
       "poor": "Poor",
-      "average": "Average", 
+      "average": "Average",
       "good": "Good",
       "veryGood": "Very Good",
       "excellent": "Excellent",
       "poorRange": "Less than 630",
       "averageRange": "630 - 680",
-      "goodRange": "680 - 730", 
+      "goodRange": "680 - 730",
       "veryGoodRange": "730 - 780",
       "excellentRange": "780+",
       "poorDesc": "❌ Loan rejection likely",
@@ -430,7 +436,7 @@
       "subtitle": "Understanding these key factors can help you improve your credit score effectively",
       "paymentHistory": "Payment History",
       "paymentHistoryDesc": "Most important factor - always pay on time",
-      "creditUtilization": "Credit Utilization", 
+      "creditUtilization": "Credit Utilization",
       "creditUtilizationDesc": "Keep usage below 30% of credit limit",
       "creditLength": "Credit History Length",
       "creditLengthDesc": "Longer credit history is better",
@@ -446,7 +452,7 @@
       "description": "Typical timeframe to see significant improvement",
       "quickWins": "Quick Wins (1-3 months)",
       "quickWin1": "• Pay down high balances",
-      "quickWin2": "• Dispute credit report errors", 
+      "quickWin2": "• Dispute credit report errors",
       "quickWin3": "• Set up automatic payments",
       "longTerm": "Long-term Gains (6-12 months)",
       "longTerm1": "• Consistent payment history",
