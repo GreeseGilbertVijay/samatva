@@ -65,7 +65,7 @@ const Form = () => {
   };
 
   return (
-    <div className="w-full flex justify-center dark:bg-gradient-to-br dark:from-blue-900 dark:via-slate-800 dark:to-slate-900 text-white">
+    <div className="w-full flex justify-center text-white">
       <div className="max-w-7xl w-full px-4 sm:px-8 py-8 flex flex-col md:flex-row gap-12 items-center">
 
         {/* Animation */}
@@ -76,7 +76,7 @@ const Form = () => {
         {/* Form */}
         <form
           onSubmit={handleSubmit}
-          className="bg-orange-500 dark:bg-white/10 flex flex-col gap-6 backdrop-blur-xl border border-white/20 shadow-xl rounded-2xl 
+          className="bg-gradient-to-br from-orange-500 to-amber-500 dark:from-orange-600 dark:to-amber-600 flex flex-col gap-6 border border-white/20 shadow-2xl shadow-orange-500/30 rounded-3xl 
           w-full max-w-lg mx-auto px-6 sm:px-8 py-8"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -192,7 +192,7 @@ const Form = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-12 bg-white text-blue-900 font-semibold rounded-full hover:opacity-90 transition"
+            className="w-full h-12 bg-white text-orange-600 font-semibold rounded-full hover:opacity-90 transition"
           >
             {loading ? "Submitting..." : "Submit"}
           </button>
@@ -206,7 +206,7 @@ const Form = () => {
             <h2 className="text-xl sm:text-2xl text-center font-bold">Form Submitted</h2>
             <p className="text-center text-sm sm:text-base">Thanks Our Employee Will Call You Shortly!</p>
             <button
-              className="mt-2 px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition"
+              className="mt-2 px-6 py-2 rounded-full bg-orange-500 text-white hover:bg-orange-600 transition"
               onClick={() => setPopup(false)}
             >
               Close
