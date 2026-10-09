@@ -15,6 +15,7 @@ import Services from "./pages/Services";
 import About from "./pages/About";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import ContactForm from "./pages/ContactForm";
 import TermsandConditions from "./pages/TermsandConditions";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/contact-form" element={<ContactForm />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/sample" element={<Sample />} />
               <Route path="/404" element={<NotFound />} />

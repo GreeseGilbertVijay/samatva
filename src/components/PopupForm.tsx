@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import axios from "axios";
-import { User, Phone, MapPin, MapPinHouse, X } from "lucide-react";
+import { User, Phone, MapPin, MapPinHouse, CreditCard, X } from "lucide-react";
 import Lottie from "lottie-react";
 import mail from "../lottie/mail.json";
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -30,6 +30,7 @@ const PopupForm = () => {
     phone: "",
     state: "",
     pincode: "",
+    pan: "",
   });
 
   // Select Field
@@ -65,7 +66,7 @@ const PopupForm = () => {
 
       setMessage("✔ Thanks Our Employee Will Call You Shortly!");
       setMessageType("success");
-      setFormData({ fname: "", phone: "", state: "", pincode: "" });
+      setFormData({ fname: "", phone: "", state: "", pincode: "", pan: "" });
     } catch (error) {
       console.error(error);
       setMessage("❌ Something went wrong. Try again.");
@@ -219,6 +220,25 @@ const PopupForm = () => {
                  />
                  <MapPin className="absolute right-4 top-3 text-white" size={22} />
                 </div>
+              </div>
+
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="PAN Number"
+                  name="pan"
+                  value={formData.pan}
+                  onChange={(e) => {
+                    const pan = e.target.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase().slice(0, 10); // alphanumeric, uppercase, max 10
+                    handleChange({ target: { name: "pan", value: pan } });
+                  }}
+                  required
+                  maxLength={10}
+                  pattern="[A-Z]{5}[0-9]{4}[A-Z]"
+                  title="Enter a valid 10-character PAN (e.g. ABCDE1234F)"
+                  className="w-full h-12 bg-transparent border border-white placeholder-white rounded-full px-4 pr-12 text-white outline-none"
+                />
+                <CreditCard className="absolute right-4 top-3 text-white" size={22} />
               </div>
 
               <button
