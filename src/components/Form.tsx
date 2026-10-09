@@ -173,13 +173,14 @@ const Form = () => {
           <div className="relative">
             <input
               type="text"
-              placeholder="PAN Number (Optional)"
+              placeholder="PAN Number"
               name="pan"
               value={formData.pan}
               onChange={(e) => {
                 const pan = e.target.value.replace(/[^a-zA-Z0-9]/g, "").toUpperCase().slice(0, 10); // alphanumeric, uppercase, max 10
                 handleChange({ target: { name: "pan", value: pan } });
               }}
+              required
               maxLength={10}
               pattern="[A-Z]{5}[0-9]{4}[A-Z]"
               title="Enter a valid 10-character PAN (e.g. ABCDE1234F)"
