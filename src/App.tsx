@@ -18,6 +18,7 @@ import Contact from "./pages/Contact";
 import ContactForm from "./pages/ContactForm";
 import TermsandConditions from "./pages/TermsandConditions";
 import Gallery from "./pages/Gallery";
+import CreditDoctor from "./pages/CreditDoctor";
 import NotFound from "./pages/NotFound";
 import { Helmet } from 'react-helmet-async';
 
@@ -48,6 +49,7 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/contact-form" element={<ContactForm />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/credit-doctor" element={<CreditDoctor />} />
               <Route path="/sample" element={<Sample />} />
               <Route path="/404" element={<NotFound />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
