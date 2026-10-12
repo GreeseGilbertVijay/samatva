@@ -31,8 +31,8 @@ const CreditDoctor = () => {
         {/* Cross-origin iframe can't be styled, so until it reports its height,
             widen it and clip its scrollbar off the right edge */}
         <div
-          className="w-full overflow-hidden"
-          style={{ height: autoSized ? frameHeight : 'calc(180vh - 6rem)' }}
+          className="w-full overflow-hidden h-[150vh] min-[1440px]:h-[130vh]"
+          style={autoSized ? { height: frameHeight } : undefined}
         >
           <iframe
             src={CREDIT_DOCTOR_URL}
@@ -43,17 +43,6 @@ const CreditDoctor = () => {
             allow="clipboard-write; microphone; camera"
           />
         </div>
-        <p className="text-center text-sm text-gray-500 dark:text-slate-400 py-3">
-          Page not loading?{' '}
-          <a
-            href={CREDIT_DOCTOR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-orange-500 hover:underline"
-          >
-            Open Credit Doctor in a new tab
-          </a>
-        </p>
       </main>
 
       <Footer />
