@@ -1,175 +1,225 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowRight,
+  BadgeCheck,
+  Bot,
+  ChevronDown,
+  Clock,
+  GraduationCap,
+  HeartPulse,
+  HelpCircle,
+  PlayCircle,
+  Plus,
+  ShieldCheck,
+  Sparkles,
+  TrendingUp,
+  Wallet,
+} from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { TrendingUp, ArrowRight, PlayCircle } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import PopupForm from '@/components/PopupForm';
 
-const imageList = [
-  '/lovable-uploads/entity.png',
-  '/lovable-uploads/lender.png',
-  '/lovable-uploads/score.png',
-  '/lovable-uploads/loan.png',
-];
-// Second slider images and texts
-const imageList2 = [
-  '/lovable-uploads/interest.png',
-  '/lovable-uploads/tenure.png',
-  '/lovable-uploads/fee.png',
-  '/lovable-uploads/repayment.png',
-];
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  show: (i = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.7, delay: i * 0.15, ease: 'easeOut' as const } }),
+};
+
+const pad = (n: number) => String(n).padStart(2, '0');
+
+const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+const SectionHeading = ({ eyebrow, title, subtitle }: { eyebrow?: string; title: string; subtitle?: string }) => (
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.4 }}
+    className="mx-auto mb-12 max-w-3xl text-center md:mb-16"
+  >
+    {eyebrow && (
+      <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-orange-600 dark:border-orange-500/30 dark:bg-orange-500/10 dark:text-orange-300">
+        <Sparkles className="h-3.5 w-3.5" />
+        {eyebrow}
+      </span>
+    )}
+    <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl dark:text-white">{title}</h2>
+    {subtitle && <p className="mt-4 text-lg text-gray-600 dark:text-slate-300">{subtitle}</p>}
+  </motion.div>
+);
+
+type FaqCardProps = {
+  question: string;
+  answer: string;
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+};
+
+const FaqCard = ({ question, answer, index, isOpen, onToggle }: FaqCardProps) => (
+  <motion.div
+    variants={fadeUp}
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.3 }}
+    custom={Math.min(index, 3) * 0.5}
+    className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+      isOpen
+        ? 'border-orange-500 bg-white shadow-xl shadow-orange-500/15 dark:border-orange-500/70 dark:bg-slate-800'
+        : 'border-gray-200 bg-white shadow-sm hover:border-orange-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-800/60 dark:hover:border-orange-500/50'
+    }`}
+  >
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={isOpen}
+      aria-controls={`home-faq-${index}-content`}
+      className="flex w-full items-center gap-4 px-5 py-5 text-left md:px-6"
+    >
+      <span
+        className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl font-mono text-sm font-bold transition-colors duration-300 ${
+          isOpen
+            ? 'bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/30'
+            : 'bg-orange-50 text-orange-600 dark:bg-orange-500/10 dark:text-orange-400'
+        }`}
+      >
+        {pad(index + 1)}
+      </span>
+      <span
+        className={`home-faq-q flex-1 text-base font-semibold md:text-lg ${
+          isOpen ? 'text-orange-600 dark:text-orange-400' : 'text-gray-900 dark:text-white'
+        }`}
+      >
+        {question}
+      </span>
+      <span
+        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 transition-all duration-300 ${
+          isOpen
+            ? 'rotate-45 border-orange-500 bg-orange-500 text-white'
+            : 'border-gray-200 text-gray-500 dark:border-slate-600 dark:text-slate-300'
+        }`}
+      >
+        <Plus className="h-4 w-4" />
+      </span>
+    </button>
+
+    <AnimatePresence initial={false}>
+      {isOpen && (
+        <motion.div
+          id={`home-faq-${index}-content`}
+          key="content"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.35, ease: 'easeOut' }}
+          className="overflow-hidden"
+        >
+          <div className="px-5 pb-6 md:pl-[5.5rem] md:pr-8">
+            <div className="mb-4 h-px w-full bg-gradient-to-r from-orange-500/40 to-transparent md:hidden" />
+            <p className="text-base leading-relaxed text-gray-600 dark:text-slate-300">{answer}</p>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </motion.div>
+);
 
 const Index = () => {
   const { t, currentLanguage } = useLanguage();
-  const [theme, setTheme] = useState("light");
-  // Add state for tada animation
-  const [tada, setTada] = useState(false);
-  // Add state for wave animation
-  const [wave, setWave] = useState(false);
-  const waveTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const tadaTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [openFAQ, setOpenFAQ] = useState<number | null>(null);
-  // Animation states for image fade-in
-  const [showRows, setShowRows] = useState(false);
-  const totalCells = imageList.length + imageList2.length;
-  const [visibleCells, setVisibleCells] = useState(0);
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
+  const [openFAQ, setOpenFAQ] = useState<number | null>(0);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const isEnglish = currentLanguage === 'en';
 
   // Load saved theme
   useEffect(() => {
-    const saved = localStorage.getItem("theme");
+    const saved = localStorage.getItem('theme');
     if (saved) {
-      setTheme(saved);
-      document.documentElement.classList.toggle("dark", saved === "dark");
+      document.documentElement.classList.toggle('dark', saved === 'dark');
     }
   }, []);
 
+  // The chatbot widget asks the page to resize its iframe
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
-      if (event.data?.type === "AUDIO_RECORDER_CLICKED") {
-        console.log("🔹 Adjusting iframe height:", event.data.data);
-        const iframe = document.getElementById("chatbotIframe") as HTMLIFrameElement;
+      if (event.data?.type === 'AUDIO_RECORDER_CLICKED') {
+        const iframe = document.getElementById('chatbotIframe') as HTMLIFrameElement;
         if (iframe) {
           iframe.style.height = `${event.data.data}`;
         }
       }
     };
 
-    window.addEventListener("message", handleMessage);
-    return () => window.removeEventListener("message", handleMessage);
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
   }, []);
 
-  // Animation effect:
-  useEffect(() => {
-    let timeout;
-    if (showRows && visibleCells < totalCells) {
-      timeout = setTimeout(() => setVisibleCells(visibleCells + 1), 600);
-    }
-    return () => clearTimeout(timeout);
-  }, [showRows, visibleCells, totalCells]);
-
-  // Use translations for slider texts
-  const imageTexts = [
-    t('home.hero.second-heading.checks1'),
-    t('home.hero.second-heading.checks2'),
-    t('home.hero.second-heading.checks3'),
-    t('home.hero.second-heading.checks4'),
-  ];
-  const imageTexts2 = [
-    t('home.hero.second-heading.checks5'),
-    t('home.hero.second-heading.checks6'),
-    t('home.hero.second-heading.checks7'),
-    t('home.hero.second-heading.checks8'),
-  ];
-
-  const toggleFAQ = (index: number) => {
-    setOpenFAQ(openFAQ === index ? null : index);
+  const scrollToTrust = (e: React.MouseEvent) => {
+    e.preventDefault();
+    document.getElementById('trust')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const faqs = [
-    { q: t("home.faq.q1"), a: t("home.faq.a1") },
-    { q: t("home.faq.q2"), a: t("home.faq.a2") },
-    { q: t("home.faq.q3"), a: t("home.faq.a3") },
-    { q: t("home.faq.q4"), a: t("home.faq.a4") },
-    { q: t("home.faq.q5"), a: t("home.faq.a5") },
-    { q: t("home.faq.q6"), a: t("home.faq.a6") },
-    { q: t("home.faq.q7"), a: t("home.faq.a7") },
+  const faqs = [1, 2, 3, 4, 5, 6, 7].map((n) => ({
+    q: t(`home.faq.q${n}`),
+    a: t(`home.faq.a${n}`),
+  }));
+
+  const trustCards = [
+    { icon: Clock, label: t('home.trustBuilders.timeline'), description: t('home.trustBuilders.timelineDesc') },
+    { icon: Wallet, label: t('home.trustBuilders.freeService'), description: t('home.trustBuilders.freeServiceDesc') },
+    {
+      icon: ShieldCheck,
+      label: t('home.trustBuilders.rbiRegistered'),
+      tag: t('home.trustBuilders.rbiNBFC'),
+      description: t('home.trustBuilders.rbiRegisteredDesc'),
+    },
   ];
-
-  // Periodically trigger wave and tada animations
-  useEffect(() => {
-    const triggerWaveAndTada = () => {
-      setWave(true);
-      setTada(true);
-      // Remove wave after animation duration
-      waveTimeoutRef.current = setTimeout(() => setWave(false), 1200);
-      // Remove tada after animation duration
-      tadaTimeoutRef.current = setTimeout(() => setTada(false), 1000);
-    };
-    triggerWaveAndTada();
-    const interval = setInterval(triggerWaveAndTada, 4000);
-    return () => {
-      clearInterval(interval);
-      if (waveTimeoutRef.current) clearTimeout(waveTimeoutRef.current);
-      if (tadaTimeoutRef.current) clearTimeout(tadaTimeoutRef.current);
-    };
-  }, []);
-
-  // Trigger tada on hover
-  const handleImpactHover = () => {
-    setTada(true);
-    if (tadaTimeoutRef.current) clearTimeout(tadaTimeoutRef.current);
-    tadaTimeoutRef.current = setTimeout(() => setTada(false), 1000);
-  };
-
-  // Video play state for custom thumbnail
-  const [videoPlaying, setVideoPlaying] = useState(false);
-
-  useEffect(() => {
-    let hideTimeout: ReturnType<typeof setTimeout>;
-    let showTimeout: ReturnType<typeof setTimeout>;
-
-    if (!showRows) {
-      // Show rows after 2 seconds
-      showTimeout = setTimeout(() => {
-        setShowRows(true);
-        setVisibleCells(0);
-      }, 2000);
-    } else if (visibleCells === totalCells) {
-      // Animation finished, hide after 2 seconds
-      hideTimeout = setTimeout(() => {
-        setShowRows(false);
-      }, 4000);
-    }
-
-    return () => {
-      if (hideTimeout) clearTimeout(hideTimeout);
-      if (showTimeout) clearTimeout(showTimeout);
-    };
-  }, [showRows, visibleCells, totalCells]);
 
   return (
-    <div className="min-h-screen relative font-raleway overflow-x-hidden" lang={currentLanguage}>
+    <div className="min-h-screen bg-white transition-colors dark:bg-slate-950" lang={currentLanguage}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        @keyframes home-float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-20px) } }
+        .home-float { animation: home-float 8s ease-in-out infinite; }
+        .home-float-slow { animation: home-float 11s ease-in-out infinite; }
 
-        .font-raleway {
-          font-family: 'Raleway', sans-serif;
+        /* Impact box: tada shake for the first second of every 4s cycle, and once more on hover */
+        @keyframes impact-tada {
+          0%, 25%, 100% { transform: scale3d(1, 1, 1); }
+          2.5%, 5% { transform: scale3d(0.95, 0.95, 0.95) rotate(-3deg); }
+          7.5%, 12.5%, 17.5%, 22.5% { transform: scale3d(1.05, 1.05, 1.05) rotate(3deg); }
+          10%, 15%, 20% { transform: scale3d(1.05, 1.05, 1.05) rotate(-3deg); }
+        }
+        @keyframes impact-tada-once {
+          0%, 100% { transform: scale3d(1, 1, 1); }
+          10%, 20% { transform: scale3d(0.95, 0.95, 0.95) rotate(-3deg); }
+          30%, 50%, 70%, 90% { transform: scale3d(1.05, 1.05, 1.05) rotate(3deg); }
+          40%, 60%, 80% { transform: scale3d(1.05, 1.05, 1.05) rotate(-3deg); }
+        }
+        .impact-shake { animation: impact-tada 4s ease-in-out 1.5s infinite; }
+        .impact-shake:hover { animation: impact-tada-once 1s ease-in-out; }
+        /* Tamil, Telugu and Kannada words run long, so they get smaller type than the other languages */
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h1 { font-size: 1.25rem; line-height: 1.4; }
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h2 { font-size: 1.0625rem; line-height: 1.45; }
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h3 { font-size: 1rem; line-height: 1.45; }
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main p { font-size: 0.8125rem; line-height: 1.7; }
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main .home-faq-q { font-size: 0.8125rem; }
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main a.rounded-full { font-size: 0.75rem; }
+        :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main .tracking-widest { font-size: 0.625rem; }
+        @media (min-width: 640px) {
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h1 { font-size: 1.5rem; }
+        }
+        @media (min-width: 768px) {
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h1 { font-size: 1.75rem; }
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h2 { font-size: 1.375rem; }
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h3 { font-size: 1.125rem; }
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main p { font-size: 0.875rem; }
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main .home-faq-q { font-size: 0.875rem; }
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main a.rounded-full { font-size: 0.8125rem; }
+          :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main .tracking-widest { font-size: 0.6875rem; }
         }
 
-        .font-roboto {
-          font-family: 'Roboto', sans-serif;
-        }
-        .ml-1 {
-            color: #fff;
+        @media (prefers-reduced-motion: reduce) {
+          .impact-shake, .impact-shake:hover { animation: none; }
         }
 
         #chatbotIframe {
@@ -179,697 +229,348 @@ const Index = () => {
           height: 0;
           transition: height 0.3s ease-in-out;
         }
-
-        /* Add cursor animation */
-        .animate-slide-in-right::after {
-          content: '|';
-          animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-          from, to { opacity: 1; }
-          50% { opacity: 0; }
-        }
-
-        /* Responsive breakpoints */
-        @media (max-width: 1920px) {
-          .container {
-            max-width: 1920px;
-          }
-          h1 {
-            font-size: 56px;
-            line-height:52px;
-          }
-          h2 {
-            font-size: 48px;
-          }
-          h3 {
-            font-size: 36px;
-          }
-          h4{
-            font-size:44px;
-          }
-          h5{
-          font-size:24px;
-          }
-           h6{
-          font-size:20px;
-          }
-          p {
-            font-size: 18px;
-          }
-          /* Non-English font sizes */
-          [lang]:not([lang="en"]) h1 {
-            font-size: 44px;
-          }
-          [lang]:not([lang="en"]) h2 {
-            font-size: 36px;
-          }
-          [lang]:not([lang="en"]) h3 {
-            font-size: 26px;
-          }
-          [lang]:not([lang="en"]) h5 {
-            font-size: 24px;
-          }
-          [lang]:not([lang="en"]) h6 {
-            font-size: 20px;
-          }
-          [lang]:not([lang="en"]) p {
-            font-size: 18px;
-          }
-        }
-
-        @media (max-width: 1440px) {
-          .container {
-            max-width: 1440px;
-          }
-          h1 {
-            font-size: 64px;
-            line-height:1em;
-          }
-          h2 {
-            font-size: 48px;
-          }
-          h3 {
-            font-size: 26px;
-          }
-          h4{
-            font-size: 24px;
-          }
-          h5{
-             font-size: 22px;
-          }
-          h6{
-             font-size: 20px;
-          }
-          p {
-            font-size: 16px;
-          }
-          /* Non-English font sizes */
-          [lang]:not([lang="en"]) h1 {
-            font-size: 36px;
-          }
-          [lang]:not([lang="en"]) h2 {
-            font-size: 28px;
-          }
-          [lang]:not([lang="en"]) h3 {
-            font-size: 22px;
-          }
-          [lang]:not([lang="en"]) h5 {
-            font-size: 20px;
-          }
-          [lang]:not([lang="en"]) h6 {
-            font-size: 18px;
-          }
-          [lang]:not([lang="en"]) p {
-            font-size: 16px;
-          }
-        }
-
         @media (max-width: 780px) {
-          #chatbotIframe {
-            height: 250px;
-          }
-          h1 {
-            font-size: 36px;
-          }
-          h2 {
-            font-size: 28px;
-          }
-          h3 {
-            font-size: 20px;
-          }
-          h4{
-            font-size: 28px;
-          }
-          h5{
-            font-size: 20px;
-          }
-          h6{
-            font-size: 18px;
-          }
-          p {
-            font-size: 16px;
-          }
-      
-          /* Non-English font sizes */
-          [lang]:not([lang="en"]) h1 {
-            font-size: 24px;
-          }
-          [lang]:not([lang="en"]) h2 {
-            font-size: 20px;
-          }
-          [lang]:not([lang="en"]) h3 {
-            font-size: 18px;
-          }
-          [lang]:not([lang="en"]) h5 {
-            font-size: 16px;
-          }
-          [lang]:not([lang="en"]) h6 {
-            font-size: 16px;
-          }
-          [lang]:not([lang="en"]) p {
-            font-size: 16px;
-          }
-          .container {
-            max-width: 780px;
-          }
-        }
-
-        @media (max-width: 480px) {
-          h1 {
-            font-size: 24px;
-          }
-          h2 {
-            font-size: 26px;
-          }
-          h3 {
-            font-size: 24px;
-          }
-          h4 {
-            font-size: 22px;
-          }
-          h5 {
-            font-size: 20px;
-          }
-          h6{
-          font-size: 16px;
-          }
-          p {
-            font-size: 12px;
-          }
-
-          /* Non-English font sizes */
-          [lang]:not([lang="en"]) h1 {
-            font-size: 28px;
-          }
-          [lang]:not([lang="en"]) h2 {
-            font-size: 20px;
-          }
-          [lang]:not([lang="en"]) h3 {
-            font-size: 18px;
-          }
-          [lang]:not([lang="en"]) h5 {
-            font-size: 16px;
-          }
-          [lang]:not([lang="en"]) h6 {
-            font-size: 16px;
-          }
-          [lang]:not([lang="en"]) p {
-            font-size: 12px;
-          }
-          .container {
-            max-width: 100%;
-            padding-left: 1rem;
-            padding-right: 1rem;
-          }
-        }
-
-        .fade-in {
-          opacity: 0;
-          animation: fadeIn 0.7s forwards;
-        }
-        @keyframes fadeIn {
-          to {
-            opacity: 1;
-          }
-        }
-        /* Tada animation */
-        @keyframes tada {
-          0% { transform: scale3d(1, 1, 1); }
-          10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate(-3deg); }
-          30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate(3deg); }
-          40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate(-3deg); }
-          100% { transform: scale3d(1, 1, 1); }
-        }
-        .animate-tada {
-          animation: tada 1s;
-        }
-        /* Impact Card hover scale */
-        .impact-card {
-          transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s;
-        }
-        .impact-card:hover {
-          transform: scale(1.07);
-          box-shadow: 0 8px 32px 0 rgba(255,140,0,0.25);
-        }
-        /* Orange wave animation */
-        .impact-wave {
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          width: 120%;
-          height: 120%;
-          pointer-events: none;
-          z-index: 1;
-        }
-        .impact-wave-animate {
-          animation: impactWaveSpread 1.2s cubic-bezier(0.4,0,0.2,1);
-        }
-        @keyframes impactWaveSpread {
-          0% {
-            opacity: 0.5;
-            transform: translate(-50%, -50%) scale(0.7);
-          }
-          60% {
-            opacity: 0.25;
-            transform: translate(-50%, -50%) scale(1.1);
-          }
-          100% {
-            opacity: 0;
-            transform: translate(-50%, -50%) scale(1.5);
-          }
+          #chatbotIframe { height: 250px; }
         }
       `}</style>
 
       <Navbar />
-      {/* Hero Section */}
-      <section className="z-0 overflow-x-hidden relative min-h-screen flex items-center justify-center overflow-hidden container bg-white text-black
-         dark:bg-gradient-to-br dark:from-blue-900 dark:via-slate-800 dark:to-slate-900 dark:text-white">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-36 gap-8 items-center">
 
-            {/* Left Content */}
-            <div className="text-left animate-fade-in pt-36 md:pt-12 lg:pt-2">            
-              <h5 className="max-w-xl leading-relaxed animate-fade-in text-orange-500 font-semibold" style={{ animationDelay: '0.6s' }}>
-                <span>{t('home.hero.subtitle1')}</span>
-              </h5>
-            </div>
+      <main className="home-main">
+      {/* Banner */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
+        <div className="home-float pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-orange-400/20 blur-3xl dark:bg-orange-500/30" />
+        <div className="home-float-slow pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-amber-300/30 blur-3xl dark:bg-orange-400/20" />
+        <div
+          className="pointer-events-none absolute inset-0 text-gray-900 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
 
+        <div className="relative mx-auto grid min-h-[80vh] max-w-7xl grid-cols-1 items-center gap-12 px-4 pb-24 pt-16 sm:px-6 lg:grid-cols-5 lg:px-8">
+          {/* Left content */}
+          <div className="text-center lg:col-span-3 lg:text-left">
+            <motion.span
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              className="mb-6 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-orange-600 backdrop-blur sm:text-sm dark:border-white/20 dark:bg-white/10 dark:text-orange-300"
+            >
+              <GraduationCap className="h-4 w-4" />
+              {t('home.concept.subtitle')}
+            </motion.span>
 
-            {/* Right Content */}
-            <div className="flex flex-col mb-6 gap-8 items-center">
+            <motion.h1
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={1}
+              className={`font-extrabold leading-tight ${
+                isEnglish ? 'text-4xl sm:text-5xl md:text-6xl' : 'text-3xl sm:text-4xl md:text-5xl'
+              }`}
+            >
+              <span className="block text-gray-900 dark:text-white">{t('home.concept.title1')}</span>
+              <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-300">
+                {t('home.concept.title2')}
+              </span>
+            </motion.h1>
 
-              {/* Images Row */}
-              <div className="flex flex-col gap-0 w-full">
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={2}
+              className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 md:text-xl lg:mx-0 dark:text-gray-300"
+            >
+              {t('home.hero.subtitle1')}
+            </motion.p>
 
-                {/* Heading */}
-                <div
-                  className={`
-              text-lg font-bold text-center transition-opacity duration-700
-              ${showRows ? 'opacity-100' : 'opacity-0'}
-            `}
-                >
-                  <h3 className="text-base text-orange-500 dark:text-white">{t('home.hero.second-heading.title')}</h3>
-                  <h3 className="text-base text-orange-500 mb-4 dark:text-white">{t('home.hero.second-heading.title1')}</h3>
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={3}
+              className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start"
+            >
+              <Link
+                to="/contact"
+                onClick={scrollToTop}
+                className="group inline-flex items-center gap-3 rounded-full bg-orange-500 py-3 pl-3 pr-8 font-semibold text-white shadow-lg shadow-orange-500/40 transition hover:-translate-y-0.5 hover:bg-orange-600"
+              >
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-orange-500 transition-transform duration-300 group-hover:scale-110">
+                  <ArrowRight className="h-5 w-5" />
+                </span>
+                {t('home.hero.cta')}
+              </Link>
+              <Link
+                to="/services"
+                onClick={scrollToTop}
+                className="inline-flex items-center justify-center rounded-full border-2 border-orange-500 px-8 py-3.5 font-semibold text-orange-600 transition hover:-translate-y-0.5 hover:bg-orange-500 hover:text-white dark:text-orange-300 dark:hover:text-white"
+              >
+                {t('home.hero.learnMore')}
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Right content: quick-action cards */}
+          <div className="mx-auto w-full max-w-md space-y-5 lg:col-span-2">
+            <motion.div variants={fadeUp} initial="hidden" animate="show" custom={2}>
+              <Link
+                to="/credit-doctor"
+                onClick={scrollToTop}
+                className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-white shadow-2xl shadow-orange-500/30 transition-all duration-300 hover:-translate-y-1 md:p-8 dark:from-orange-600 dark:to-amber-600 dark:shadow-orange-900/40"
+              >
+                <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
+                <div className="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 rounded-full bg-white/10" />
+                <div className="relative">
+                  <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+                    <HeartPulse className="h-7 w-7" />
+                  </span>
+                  <h2 className="text-2xl font-bold leading-snug text-white md:text-3xl">{t('home.hero.popup1')}</h2>
+                  <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-orange-600 shadow-lg">
+                    {t('home.hero.popupbutton')}
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
                 </div>
+              </Link>
+            </motion.div>
 
-                {/* Image Grid */}
-                <div className={`transition-opacity duration-700 ${showRows ? 'opacity-100' : 'opacity-0'}`}>
-                  <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-2">
-
-                    {imageList.map((img, idx) => (
-                      <div
-                        key={img}
-                        className="flex flex-col items-center justify-center flex-1 min-w-0 h-32"
-                      >
-                        <img
-                          src={img}
-                          alt={imageTexts[idx]}
-                          className={` rounded-xl p-2 w-16 h-16 object-contain bg-black/10 dark:bg-white/10 transition-all duration-500           
-                                       ${visibleCells > idx ? 'opacity-100 animate-fade-in' : 'opacity-0'} `} />
-                        <span
-                          className={` mt-2 text-center text-xs font-medium w-full h-10 overflow-hidden transition-all duration-500 text-black dark:text-white
-                             ${visibleCells > idx ? 'opacity-100' : 'opacity-0'}`}
-                        >
-                          {visibleCells > idx ? imageTexts[idx] : ''}
-                        </span>
-                      </div>
-                    ))}
-
-                  </div>
-
-                  {/* 2nd Row */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 w-full gap-2">
-                    {imageList2.map((img, idx) => (
-                      <div
-                        key={img}
-                        className="flex flex-col items-center justify-center flex-1 min-w-0 h-32"
-                      >
-                        <img
-                          src={img}
-                          alt={imageTexts2[idx]}
-                          className={`
-                      rounded-xl p-2 w-16 h-16 object-contain
-                      bg-black/10 dark:bg-white/10
-                      transition-all duration-500 
-                      ${visibleCells > idx + imageList.length ? 'opacity-100 animate-fade-in' : 'opacity-0'}
-                    `}
-                        />
-                        <span
-                          className={`
-                      mt-2 text-center text-xs font-medium w-full h-10 overflow-hidden
-                      text-black dark:text-white
-                      transition-all duration-500
-                      ${visibleCells > idx + imageList.length ? 'opacity-100' : 'opacity-0'}
-                    `}
-                        >
-                          {visibleCells > idx + imageList.length ? imageTexts2[idx] : ''}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+            <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3}>
+              <div className="impact-shake">
+              <Link
+                to="/impact"
+                onClick={scrollToTop}
+                className="group flex items-center gap-4 rounded-2xl border border-orange-200 bg-white/80 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/15 dark:border-white/15 dark:bg-white/5 dark:hover:border-orange-500/60"
+              >
+                <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-400 group-hover:text-white group-hover:shadow-lg group-hover:shadow-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400">
+                  <TrendingUp className="h-6 w-6" />
+                </span>
+                <div className="flex-1">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('home.hero.impact.title')}</h3>
+                  <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">{t('home.hero.impact.description')}</p>
                 </div>
+                <ArrowRight className="h-5 w-5 shrink-0 text-orange-500 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
               </div>
+            </motion.div>
+          </div>
+        </div>
 
-              {/* Impact Card */}
-              <div
-                className={`
-                  impact-card 
-                  bg-orange-500 dark:bg-gradient-to-br dark:from-orange-500 dark:to-orange-600
-                  transition-all duration-500 rounded-3xl p-6 max-w-[400px] cursor-pointer 
-                  shadow-2xl relative mx-auto 
-                  ${tada ? 'animate-tada' : ''}
-                `} onMouseEnter={handleImpactHover} >
-                {wave && (
-                  <span
-                    className="impact-wave impact-wave-animate"
-                    style={{
-                      background: 'radial-gradient(circle, rgba(255,140,0,0.25) 0%, rgba(255,140,0,0.10) 60%, transparent 100%)',
-                    }}
+        <button
+          type="button"
+          onClick={scrollToTrust}
+          aria-label="Scroll to next section"
+          className="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce text-gray-400 transition hover:text-orange-500 dark:text-white/70 dark:hover:text-white"
+        >
+          <ChevronDown className="h-8 w-8" />
+        </button>
+      </section>
+
+      {/* Trust builders */}
+      <section id="trust" className="scroll-mt-24 bg-white py-16 transition-colors md:py-24 dark:bg-slate-950">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading title={t('home.trustBuilders.title')} />
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {trustCards.map(({ icon: Icon, label, tag, description }, index) => (
+              <motion.div
+                key={index}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.3 }}
+                custom={index * 0.5}
+                className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange-500 hover:shadow-xl hover:shadow-orange-500/15 md:p-8 dark:border-slate-700 dark:bg-slate-800/60 dark:hover:border-orange-500/70"
+              >
+                <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-orange-400/10 transition-transform duration-500 group-hover:scale-125" />
+                <span className="relative mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-50 text-orange-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-400 group-hover:text-white group-hover:shadow-lg group-hover:shadow-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400">
+                  <Icon className="h-7 w-7" />
+                </span>
+                {tag && (
+                  <span className="relative mb-2 inline-block rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-orange-600 dark:bg-orange-500/10 dark:text-orange-300">
+                    {tag}
+                  </span>
+                )}
+                <h3 className="relative bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-3xl font-extrabold text-transparent md:text-4xl dark:from-orange-400 dark:to-amber-300">
+                  {label}
+                </h3>
+                <p className="relative mt-3 text-base leading-relaxed text-gray-600 dark:text-slate-300">{description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Mission video */}
+      <section className="bg-gradient-to-b from-orange-50/60 to-white py-16 transition-colors md:py-24 dark:from-slate-900 dark:to-slate-950">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-5">
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              className="text-center lg:col-span-2 lg:text-left"
+            >
+              <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-orange-200 bg-orange-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-orange-600 dark:border-orange-500/30 dark:bg-orange-500/10 dark:text-orange-300">
+                <PlayCircle className="h-3.5 w-3.5" />
+                Samatva
+              </span>
+              <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl dark:text-white">
+                {t('home.videoSection.title')}
+              </h2>
+              <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 lg:mx-0" />
+              <p className="mt-6 text-lg leading-relaxed text-gray-600 dark:text-slate-300">{t('home.videoSection.subtitle1')}</p>
+              <p className="mt-4 text-lg leading-relaxed text-gray-600 dark:text-slate-300">{t('home.videoSection.subtitle2')}</p>
+            </motion.div>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={1}
+              className="relative mx-auto w-full max-w-3xl lg:col-span-3"
+            >
+              <div className="absolute -inset-3 rotate-2 rounded-3xl bg-gradient-to-br from-orange-500 to-amber-400 opacity-20 dark:opacity-40" />
+              <div className="relative aspect-video overflow-hidden rounded-3xl bg-black shadow-2xl ring-1 ring-black/5">
+                {!videoPlaying ? (
+                  <button
+                    type="button"
+                    className="group block h-full w-full focus:outline-none"
+                    onClick={() => setVideoPlaying(true)}
+                    aria-label="Play video"
+                  >
+                    <img
+                      src="/lovable-uploads/thumbnail.png"
+                      alt="Samatva Credit Solutions Video Thumbnail"
+                      className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/10" />
+                    <span className="absolute inset-0 flex items-center justify-center">
+                      <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white/90 text-orange-500 shadow-2xl transition-transform duration-300 group-hover:scale-110">
+                        <PlayCircle className="h-12 w-12" />
+                      </span>
+                    </span>
+                  </button>
+                ) : (
+                  <iframe
+                    src="https://www.youtube.com/embed/LryCtez2-yk?autoplay=1&controls=0&rel=0&showinfo=0&modestbranding=1"
+                    title="Samatva Credit Solutions"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="h-full w-full"
                   />
                 )}
-
-                <Link to="/Impact" onClick={scrollToTop} className="block relative z-10">
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="bg-white/20 p-1 rounded-xl animate-pulse-glow">
-                      <TrendingUp className="text-white" size={20} />
-                    </div>
-                    <h5 className="font-bold text-white pl-4">
-                      {t('home.hero.impact.title')}
-                    </h5>
-                  </div>
-
-                  <p className="text-white/95 leading-relaxed">
-                    {t('home.hero.impact.description')}
-                  </p>
-                </Link>
-              </div>          
-            </div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-
-      {/* Concept Section with Enhanced Background */}
-      <section className="pt-16 pb-12 pl-2 pr-2 relative overflow-hidden bg-white text-black dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 dark:text-white z-auto">
-  {/* Floating elements only in dark mode */}
-  <div className="absolute inset-0 opacity-5 hidden dark:block pointer-events-none">
-    <div className="top-32 right-32 w-80 h-80 rounded-full border border-white/20 animate-float-medium"></div>
-    <div className="bottom-32 left-32 w-96 h-96 rounded-full border border-orange-500/30 animate-float-slow"></div>
-
-    {Array.from({ length: 15 }).map((_, i) => (
-      <div
-        key={i}
-        className="absolute w-2 h-2 bg-orange-500/20 rounded-full animate-float-particle-0"
-        style={{
-          left: `${Math.random() * 100}%`,
-          top: `${Math.random() * 100}%`,
-          animationDelay: `${Math.random() * 8}s`,
-        }}
-      />
-    ))}
-  </div>
-
-  {/* Content */}
-  <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 relative z-10">
-    <div className="text-center mb-16">
-      <h2 className="font-bold animate-fade-in">
-        <span className="block text-orange-500 dark:text-white">
-          {t('home.concept.title1')}
-        </span>
-      </h2>
-
-      <h2 className="font-bold mb-6 animate-fade-in">
-        <span className="text-orange-500 block mb-8">
-          {t('home.concept.title2')}
-        </span>
-      </h2>
-
-      <p className="mb-12 animate-fade-in text-blue-900 font-bold dark:text-white" style={{ animationDelay: '0.3s' }}>
-        {t('home.concept.subtitle')}
-      </p>
-    </div>
-
-    {/* CTA Buttons */}
-    <div
-      className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center max-w-8xl mx-auto animate-fade-in"
-      style={{ animationDelay: '0.6s' }}
-    >
-      <Link
-        to="/Contact"
-        onClick={scrollToTop}
-        className="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 min-w-[200px] sm:min-w-[280px]"
-      >
-        {t('home.hero.cta')}
-        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-      </Link>
-
-      <Link
-        to="/Services"
-        onClick={scrollToTop}
-        className="w-full sm:w-auto border-2 border-orange-500 text-orange-600 dark:text-orange-500 hover:bg-orange-500 hover:text-white dark:hover:text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2 text-xs sm:text-lg px-4 sm:px-8 py-3 sm:py-4 min-w-[200px] sm:min-w-[280px]"
-      >
-        {t('home.hero.learnMore')}
-        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-      </Link>
-    </div>
-  </div>
-      </section>
-
-
-
-      {/* Trust Builders with subtle animations */}
-      <section
-        className="z-0 pt-16 pb-12 relative overflow-hidden bg-white dark:bg-slate-800 dark:text-white" >
-        {/* Floating particles */}
-        <div className="absolute inset-0">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <div
-              key={i}
-              className=" absolute w-1 h-1 rounded-full bg-black/10 dark:bg-white/10 animate-float-particle-1 "
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 12}s`,
-              }}
+      {/* Chatbot */}
+      <section className="bg-white py-16 transition-colors md:py-20 dark:bg-slate-950">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="overflow-hidden rounded-3xl border border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50 p-4 shadow-xl shadow-orange-500/10 md:p-6 dark:border-orange-500/30 dark:from-slate-900 dark:to-slate-800"
+          >
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/30">
+                <Bot className="h-5 w-5" />
+              </span>
+              <span className="font-semibold text-gray-900 dark:text-white">Samatva Assistant</span>
+            </div>
+            <iframe
+              id="chatbotIframe"
+              title="Samatva Assistant"
+              src="https://shabd.tech/widget/chatpage?name=samatva&authKey=afd9a6b4-03fd-11f0-aabd-047c1692d8ad"
+              allow="microphone"
+              sandbox="allow-scripts allow-same-origin allow-modals allow-forms allow-popups allow-presentation allow-downloads allow-pointer-lock allow-top-navigation allow-top-navigation-by-user-activation"
+              className="rounded-2xl"
             />
-          ))}
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-0">
-          {/* Title */}
-          <div className="text-center mb-16">
-            <h2 className="font-bold text-orange-500 dark:text-white mb-6 animate-fade-in">
-              {t("home.trustBuilders.title")}
-            </h2>
-          </div>
-
-          {/* Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-            {/* Card 1 */}
-            <div
-              className=" flex flex-col pt-10 pb-10 justify-center items-center h-full text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-1 bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600
-                          border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
-              <div className="text-4xl md:text-5xl font-bold text-orange-500 mb-2 md:mb-4 font-roboto">
-                {t("home.trustBuilders.timeline").split(" ")[0]}
-              </div>
-              <div className="md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4 font-roboto">
-                {t("home.trustBuilders.timeline").split(" ")[1]}
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
-                {t("home.trustBuilders.timelineDesc")}
-              </p>
-            </div>
-
-            {/* Card 2 */}
-            <div
-              className=" flex flex-col pt-10 pb-10 justify-center items-center text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-2 
-                          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600 border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
-              <div className="text-4xl md:text-4xl font-bold text-blue-900 dark:text-green-500 mb-2 md:mb-4">
-                {t("home.trustBuilders.freeService").split(" ")[0]}
-              </div>
-              <div className="text-xl md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4">
-                {t("home.trustBuilders.freeService").split(" ").slice(1).join(" ")}
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
-                {t("home.trustBuilders.freeServiceDesc")}
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div
-              className=" flex flex-col pt-10 pb-10 justify-center items-center h-full text-center rounded-3xl transition-all hover:scale-105 animate-scale-in stagger-3
-                          bg-white dark:bg-gradient-to-br dark:from-slate-700 dark:to-slate-600 border border-orange-300 dark:border-slate-500 shadow-md dark:shadow-none ">
-              <div className="md:text-5xl font-bold text-orange-500 mb-2 md:mb-4">
-                <h4>{t("home.trustBuilders.rbiNBFC")}</h4>
-              </div>
-              <div className="md:text-2xl font-bold text-orange-500 dark:text-white mb-2 md:mb-4">
-                <h5>{t("home.trustBuilders.rbiRegistered")}</h5>
-              </div>
-              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
-                {t("home.trustBuilders.rbiRegisteredDesc")}
-              </p>
-            </div>
-
-          </div>
+          </motion.div>
         </div>
       </section>
 
+      {/* FAQ */}
+      <section className="bg-gray-50 py-16 transition-colors md:py-24 dark:bg-slate-900">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <SectionHeading eyebrow="FAQ" title={t('faq.title')}  />
 
-      {/* Video Section */}
-      <section className="p-8 bg-white dark:bg-slate-900 text-center z-0">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className=" font-bold text-orange-500 dark:text-white animate-fade-in z-0">
-            {t('home.videoSection.title')}
-          </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
-                {t('home.videoSection.subtitle1')}
-              </p>
-              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg px-8">
-                {t("home.videoSection.subtitle2")}
-              </p>
-        </div>
-      </section>
-      {/* Video Section */}
-      <section className="p-8 bg-white dark:bg-slate-900 text-center z-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="z-0 relative rounded-3xl overflow-hidden shadow-2xl bg-white dark:bg-black animate-scale-in" style={{ minHeight: 300 }}>
-            {!videoPlaying ? (
-              <button
-                className="group w-full h-full block focus:outline-none"
-                style={{ position: 'relative', width: '100%', minHeight: 300 }}
-                onClick={() => setVideoPlaying(true)}
-                aria-label="Play video"
-              >
-                <img
-                  src="/lovable-uploads/thumbnail.png"
-                  alt="Samatva Credit Solutions Video Thumbnail"
-                  className="w-full h-[300px] sm:h-[500px] object-cover object-center block"
-                  style={{ display: 'block' }}
-                />
-                <span
-                  className="absolute inset-0 flex items-center justify-center"
-                  style={{ pointerEvents: 'none' }}
-                >
-                  <PlayCircle size={80} className="text-white/90 group-hover:text-orange-500 transition-colors drop-shadow-lg" />
-                </span>
-              </button>
-            ) : (
-              <iframe
-                width="100%"
-                height="500"
-                src="https://www.youtube.com/embed/LryCtez2-yk?autoplay=1&controls=0&rel=0&showinfo=0&modestbranding=1"
-                title="Samatva Credit Solutions"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{ display: 'block', width: '100%', height: 500 }}
+          <div className="space-y-4">
+            {faqs.map((item, index) => (
+              <FaqCard
+                key={index}
+                question={item.q}
+                answer={item.a}
+                index={index}
+                isOpen={openFAQ === index}
+                onToggle={() => setOpenFAQ(openFAQ === index ? null : index)}
               />
-            )}
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link
+              to="/faq"
+              onClick={scrollToTop}
+              className="group inline-flex items-center gap-2 font-semibold text-orange-600 transition hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300"
+            >
+              <HelpCircle className="h-5 w-5" />
+              {t('nav.faq')}
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>
-      
 
-      {/* ChatBot Section */}
-      <section className="z-0 pt-4 pb-16 pt-lg-5 bg-gray-400 dark:bg-gradient-to-br dark:from-blue-400 dark:via-blue-800 dark:to-blue-500">
-        <iframe
-          id="chatbotIframe"
-          src="https://shabd.tech/widget/chatpage?name=samatva&authKey=afd9a6b4-03fd-11f0-aabd-047c1692d8ad"
-          allow="microphone"
-          sandbox="allow-scripts allow-same-origin allow-modals allow-forms allow-popups allow-presentation allow-downloads allow-pointer-lock allow-top-navigation allow-top-navigation-by-user-activation"
-          style={{ width: '100%', border: 'none', overflow: 'hidden', transition: 'height 0.3s ease-in-out' }}
-        />
+      {/* Call to action */}
+      <section className="bg-gray-50 px-4 pb-20 transition-colors sm:px-6 lg:px-8 dark:bg-slate-900">
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.4 }}
+          className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl bg-gradient-to-r from-orange-500 to-amber-500 px-6 py-12 text-center text-white shadow-2xl shadow-orange-500/30 md:px-12 dark:from-orange-600 dark:to-amber-600 dark:shadow-orange-900/40"
+        >
+          <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10" />
+          <div className="pointer-events-none absolute -bottom-20 -left-10 h-56 w-56 rounded-full bg-white/10" />
+          <span className="relative mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+            <BadgeCheck className="h-7 w-7" />
+          </span>
+          <h2 className="relative mx-auto max-w-3xl text-2xl font-bold text-white md:text-4xl">{t('home.cta.title')}</h2>
+          <p className="relative mx-auto mt-3 max-w-xl text-white/90">
+            {t('home.cta.subtitle')} <span className="font-bold">{t('home.cta.subtitle1')}</span>
+          </p>
+          <div className="relative mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <Link
+              to="/contact"
+              onClick={scrollToTop}
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3 font-semibold text-orange-600 shadow-lg transition hover:-translate-y-0.5"
+            >
+              {t('home.cta.button')}
+              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+            <Link
+              to="/services"
+              onClick={scrollToTop}
+              className="inline-flex items-center justify-center rounded-full border-2 border-white/70 px-8 py-3 font-semibold text-white transition hover:-translate-y-0.5 hover:bg-white/10"
+            >
+              {t('home.hero.learnMore')}
+            </Link>
+          </div>
+        </motion.div>
       </section>
 
-      {/* FAQ Section */}
-       <section className="z-0 pt-16 pb-12 bg-white dark:bg-slate-900 transition-colors">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      </main>
 
-        <h2 className="font-bold text-blue-900 dark:text-white mb-12 text-center">
-          {t("faq.title")}
-        </h2>
-
-        <div className="space-y-4">
-          {faqs.map((item, i) => (
-            <div
-              key={i}
-              className="rounded-lg overflow-hidden bg-white dark:bg-slate-800 shadow border border-slate-200 dark:border-slate-700"
-            >
-              <button
-                className="w-full px-6 py-4 flex justify-between items-center text-left 
-                           text-orange-500 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-700
-                           transition-colors"
-                onClick={() => toggleFAQ(i)}
-              >
-                <h6 className="font-semibold">{item.q}</h6>
-
-                <svg
-                  className={`w-5 h-5 transform transition-transform ${
-                    openFAQ === i ? "rotate-180" : ""
-                  }`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-
-              {openFAQ === i && (
-                <div className="px-6 py-4 text-gray-600 dark:text-slate-300">
-                  <p>{item.a}</p>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-      </div>
-    </section>
-
-      {/* CTA Section */}
-      <section className="z-0 pt-16 pb-12 bg-white dark:bg-gradient-to-br dark:from-blue-400 dark:via-slate-900 dark:to-blue-500 transition-colors" >
-      <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <h2 className="font-bold mb-6 text-orange-500 dark:text-white animate-fade-in ">
-          {t('home.cta.title')}
-        </h2>
-        <p className="mb-10 text-gray-700 dark:text-orange-100 max-w-3xl mx-auto animate-fade-in " style={{ animationDelay: "0.2s" }} >
-          <span>{t("home.cta.subtitle")}</span><span className='font-bold'> {t("home.cta.subtitle1")}</span>
-        </p>
-
-        <Link
-          to="/Contact"
-          onClick={scrollToTop}
-          className=" w-full sm:w-auto bg-orange-500 dark:bg-white text-white dark:text-orange-600 hover:bg-orange-600 dark:hover:bg-orange-50 px-6 sm:px-10 py-3 sm:py-5
-            rounded-full font-bold transition-all transform hover:scale-105 inline-flex items-center justify-center gap-3 shadow-xl animate-scale-intext-xs sm:text-lg " style={{ animationDelay: "0.4s" }} >
-          {t("home.cta.button")}
-          <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
-        </Link>
-        </div>
-       </section>
       <Footer />
-
-      <div
-         className="
-           absolute
-           top-28 left-1/2 transform -translate-x-1/2 w-[90%]
-           md:top-28 md:w-[80%]
-           lg:top-24 lg:w-[80%]
-           xl:top-28 xl:w-[75%]
-           2xl:top-36 2xl:w-[70%]
-         "
-      >
-        <PopupForm />
-      </div>
-
     </div>
   );
 };
