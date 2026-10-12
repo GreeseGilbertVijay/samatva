@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import {
   ArrowRight,
   BadgeCheck,
@@ -175,8 +176,34 @@ const Index = () => {
     },
   ];
 
+  // FAQ rich results for Google, built from the questions shown on the page
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs
+      .filter((item) => item.q && item.a && !item.q.startsWith('home.'))
+      .map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+  };
+
   return (
     <div className="min-h-screen bg-white transition-colors dark:bg-slate-950" lang={currentLanguage}>
+      <Helmet>
+        <html lang={currentLanguage} />
+        <title>Free Credit Counselling &amp; CIBIL Score Improvement in India | Samatva Awareness</title>
+        <meta
+          name="description"
+          content="Samatva offers free credit counselling to improve your CIBIL score in 6-12 months. Clear settled loan accounts with RBI-registered NBFC partners. Zero fees. Incubated at IITM Research Park, Chennai."
+        />
+        <link rel="canonical" href="https://samatvaawareness.in/" />
+        {faqSchema.mainEntity.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        )}
+      </Helmet>
+
       <style>{`
         @keyframes home-float { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(-20px) } }
         .home-float { animation: home-float 8s ease-in-out infinite; }
@@ -445,7 +472,8 @@ const Index = () => {
                   >
                     <img
                       src="/lovable-uploads/thumbnail.png"
-                      alt="Samatva Credit Solutions Video Thumbnail"
+                      alt="Samatva free credit counselling – how we help improve your CIBIL score"
+                      loading="lazy"
                       className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     />
                     <span className="absolute inset-0 bg-black/20 transition-colors group-hover:bg-black/10" />
