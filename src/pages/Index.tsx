@@ -205,7 +205,7 @@ const Index = () => {
         .home-float { animation: home-float 8s ease-in-out infinite; }
         .home-float-slow { animation: home-float 11s ease-in-out infinite; }
 
-        /* Impact box: tada shake for the first second of every 4s cycle, and once more on hover */
+        /* Credit-doctor box: tada shake for the first second of every 4s cycle, and once more on hover */
         @keyframes impact-tada {
           0%, 25%, 100% { transform: scale3d(1, 1, 1); }
           2.5%, 5% { transform: scale3d(0.95, 0.95, 0.95) rotate(-3deg); }
@@ -339,43 +339,43 @@ const Index = () => {
             {/* Right content: quick-action cards */}
             <div className="mx-auto w-full max-w-md space-y-5 lg:col-span-2">
               <motion.div variants={fadeUp} initial="hidden" animate="show" custom={2}>
-                <Link
-                  to="/credit-doctor"
-                  onClick={scrollToTop}
-                  className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-white shadow-2xl shadow-orange-500/30 transition-all duration-300 hover:-translate-y-1 md:p-8 dark:from-orange-600 dark:to-amber-600 dark:shadow-orange-900/40"
-                >
-                  <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
-                  <div className="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 rounded-full bg-white/10" />
-                  <div className="relative">
-                    <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
-                      <HeartPulse className="h-7 w-7" />
-                    </span>
-                    <h2 className="text-2xl font-bold leading-snug text-white md:text-3xl">{t('home.hero.popup1')}</h2>
-                    <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-orange-600 shadow-lg">
-                      {t('home.hero.popupbutton')}
-                      <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-                    </span>
-                  </div>
-                </Link>
+                <div className="impact-shake">
+                  <Link
+                    to="/credit-doctor"
+                    onClick={scrollToTop}
+                    className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-white shadow-2xl shadow-orange-500/30 transition-all duration-300 hover:-translate-y-1 md:p-8 dark:from-orange-600 dark:to-amber-600 dark:shadow-orange-900/40"
+                  >
+                    <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
+                    <div className="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 rounded-full bg-white/10" />
+                    <div className="relative">
+                      <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
+                        <HeartPulse className="h-7 w-7" />
+                      </span>
+                      <h2 className="text-2xl font-bold leading-snug text-white md:text-3xl">{t('home.hero.popup1')}</h2>
+                      <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-orange-600 shadow-lg">
+                        {t('home.hero.popupbutton')}
+                        <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+                      </span>
+                    </div>
+                  </Link>
+                </div>
               </motion.div>
 
               <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3}>
-                <div className="impact-shake">
-                  <Link
-                    to="/impact"
-                    onClick={scrollToTop}
-                    className="group flex items-center gap-4 rounded-2xl border border-orange-200 bg-white/80 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/15 dark:border-white/15 dark:bg-white/5 dark:hover:border-orange-500/60"
-                  >
-                    <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-400 group-hover:text-white group-hover:shadow-lg group-hover:shadow-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400">
-                      <TrendingUp className="h-6 w-6" />
-                    </span>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('home.hero.impact.title')}</h3>
-                      <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">{t('home.hero.impact.description')}</p>
-                    </div>
-                    <ArrowRight className="h-5 w-5 shrink-0 text-orange-500 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </div>
+                <Link
+                  to="/impact"
+                  onClick={scrollToTop}
+                  className="group flex items-center gap-4 rounded-2xl border border-orange-200 bg-white/80 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/15 dark:border-white/15 dark:bg-white/5 dark:hover:border-orange-500/60"
+                >
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-400 group-hover:text-white group-hover:shadow-lg group-hover:shadow-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400">
+                    <TrendingUp className="h-6 w-6" />
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('home.hero.impact.title')}</h3>
+                    <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">{t('home.hero.impact.description')}</p>
+                  </div>
+                  <ArrowRight className="h-5 w-5 shrink-0 text-orange-500 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
               </motion.div>
             </div>
           </div>
