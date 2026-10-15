@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import LoanChecksAnimation from '@/components/LoanChecksAnimation';
 import { TrendingUp, Clock, Target, CheckCircle, AlertTriangle, Shield, Award } from 'lucide-react';
 import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -76,17 +77,20 @@ const CreditHealth = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-pulse"></div>
         </div>
-        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
-            <Shield className="w-5 h-5 mr-2 text-blue-950 dark:text-orange-400" />
-            <span className="text-blue-950 dark:text-orange-300 font-medium">Credit Worthiness Indicator</span>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
+              <Shield className="w-5 h-5 mr-2 text-blue-950 dark:text-orange-400" />
+              <span className="text-blue-950 dark:text-orange-300 font-medium">Credit Worthiness Indicator</span>
+            </div>
+            <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
+            Master Your Credit Score
+            </h1>
+            <p className="text-blue-950 dark:text-slate-300 max-w-3xl mx-auto lg:mx-0 leading-relaxed">
+            Understanding your credit score is the first step towards financial freedom. We in samatva help you at zero fees how to build, maintain, and leverage a powerful credit profile.
+            </p>
           </div>
-          <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
-          Master Your Credit Score
-          </h1>
-          <p className="text-blue-950 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-          Understanding your credit score is the first step towards financial freedom. We in samatva help you at zero fees how to build, maintain, and leverage a powerful credit profile.
-          </p>
+          <LoanChecksAnimation />
         </div>
       </section>
 

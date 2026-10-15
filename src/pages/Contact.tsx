@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, ChevronDown, Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
+import { INSTAGRAM_GRADIENT, INSTAGRAM_URL, InstagramIcon, LINKEDIN_URL, LinkedinIcon } from '@/components/SocialIcons';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Form from '@/components/Form';
@@ -184,6 +185,48 @@ const Contact = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Social links */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-6 text-center sm:flex-row sm:text-left md:p-8 dark:border-slate-700 dark:from-slate-800/60 dark:to-slate-900"
+          >
+            <div>
+              <h3 className="text-xl font-bold text-blue-950 md:text-2xl dark:text-white">
+                Follow Us on{' '}
+                <span className="bg-gradient-to-r from-pink-500 via-fuchsia-500 to-purple-600 bg-clip-text text-transparent">
+                  Instagram
+                </span>{' '}
+                &amp; <span className="text-[#0a66c2] dark:text-sky-400">LinkedIn</span>
+              </h3>
+              <p className="mt-1 text-sm text-gray-600 dark:text-slate-300">
+                Stay inspired with credit tips, updates and success stories.
+              </p>
+            </div>
+            <div className="flex shrink-0 items-center gap-4">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Samatva on Instagram"
+                className={`flex h-14 w-14 items-center justify-center rounded-full ${INSTAGRAM_GRADIENT} text-white shadow-lg transition-transform hover:scale-110`}
+              >
+                <InstagramIcon className="h-7 w-7" />
+              </a>
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow Samatva on LinkedIn"
+                className="flex h-14 w-14 items-center justify-center rounded-full bg-[#0a66c2] text-white shadow-lg transition-transform hover:scale-110"
+              >
+                <LinkedinIcon className="h-6 w-6" />
+              </a>
+            </div>
+          </motion.div>
 
           {/* Service areas */}
           <motion.div

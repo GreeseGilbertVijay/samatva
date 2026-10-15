@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowUp, ArrowRight, Phone, Mail, MapPin, Building2, ShieldCheck, ChevronRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { INSTAGRAM_GRADIENT, INSTAGRAM_URL, InstagramIcon, LINKEDIN_URL, LinkedinIcon } from '@/components/SocialIcons';
 
 const PHONE_DISPLAY = '+91 63820 97967';
 const PHONE_HREF = 'tel:+916382097967';
@@ -108,6 +109,29 @@ const Footer = () => {
             <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-xs font-medium text-emerald-300">
               <ShieldCheck className="h-4 w-4" />
               Completely Free Service
+            </div>
+            <div className="mt-6">
+              <h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-white">Follow Us</h4>
+              <div className="flex items-center gap-3">
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Samatva on Instagram"
+                  className={`flex h-10 w-10 items-center justify-center rounded-full ${INSTAGRAM_GRADIENT} text-white shadow-lg transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400`}
+                >
+                  <InstagramIcon className="h-5 w-5" />
+                </a>
+                <a
+                  href={LINKEDIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow Samatva on LinkedIn"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-[#0a66c2] text-white shadow-lg transition-transform hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400"
+                >
+                  <LinkedinIcon className="h-5 w-5" />
+                </a>
+              </div>
             </div>
           </div>
 

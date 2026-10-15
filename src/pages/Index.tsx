@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import SocialPopup from '@/components/SocialPopup';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const fadeUp = {
@@ -614,6 +615,7 @@ const Index = () => {
       </main>
 
       <Footer />
+      <SocialPopup />
     </div>
   );
 };
