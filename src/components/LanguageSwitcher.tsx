@@ -19,7 +19,7 @@ const LanguageSwitcher = () => {
       <DropdownMenuTrigger
         className="
           flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors group
-          text-black dark:text-slate-300
+          text-blue-950 dark:text-slate-300
           bg-white dark:bg-transparent
           hover:bg-orange-100 dark:hover:bg-slate-800
           hover:text-orange-500 dark:hover:text-orange-400
@@ -49,7 +49,7 @@ const LanguageSwitcher = () => {
       <DropdownMenuContent
         className="
           min-w-[200px] border rounded-lg shadow-lg
-          bg-white text-black border-gray-200
+          bg-white text-blue-950 border-gray-200
           dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700
         "
       >

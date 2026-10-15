@@ -300,7 +300,7 @@ const Gallery = () => {
               <Instagram className="h-4 w-4" />
               Watch &amp; learn
             </span>
-            <h2 className="mt-4 text-3xl font-extrabold text-gray-900 md:text-5xl">
+            <h2 className="mt-4 text-3xl font-extrabold text-blue-950 md:text-5xl">
               Video <span className="text-orange-500">Gallery</span>
             </h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 md:mx-0" />

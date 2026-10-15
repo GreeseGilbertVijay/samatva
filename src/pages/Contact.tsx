@@ -74,11 +74,11 @@ const Contact = () => {
       <Navbar />
 
       {/* Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-blue-950 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
         <div className="contact-float pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-orange-400/20 blur-3xl dark:bg-orange-500/30" />
         <div className="contact-float-slow pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-amber-300/30 blur-3xl dark:bg-orange-400/20" />
         <div
-          className="pointer-events-none absolute inset-0 text-gray-900 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
+          className="pointer-events-none absolute inset-0 text-blue-950 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
           style={{
             backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
             backgroundSize: '28px 28px',
@@ -156,7 +156,7 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.5 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-extrabold text-gray-900 md:text-5xl dark:text-white">{t('contact.contactInfo')}</h2>
+            <h2 className="text-3xl font-extrabold text-blue-950 md:text-5xl dark:text-white">{t('contact.contactInfo')}</h2>
             <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-amber-400" />
           </motion.div>
 
@@ -174,7 +174,7 @@ const Contact = () => {
                 <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/30">
                   <Icon className="h-6 w-6" />
                 </span>
-                <h3 className="mt-5 text-lg font-semibold text-gray-900 dark:text-white">{title}</h3>
+                <h3 className="mt-5 text-lg font-semibold text-blue-950 dark:text-white">{title}</h3>
                 <div className="mt-2 space-y-1 text-base text-gray-700 dark:text-slate-200">
                   {lines.map((line, j) => (
                     <p key={j}>{line}</p>
@@ -193,7 +193,7 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="mt-16"
           >
-            <h3 className="text-center text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">
+            <h3 className="text-center text-2xl font-bold text-blue-950 md:text-3xl dark:text-white">
               {t('contact.serviceAreas')}
             </h3>
             <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4">
@@ -203,7 +203,7 @@ const Contact = () => {
                   className="flex items-center gap-3 rounded-2xl border border-orange-100 bg-orange-50 p-4 dark:border-orange-500/20 dark:bg-orange-500/10"
                 >
                   <MapPin className="h-5 w-5 shrink-0 text-orange-500 dark:text-orange-400" />
-                  <span className="font-semibold text-gray-900 dark:text-white">{area}</span>
+                  <span className="font-semibold text-blue-950 dark:text-white">{area}</span>
                 </div>
               ))}
             </div>
@@ -215,7 +215,7 @@ const Contact = () => {
       <section className="bg-gradient-to-b from-white to-orange-50/60 py-16 transition-colors md:py-24 dark:from-slate-950 dark:to-slate-900">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <div>
-            <h2 className="text-3xl font-extrabold text-gray-900 md:text-4xl dark:text-white">{t('contact.nextSteps')}</h2>
+            <h2 className="text-3xl font-extrabold text-blue-950 md:text-4xl dark:text-white">{t('contact.nextSteps')}</h2>
             <div className="mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-amber-400" />
 
             <div className="mt-8 space-y-4">
@@ -233,7 +233,7 @@ const Contact = () => {
                     {pad(i + 1)}
                   </span>
                   <div>
-                    <h3 className="text-base font-semibold text-gray-900 md:text-lg dark:text-white">{step.title}</h3>
+                    <h3 className="text-base font-semibold text-blue-950 md:text-lg dark:text-white">{step.title}</h3>
                     <p className="mt-1 text-base leading-relaxed text-gray-600 dark:text-slate-300">{step.description}</p>
                   </div>
                 </motion.div>
@@ -248,7 +248,7 @@ const Contact = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="self-start rounded-3xl border border-orange-200 bg-white p-8 shadow-xl shadow-orange-500/10 lg:sticky lg:top-28 dark:border-orange-500/30 dark:bg-slate-800"
           >
-            <h2 className="text-2xl font-bold text-gray-900 md:text-3xl dark:text-white">{t('contact.whyQuest')}</h2>
+            <h2 className="text-2xl font-bold text-blue-950 md:text-3xl dark:text-white">{t('contact.whyQuest')}</h2>
             <div className="mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-amber-400" />
             <ul className="mt-6 space-y-4">
               {whyAnswers.map((answer, i) => (

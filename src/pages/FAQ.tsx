@@ -55,7 +55,7 @@ const FaqCard = ({ faq, index, isOpen, onToggle }: FaqCardProps) => (
       </span>
       <span
         className={`flex-1 text-base font-semibold md:text-lg ${
-          isOpen ? 'text-orange-600 dark:text-orange-400' : 'text-gray-900 dark:text-white'
+          isOpen ? 'text-orange-600 dark:text-orange-400' : 'text-blue-950 dark:text-white'
         }`}
       >
         {faq.question}
@@ -129,11 +129,11 @@ const FAQ = () => {
       <Navbar />
 
       {/* Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-blue-950 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
         <div className="faq-float pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-orange-400/20 blur-3xl dark:bg-orange-500/30" />
         <div className="faq-float-slow pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-amber-300/30 blur-3xl dark:bg-orange-400/20" />
         <div
-          className="pointer-events-none absolute inset-0 text-gray-900 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
+          className="pointer-events-none absolute inset-0 text-blue-950 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
           style={{
             backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
             backgroundSize: '28px 28px',

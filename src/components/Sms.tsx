@@ -37,7 +37,7 @@ export default function SMS() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
   <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-8">
-    <h2 className="text-2xl font-semibold text-center mb-6 text-gray-800">
+    <h2 className="text-2xl font-semibold text-center mb-6 text-blue-900">
       Send SMS
     </h2>
 
@@ -52,7 +52,7 @@ export default function SMS() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           required
-          className="w-full rounded-lg border border-gray-300 px-4 py-2 text-black focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+          className="w-full rounded-lg border border-gray-300 px-4 py-2 text-blue-950 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
       </div>
 
@@ -63,7 +63,7 @@ export default function SMS() {
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className="w-full rounded-lg border border-gray-300 text-black px-4 py-2 h-28 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none"
+          className="w-full rounded-lg border border-gray-300 text-blue-950 px-4 py-2 h-28 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none"
         />
       </div>
 

@@ -211,7 +211,7 @@ const Impact = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative text-black overflow-hidden">
+      <section className="relative text-blue-950 overflow-hidden">
         <div className="container flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-6 md:gap-12">
           {/* Left Slider */}
           <LoanSlider1 imageList={imageList} imageTexts={imageTexts} className="flex-shrink-0 flex items-center justify-center w-full md:w-auto md:justify-start" />
@@ -220,7 +220,7 @@ const Impact = () => {
             <h2 className="font-bold text-orange-500 dark:text-black">
               Interactive Loan Calculator / Comparison
             </h2>
-            <p className="text-black">
+            <p className="text-blue-950">
               Compare loan options across different credit scores and see potential savings in real-time
             </p>
           </div>
@@ -237,7 +237,7 @@ const Impact = () => {
             <h2 className="font-bold text-orange-600 dark:text-white mb-6">
               The Good News About Credit Scores
             </h2>
-            <p className="text-black dark:text-white max-w-3xl mx-auto">
+            <p className="text-blue-950 dark:text-white max-w-3xl mx-auto">
               Your credit journey is full of opportunities for improvement and financial growth
             </p>
           </div>
@@ -283,7 +283,7 @@ const Impact = () => {
         <div className='max-w-6xl mx-auto p-4'>
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="font-bold text-gray-900 mb-6">
+            <h2 className="font-bold text-blue-950 mb-6">
               Timeline for Improvement
             </h2>
             <p className=" text-gray-600 max-w-3xl mx-auto">
@@ -306,14 +306,14 @@ const Impact = () => {
               <div className="space-y-8">
                 <Card className="border-l-4 border-l-blue-600 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 p-6">
                   <h4 className="font-bold text-orange-600 dark:text-white mb-3">Method</h4>
-                  <p className="text-black dark:text-white leading-relaxed">
+                  <p className="text-blue-950 dark:text-white leading-relaxed">
                     Based on the timely repayment of new loans that you avail. Consistent payment history is the most important factor in credit score improvement.
                   </p>
                 </Card>
                 
                 <Card className="border-l-4 border-l-blue-600 bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:via-slate-800 dark:to-blue-500 p-6">
                   <h4 className="font-bold text-orange-600 dark:text-white mb-3">Strategy</h4>
-                  <p className="text-black dark:text-white leading-relaxed">
+                  <p className="text-blue-950 dark:text-white leading-relaxed">
                     Getting a loan with a poor credit score is difficult, so it's always a good idea to improve your credit score before applying. This strategic approach can save you significant money in the long run.
                   </p>
                 </Card>

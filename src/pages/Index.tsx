@@ -45,7 +45,7 @@ const SectionHeading = ({ eyebrow, title, subtitle }: { eyebrow?: string; title:
         {eyebrow}
       </span>
     )}
-    <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl dark:text-white">{title}</h2>
+    <h2 className="text-3xl font-bold leading-tight text-blue-950 md:text-4xl dark:text-white">{title}</h2>
     {subtitle && <p className="mt-4 text-lg text-gray-600 dark:text-slate-300">{subtitle}</p>}
   </motion.div>
 );
@@ -86,7 +86,7 @@ const FaqCard = ({ question, answer, index, isOpen, onToggle }: FaqCardProps) =>
         {pad(index + 1)}
       </span>
       <span
-        className={`home-faq-q flex-1 text-base font-semibold md:text-lg ${isOpen ? 'text-orange-600 dark:text-orange-400' : 'text-gray-900 dark:text-white'
+        className={`home-faq-q flex-1 text-base font-semibold md:text-lg ${isOpen ? 'text-orange-600 dark:text-orange-400' : 'text-blue-950 dark:text-white'
           }`}
       >
         {question}
@@ -220,6 +220,8 @@ const Index = () => {
         }
         .impact-shake { animation: impact-tada 4s ease-in-out 1.5s infinite; }
         .impact-shake:hover { animation: impact-tada-once 1s ease-in-out; }
+        /* Impact box: same cycle offset by half (2s), so the two boxes take turns shaking */
+        .impact-shake-alt { animation-delay: 3.5s; }
         /* Tamil, Telugu and Kannada words run long, so they get smaller type than the other languages */
         :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h1 { font-size: 1.25rem; line-height: 1.4; }
         :is([lang="ta"], [lang="te"], [lang="kn"]) .home-main h2 { font-size: 1.0625rem; line-height: 1.45; }
@@ -258,14 +260,13 @@ const Index = () => {
       `}</style>
 
       <Navbar />
-
       <main className="home-main">
         {/* Banner */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
+        <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-blue-950 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
           <div className="home-float pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-orange-400/20 blur-3xl dark:bg-orange-500/30" />
           <div className="home-float-slow pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-amber-300/30 blur-3xl dark:bg-orange-400/20" />
           <div
-            className="pointer-events-none absolute inset-0 text-gray-900 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
+            className="pointer-events-none absolute inset-0 text-blue-950 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
             style={{
               backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
               backgroundSize: '28px 28px',
@@ -293,7 +294,7 @@ const Index = () => {
                 className={`font-extrabold leading-tight ${isEnglish ? 'text-4xl sm:text-5xl md:text-6xl' : 'text-3xl sm:text-4xl md:text-5xl'
                   }`}
               >
-                <span className="block text-gray-900 dark:text-white">{t('home.concept.title1')}</span>
+                <span className="block text-blue-950 dark:text-white">{t('home.concept.title1')}</span>
                 <span className="bg-gradient-to-r from-orange-500 to-amber-500 bg-clip-text text-transparent dark:from-orange-400 dark:to-amber-300">
                   {t('home.concept.title2')}
                 </span>
@@ -343,16 +344,23 @@ const Index = () => {
                   <Link
                     to="/credit-doctor"
                     onClick={scrollToTop}
-                    className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-amber-500 p-6 text-white shadow-2xl shadow-orange-500/30 transition-all duration-300 hover:-translate-y-1 md:p-8 dark:from-orange-600 dark:to-amber-600 dark:shadow-orange-900/40"
+                    className="group relative block overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-blue-500 to-sky-400 p-6 text-white shadow-2xl shadow-blue-500/30 transition-all duration-300 hover:-translate-y-1 md:p-8 dark:from-blue-700 dark:via-blue-600 dark:to-sky-500 dark:shadow-blue-900/40"
                   >
                     <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-white/10 transition-transform duration-500 group-hover:scale-125" />
+                    <div className="pointer-events-none absolute -bottom-16 -right-10 h-44 w-44 rounded-full bg-gradient-to-tl from-violet-400/40 to-white/10" />
                     <div className="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 rounded-full bg-white/10" />
+                    {/* Sparkle accent */}
+                    <div className="pointer-events-none absolute right-6 top-1/2 flex -translate-y-1/2 flex-col gap-2">
+                      <span className="block h-1 w-5 -rotate-[20deg] rounded-full bg-white/90" />
+                      <span className="block h-1 w-6 rounded-full bg-white/90" />
+                      <span className="block h-1 w-5 rotate-[30deg] rounded-full bg-white/90" />
+                    </div>
                     <div className="relative">
                       <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/20 backdrop-blur">
                         <HeartPulse className="h-7 w-7" />
                       </span>
-                      <h2 className="text-2xl font-bold leading-snug text-white md:text-3xl">{t('home.hero.popup1')}</h2>
-                      <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-orange-600 shadow-lg">
+                      <h2 className="pr-8 text-2xl font-bold leading-snug text-white md:text-3xl">{t('home.hero.popup1')}</h2>
+                      <span className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 font-semibold text-blue-600 shadow-lg">
                         {t('home.hero.popupbutton')}
                         <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                       </span>
@@ -362,20 +370,32 @@ const Index = () => {
               </motion.div>
 
               <motion.div variants={fadeUp} initial="hidden" animate="show" custom={3}>
+                <div className="impact-shake impact-shake-alt">
                 <Link
                   to="/impact"
                   onClick={scrollToTop}
-                  className="group flex items-center gap-4 rounded-2xl border border-orange-200 bg-white/80 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-orange-400 hover:shadow-xl hover:shadow-orange-500/15 dark:border-white/15 dark:bg-white/5 dark:hover:border-orange-500/60"
+                  className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-blue-400/40 bg-gradient-to-br from-blue-800 via-blue-700 to-blue-600 p-5 text-white shadow-xl shadow-blue-700/25 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-600/40 dark:from-blue-900 dark:via-blue-800 dark:to-blue-700"
                 >
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-400 group-hover:text-white group-hover:shadow-lg group-hover:shadow-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400">
-                    <TrendingUp className="h-6 w-6" />
-                  </span>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white">{t('home.hero.impact.title')}</h3>
-                    <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">{t('home.hero.impact.description')}</p>
+                  {/* Wave accent */}
+                  <svg className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 w-full text-blue-500/30" viewBox="0 0 400 100" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M0 60 C 100 20, 250 90, 400 30 L 400 100 L 0 100 Z" fill="currentColor" />
+                  </svg>
+                  {/* Sparkle accent */}
+                  <div className="pointer-events-none absolute left-2 top-2">
+                    <span className="absolute left-3 top-0 block h-3 w-1 -rotate-[20deg] rounded-full bg-yellow-400" />
+                    <span className="absolute left-0 top-4 block h-1 w-3 rounded-full bg-yellow-400" />
+                    <span className="absolute left-7 top-1 block h-3 w-1 rotate-[25deg] rounded-full bg-yellow-400" />
                   </div>
-                  <ArrowRight className="h-5 w-5 shrink-0 text-orange-500 transition-transform duration-300 group-hover:translate-x-1" />
+                  <span className="relative flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-lg shadow-blue-950/40 transition-transform duration-300 group-hover:scale-105">
+                    <TrendingUp className="h-7 w-7" />
+                  </span>
+                  <div className="relative flex-1">
+                    <h3 className="text-xl font-bold text-white">{t('home.hero.impact.title')}</h3>
+                    <p className="text-sm leading-relaxed text-blue-100">{t('home.hero.impact.description')}</p>
+                  </div>
+                  <ArrowRight className="relative h-6 w-6 shrink-0 text-white transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
+                </div>
               </motion.div>
             </div>
           </div>
@@ -440,7 +460,7 @@ const Index = () => {
                   <PlayCircle className="h-3.5 w-3.5" />
                   Samatva
                 </span>
-                <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl dark:text-white">
+                <h2 className="text-3xl font-bold leading-tight text-blue-950 md:text-4xl dark:text-white">
                   {t('home.videoSection.title')}
                 </h2>
                 <div className="mx-auto mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-orange-500 to-amber-400 lg:mx-0" />
@@ -507,7 +527,7 @@ const Index = () => {
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-400 text-white shadow-lg shadow-orange-500/30">
                   <Bot className="h-5 w-5" />
                 </span>
-                <span className="font-semibold text-gray-900 dark:text-white">Samatva Assistant</span>
+                <span className="font-semibold text-blue-950 dark:text-white">Samatva Assistant</span>
               </div>
               <iframe
                 id="chatbotIframe"

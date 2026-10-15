@@ -50,7 +50,7 @@ const SectionHeading = ({ eyebrow, title, subtitle }: { eyebrow?: string; title:
         {eyebrow}
       </span>
     )}
-    <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-4xl dark:text-white">{title}</h2>
+    <h2 className="text-3xl font-bold leading-tight text-blue-950 md:text-4xl dark:text-white">{title}</h2>
     {subtitle && <p className="mt-4 text-lg text-gray-600 dark:text-slate-300">{subtitle}</p>}
   </motion.div>
 );
@@ -87,7 +87,7 @@ const LeaderCard = ({ name, position, description, image, initials, linkedin, in
       <div className="flex-1">
         <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-start sm:justify-between">
           <div>
-            <h3 className="text-xl font-bold text-gray-900 md:text-2xl dark:text-white">{name}</h3>
+            <h3 className="text-xl font-bold text-blue-950 md:text-2xl dark:text-white">{name}</h3>
             <span className="mt-2 inline-block rounded-full bg-orange-50 px-3 py-1 text-sm font-semibold text-orange-600 dark:bg-orange-500/10 dark:text-orange-300">
               {position}
             </span>
@@ -157,11 +157,11 @@ const About = () => {
       <Navbar />
 
       {/* Banner */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-gray-900 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-amber-100 text-blue-950 dark:from-gray-950 dark:via-gray-900 dark:to-orange-800 dark:text-white">
         <div className="about-float pointer-events-none absolute -right-24 -top-24 h-[28rem] w-[28rem] rounded-full bg-orange-400/20 blur-3xl dark:bg-orange-500/30" />
         <div className="about-float-slow pointer-events-none absolute -bottom-40 -left-24 h-[28rem] w-[28rem] rounded-full bg-amber-300/30 blur-3xl dark:bg-orange-400/20" />
         <div
-          className="pointer-events-none absolute inset-0 text-gray-900 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
+          className="pointer-events-none absolute inset-0 text-blue-950 opacity-[0.06] dark:text-white dark:opacity-[0.07]"
           style={{
             backgroundImage: 'radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)',
             backgroundSize: '28px 28px',
@@ -374,7 +374,7 @@ const About = () => {
                   <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-50 text-orange-600 transition-all duration-300 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-amber-400 group-hover:text-white group-hover:shadow-lg group-hover:shadow-orange-500/30 dark:bg-orange-500/10 dark:text-orange-400">
                     <Icon className="h-7 w-7" />
                   </span>
-                  <h3 className="mb-2 text-lg font-bold text-gray-900 dark:text-white">{advantage.title}</h3>
+                  <h3 className="mb-2 text-lg font-bold text-blue-950 dark:text-white">{advantage.title}</h3>
                   <p className="text-base leading-relaxed text-gray-600 dark:text-slate-300">{advantage.description}</p>
                 </motion.div>
               );

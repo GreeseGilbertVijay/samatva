@@ -326,7 +326,7 @@ const Impact = () => {
                       </div>
                       
                       <div className="text-center mb-2">
-                        <h4 className="text-lg font-bold text-gray-800">Low Credit Score</h4>
+                        <h4 className="text-lg font-bold text-blue-900">Low Credit Score</h4>
                         <p className="text-sm text-gray-600">Limited options available</p>
                       </div>
 
@@ -334,7 +334,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center mb-1">
                             <span className="text-sm font-medium text-gray-600">Principal</span>
-                            <span className="text-sm font-bold text-gray-800 number-field">{formatCurrency(loanAmount)}</span>
+                            <span className="text-sm font-bold text-blue-900 number-field">{formatCurrency(loanAmount)}</span>
                           </div>
                         </div>
 
@@ -352,7 +352,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-600">Monthly EMI</span>
-                            <span className="text-lg font-bold text-gray-800 number-field">{formatCurrency(lowEMI)}</span>
+                            <span className="text-lg font-bold text-blue-900 number-field">{formatCurrency(lowEMI)}</span>
                           </div>
                         </div>
 
@@ -360,7 +360,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-600">Total Repayment</span>
-                            <span className="text-lg font-bold text-gray-800 number-field">{formatCurrency(lowTotal)}</span>
+                            <span className="text-lg font-bold text-blue-900 number-field">{formatCurrency(lowTotal)}</span>
                           </div>
                         </div>
 
@@ -394,7 +394,7 @@ const Impact = () => {
                       </div>
                       
                       <div className="text-center mb-2">
-                        <h4 className="text-lg font-bold text-gray-800">Moderate Credit Score</h4>
+                        <h4 className="text-lg font-bold text-blue-900">Moderate Credit Score</h4>
                         <p className="text-sm text-gray-600">Better options available</p>
                       </div>
 
@@ -402,7 +402,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center mb-1">
                             <span className="text-sm font-medium text-gray-600">Principal</span>
-                            <span className="text-sm font-bold text-gray-800 number-field">{formatCurrency(loanAmount)}</span>
+                            <span className="text-sm font-bold text-blue-900 number-field">{formatCurrency(loanAmount)}</span>
                           </div>
                         </div>
 
@@ -420,7 +420,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-600">Monthly EMI</span>
-                            <span className="text-lg font-bold text-gray-800 number-field">{formatCurrency(moderateEMI)}</span>
+                            <span className="text-lg font-bold text-blue-900 number-field">{formatCurrency(moderateEMI)}</span>
                           </div>
                         </div>
 
@@ -428,7 +428,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-600">Total Repayment</span>
-                            <span className="text-lg font-bold text-gray-800 number-field">{formatCurrency(moderateTotal)}</span>
+                            <span className="text-lg font-bold text-blue-900 number-field">{formatCurrency(moderateTotal)}</span>
                           </div>
                         </div>
 
@@ -462,7 +462,7 @@ const Impact = () => {
                       </div>
                       
                       <div className="text-center mb-2">
-                        <h4 className="text-lg font-bold text-gray-800">High Credit Score</h4>
+                        <h4 className="text-lg font-bold text-blue-900">High Credit Score</h4>
                         <p className="text-sm text-gray-600">Best rates available</p>
                       </div>
 
@@ -470,7 +470,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center mb-1">
                             <span className="text-sm font-medium text-gray-600">Principal</span>
-                            <span className="text-sm font-bold text-gray-800 number-field">{formatCurrency(loanAmount)}</span>
+                            <span className="text-sm font-bold text-blue-900 number-field">{formatCurrency(loanAmount)}</span>
                           </div>
                         </div>
 
@@ -488,7 +488,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-600">Monthly EMI</span>
-                            <span className="text-lg font-bold text-gray-800 number-field">{formatCurrency(highEMI)}</span>
+                            <span className="text-lg font-bold text-blue-900 number-field">{formatCurrency(highEMI)}</span>
                           </div>
                         </div>
 
@@ -496,7 +496,7 @@ const Impact = () => {
                         <div className="bg-white bg-opacity-70 rounded-lg p-3 shadow-sm">
                           <div className="flex justify-between items-center">
                             <span className="text-sm font-medium text-gray-600">Total Repayment</span>
-                            <span className="text-lg font-bold text-gray-800 number-field">{formatCurrency(highTotal)}</span>
+                            <span className="text-lg font-bold text-blue-900 number-field">{formatCurrency(highTotal)}</span>
                           </div>
                         </div>
 
@@ -557,7 +557,7 @@ const Impact = () => {
         {/* Potential Savings Card with blinking effect */}
        <div className="blinking-container bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl p-6 border border-blue-200 shadow-lg">
                 <div className="flex items-center justify-center gap-2 mb-4">
-                  <h4 className="text-lg font-bold text-gray-900">₹ Potential Savings</h4>
+                  <h4 className="text-lg font-bold text-blue-950">₹ Potential Savings</h4>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200">
@@ -603,7 +603,7 @@ const Impact = () => {
                   <span className="text-white  font-bold">!</span>
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-2">Disclaimer</h4>
+                  <h4 className="font-bold text-blue-950 mb-2">Disclaimer</h4>
                   <p className="text-gray-700  leading-relaxed">
                     The above comparison is for illustrative purposes only. Actual loan eligibility, interest rates, EMIs, and terms are determined by individual lenders based on the applicant's credit profile, income, employer category, and other underwriting criteria. All loan disbursals are subject to the lender's policies and applicable regulations as prescribed by the Reserve Bank of India (RBI).
                   </p>

@@ -114,7 +114,7 @@ const Calculator = () => {
           <label className="block mb-1 font-medium">Loan Amount (₹50,000 - ₹2,00,000)</label>
           <input
             type="number"
-            className="w-full border border-gray-300 p-2 text-black rounded-md"
+            className="w-full border border-gray-300 p-2 text-blue-950 rounded-md"
             value={loanAmount}
             onChange={(e) => setLoanAmount(e.target.value)}
             onBlur={validateLoanAmount}
@@ -132,7 +132,7 @@ const Calculator = () => {
                   value={rate}
                   checked={interestRate === rate}
                   onChange={() => setInterestRate(rate)}
-                  className="accent-orange-500 text-black"
+                  className="accent-orange-500 text-blue-950"
                 />
                 {rate}%
               </label>
@@ -143,7 +143,7 @@ const Calculator = () => {
           <label className="block mb-1 font-medium">Tenure (6-24 Months)</label>
           <input
             type="number"
-            className="w-full border border-gray-300 p-2 text-black rounded-md"
+            className="w-full border border-gray-300 p-2 text-blue-950 rounded-md"
             value={tenure}
             onChange={(e) => setTenure(e.target.value)}
             onBlur={validateTenure}
@@ -152,7 +152,7 @@ const Calculator = () => {
         </div>
         <div className="flex justify-between gap-4">
           <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded w-full" onClick={calculateEMI}>Calculate</button>
-          <button className="bg-gray-300 hover:bg-gray-400 text-black px-4 py-2 rounded w-full" onClick={resetForm}>Reset</button>
+          <button className="bg-gray-300 hover:bg-gray-400 text-blue-950 px-4 py-2 rounded w-full" onClick={resetForm}>Reset</button>
         </div>
       </div>
 

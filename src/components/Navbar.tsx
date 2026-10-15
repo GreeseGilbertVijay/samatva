@@ -114,7 +114,7 @@ const Navbar = () => {
       {/* Theme Toggle */}
       <button 
         onClick={toggleTheme} 
-        className="p-1 rounded-full border border-slate-300 md:mr-2 dark:border-slate-600 text-black dark:text-white transition"
+        className="p-1 rounded-full border border-slate-300 md:mr-2 dark:border-slate-600 text-blue-950 dark:text-white transition"
       >
         {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
       </button>

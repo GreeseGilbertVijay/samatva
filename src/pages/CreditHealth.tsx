@@ -78,13 +78,13 @@ const CreditHealth = () => {
         </div>
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-2 mb-6">
-            <Shield className="w-5 h-5 mr-2 text-black dark:text-orange-400" />
-            <span className="text-black dark:text-orange-300 font-medium">Credit Worthiness Indicator</span>
+            <Shield className="w-5 h-5 mr-2 text-blue-950 dark:text-orange-400" />
+            <span className="text-blue-950 dark:text-orange-300 font-medium">Credit Worthiness Indicator</span>
           </div>
           <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
           Master Your Credit Score
           </h1>
-          <p className="text-black dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-blue-950 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
           Understanding your credit score is the first step towards financial freedom. We in samatva help you at zero fees how to build, maintain, and leverage a powerful credit profile.
           </p>
         </div>
@@ -94,7 +94,7 @@ const CreditHealth = () => {
       <section className="py-12  bg-white relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8 md:mb-16">
-            <h2 className="font-bold text-gray-900 mb-4 md:mb-6 text-2xl md:text-4xl">
+            <h2 className="font-bold text-blue-950 mb-4 md:mb-6 text-2xl md:text-4xl">
             What Is a Credit Score?
             </h2>
             <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed text-sm md:text-base">
@@ -206,7 +206,7 @@ const CreditHealth = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-orange-700 dark:text-white mb-4">{t('creditHealth.ratings.title')}</h2>
-            <p className="text-xl text-black dark:text-white">{t('creditHealth.ratings.subtitle')}</p>
+            <p className="text-xl text-blue-950 dark:text-white">{t('creditHealth.ratings.subtitle')}</p>
           </div>
           
           <Card className="overflow-hidden shadow-2xl border-0">
@@ -254,7 +254,7 @@ const CreditHealth = () => {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">{t('creditHealth.factors.title')}</h2>
+            <h2 className="text-4xl font-bold text-blue-950 mb-6">{t('creditHealth.factors.title')}</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">{t('creditHealth.factors.subtitle')}</p>
           </div>
           
@@ -288,14 +288,14 @@ const CreditHealth = () => {
             ].map((factor, index) => (
               <Card key={index} className="hover:shadow-xl transition-all duration-300 border-0 bg-gradient-to-br from-white to-gray-50">
                 <CardHeader>
-                  <CardTitle className="text-xl font-bold text-gray-900">{factor.title}</CardTitle>
+                  <CardTitle className="text-xl font-bold text-blue-950">{factor.title}</CardTitle>
                   <CardDescription className="text-gray-600">{factor.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="mb-4">
                     <div className="flex justify-between items-center mb-2">
                       <span className=" font-medium text-gray-700">Impact</span>
-                      <span className="font-bold text-gray-900">{factor.percentage}%</span>
+                      <span className="font-bold text-blue-950">{factor.percentage}%</span>
                     </div>
                     <Progress value={factor.percentage} className="h-3" />
                   </div>
@@ -310,7 +310,7 @@ const CreditHealth = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-bold text-gray-900 mb-6">Credit Improvement Timeline</h2>
+            <h2 className="font-bold text-blue-950 mb-6">Credit Improvement Timeline</h2>
             <p className="text-gray-600">Patience and consistency are key to building excellent credit</p>
           </div>
           
@@ -323,12 +323,12 @@ const CreditHealth = () => {
               </div>
               
               <div className="text-center">
-                <h3 className="text-3xl font-bold text-gray-900 mb-4">{t('creditHealth.timeline.duration')}</h3>
+                <h3 className="text-3xl font-bold text-blue-950 mb-4">{t('creditHealth.timeline.duration')}</h3>
                 <p className="text-xl text-gray-700 mb-8">{t('creditHealth.timeline.description')}</p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
                   <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('creditHealth.timeline.quickWins')}</h4>
+                    <h4 className="text-lg font-semibold text-blue-950 mb-3">{t('creditHealth.timeline.quickWins')}</h4>
                     <ul className="space-y-2 text-gray-700">
                       <li>{t('creditHealth.timeline.quickWin1')}</li>
                       <li>{t('creditHealth.timeline.quickWin2')}</li>
@@ -337,7 +337,7 @@ const CreditHealth = () => {
                   </div>
                   
                   <div className="bg-white p-6 rounded-lg shadow-md">
-                    <h4 className="text-lg font-semibold text-gray-900 mb-3">{t('creditHealth.timeline.longTerm')}</h4>
+                    <h4 className="text-lg font-semibold text-blue-950 mb-3">{t('creditHealth.timeline.longTerm')}</h4>
                     <ul className="space-y-2 text-gray-700">
                       <li>{t('creditHealth.timeline.longTerm1')}</li>
                       <li>{t('creditHealth.timeline.longTerm2')}</li>

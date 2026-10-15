@@ -95,7 +95,7 @@ const About = () => {
           <h1 className="font-bold mb-8 text-orange-500 dark:text-white leading-tight animate-slide-in-right">
             {t('services.title')}
           </h1>
-          <p className="text-black dark:text-white">
+          <p className="text-blue-950 dark:text-white">
             {t('services.subtitle')}
           </p>
         </div>
@@ -117,7 +117,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-green-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.freeConsultation.noFees')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.freeConsultation.noFees')}</h6>
                     <p className="text-gray-600 ">{t('services.freeConsultation.noFeesDesc')}</p>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-green-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.freeConsultation.guidance')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.freeConsultation.guidance')}</h6>
                     <p className="text-gray-600 ">{t('services.freeConsultation.guidanceDesc')}</p>
                   </div>
                 </div>
@@ -133,7 +133,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-green-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.freeConsultation.plans')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.freeConsultation.plans')}</h6>
                     <p className="text-gray-600 ">{t('services.freeConsultation.plansDesc')}</p>
                   </div>
                 </div>
@@ -151,7 +151,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-blue-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.settlementSupport.eligibility')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.settlementSupport.eligibility')}</h6>
                     <p className="text-gray-600 ">{t('services.settlementSupport.eligibilityDesc')} <span className='text-orange-500'>
                       {t('services.settlementSupport.eligibilityDesc1')}</span></p>
                   </div>
@@ -160,7 +160,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-blue-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.settlementSupport.funding')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.settlementSupport.funding')}</h6>
                     <p className="text-gray-600 ">{t('services.settlementSupport.fundingDesc')} <span className='text-orange-500'> 
                       {t('services.settlementSupport.fundingDesc1')}</span>
                     </p>
@@ -170,7 +170,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-blue-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.settlementSupport.improvement')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.settlementSupport.improvement')}</h6>
                     <p className="text-gray-600 ">{t('services.settlementSupport.improvementDesc')}</p>
                   </div>
                 </div>
@@ -188,7 +188,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-purple-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.targetAudience.employment')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.targetAudience.employment')}</h6>
                     <p className="text-gray-600 ">{t('services.targetAudience.employmentDesc')}</p>
                   </div>
                 </div>
@@ -196,7 +196,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-purple-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.targetAudience.income')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.targetAudience.income')}</h6>
                     <p className="text-gray-600 ">{t('services.targetAudience.incomeDesc')}</p>
                   </div>
                 </div>
@@ -204,7 +204,7 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <CheckCircle className="text-purple-600 mt-1" size={20} />
                   <div>
-                    <h6 className="font-semibold text-gray-900">{t('services.targetAudience.commitment')}</h6>
+                    <h6 className="font-semibold text-blue-950">{t('services.targetAudience.commitment')}</h6>
                     <p className="text-gray-600 ">{t('services.targetAudience.commitmentDesc')}</p>
                   </div>
                 </div>
@@ -220,7 +220,7 @@ const About = () => {
         <h2 className="font-bold text-orange-500 dark:text-white mb-6">
               {t('services.process')} 
         </h2>
-        <p className="text-black dark:text-white mx-auto">
+        <p className="text-blue-950 dark:text-white mx-auto">
               {t('services.processDesc')}
         </p>
       </div>      
@@ -251,7 +251,7 @@ const About = () => {
         <h2 className="font-bold mb-6 text-orange-500 dark:text-white animate-fade-in">
         {t('services.readyToStart')}
         </h2>
-        <p className="mb-10 text-black dark:text-white max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
+        <p className="mb-10 text-blue-950 dark:text-white max-w-3xl mx-auto animate-fade-in" style={{animationDelay: '0.2s'}}>
         {t('services.readyDesc')}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
